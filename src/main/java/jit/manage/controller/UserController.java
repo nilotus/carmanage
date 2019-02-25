@@ -24,7 +24,7 @@ public class UserController {
 
     @PostMapping("/login")
     public MSG login(@RequestParam String name, @RequestParam String pw) throws IOException {
-        System.out.println("--------------------id: "+name+" pw: "+pw);
+        //System.out.println("--------------------id: "+name+" pw: "+pw);
         return userService.login(name,pw);
     }
 

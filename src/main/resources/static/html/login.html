@@ -58,9 +58,6 @@
         var form = layui.form;
         var $ = layui.jquery;
         form.on('submit(login)',function (data1) {
-            console.log(data1.field);
-            console.log(data1.field.account);
-            console.log(data1.field.password);
             $.ajax({
 				type:"post",
 				url:"/user/login",
@@ -73,7 +70,17 @@
 				success: function(data){
 				    console.log(data);
 					if(data.code == 1){
-						window.location.href = 'index.html';
+						console.log("传来的uid："+data.data);
+						console.log("选择的uid："+data1.field.uid);
+						if(data.data == data1.field.uid){
+							if(data.data == 1){
+								window.location.href = 'index1.html';
+							}else{
+								window.location.href = 'index.html';
+							}
+						}else{
+							layer.msg("身份信息错误，请重新确认身份")
+						}	
 					}else{
 						layer.msg(data.msg);
 					}

@@ -26,6 +26,7 @@ public class UserServicelmpl implements UserService {
     @Override
     public MSG login(String userId, String userPW) {
         String pw = userMapper.login(userId);
+        //System.out.println(userMapper.identify(userId));
         if (pw.equals(userPW)) {
             return new MSG(1, "登录成功",userMapper.identify(userId));
         } else
