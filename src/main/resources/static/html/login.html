@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+ 
+    <title>登录页</title>
+    <link rel="stylesheet" href="../lib/layui/css/layui.css">
+    <link rel="stylesheet" href="../lib/layui/css/style.css">
+ 	<style type="text/css">
+    	body{
+    		background-image: url(../lib/layui/images/timg.jpg);
+    		background-repeat: no-repeat;
+    		background-size: cover;
+    		min-height: 100vh;
+    	}
+    </style>
+</head>
+<body>
+ 
+<div class="login-main" style="color: white;">
+    <header class="layui-elip">登录</header>
+    <form class="layui-form">
+        <div class="layui-input-inline">
+            <input type="text" name="account" required lay-verify="required" placeholder="用户名" autocomplete="off"
+                   class="layui-input" id="id">
+        </div>
+        <div class="layui-input-inline">
+            <input type="password" name="password" required lay-verify="required" placeholder="密码" autocomplete="off"
+                   class="layui-input" id="pw">
+        </div>
+        <div class="layui-form-item">
+		    <label class="layui-form-label">选择身份</label>
+		    <div class="layui-input-block">
+		      <input type="radio" name="uid" value="0" title="用户" checked="">
+		      <input type="radio" name="uid" value="1" title="管理员">
+         	</div>
+         </div>
+        <div class="layui-input-inline login-btn">
+            <button lay-submit lay-filter="login" class="layui-btn" id="login-button">登录</button>
+        </div>
+        <hr/>
+        <!--<div class="layui-input-inline">
+            <button type="button" class="layui-btn layui-btn-primary">QQ登录</button>
+        </div>
+        <div class="layui-input-inline">
+            <button type="button" class="layui-btn layui-btn-normal">微信登录</button>
+        </div>-->
+        <p><a href="register.html" class="fl">立即注册</a><a href="javascript:;" class="fr">忘记密码？</a></p>
+    </form>
+</div>
+ 
+ 
+<script src="../lib/layui/layui.js"></script>
+<script type="text/javascript">
+    layui.use(['form','layer','jquery'], function () {
+ 
+        // 操作对象
+        var form = layui.form;
+        var $ = layui.jquery;
+        form.on('submit(login)',function (data1) {
+            console.log(data1.field);
+            console.log(data1.field.account);
+            console.log(data1.field.password);
+            $.ajax({
+				type:"post",
+				url:"/user/login",
+				async:true,
+				dataType: 'json',
+				data:{
+					name: data1.field.account,
+					pw: data1.field.password
+				},
+				success: function(data){
+				    console.log(data);
+					if(data.code == 1){
+						window.location.href = 'index.html';
+					}else{
+						layer.msg(data.msg);
+					}
+				},
+				error: function(){
+					alert("failed!");
+				}
+			})
+            return false;
+        })
+    });
+</script>
+</body>
+</html>
