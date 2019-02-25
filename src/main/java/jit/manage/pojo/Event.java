@@ -6,7 +6,6 @@ import java.sql.Timestamp;
  * Created by sunlotus on 2019/2/25.
  */
 public class Event {
-    int EventId;
     String CarNumber;
     Timestamp EventTime;
     String EventPlace;
@@ -15,8 +14,7 @@ public class Event {
     String EventReason;
     String EventInfo;
 
-    public Event(int eventId, String carNumber, Timestamp eventTime, String eventPlace, String eventKind, String driverIN, String eventReason, String eventInfo) {
-        EventId = eventId;
+    public Event(String carNumber, Timestamp eventTime, String eventPlace, String eventKind, String driverIN, String eventReason, String eventInfo) {
         CarNumber = carNumber;
         EventTime = eventTime;
         EventPlace = eventPlace;
@@ -29,13 +27,6 @@ public class Event {
     public Event() {
     }
 
-    public int getEventId() {
-        return EventId;
-    }
-
-    public void setEventId(int eventId) {
-        EventId = eventId;
-    }
 
     public String getCarNumber() {
         return CarNumber;

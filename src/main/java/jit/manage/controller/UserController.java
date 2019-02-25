@@ -33,4 +33,9 @@ public class UserController {
         return userService.findOne(id);
     }
 
+    @DeleteMapping("/delete")
+    public MSG delete(@RequestParam("id") String id){
+        return userService.delete(id);
+    }
+
 }

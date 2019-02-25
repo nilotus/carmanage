@@ -6,18 +6,9 @@ import java.sql.Timestamp;
  * Created by sunlotus on 2019/2/25.
  */
 public class Station {
-    int StationId;
     int Routeld;
     String Place;
     Timestamp time;
-
-    public int getStationId() {
-        return StationId;
-    }
-
-    public void setStationId(int stationId) {
-        StationId = stationId;
-    }
 
     public int getRouteld() {
         return Routeld;
@@ -47,9 +38,7 @@ public class Station {
 
     }
 
-    public Station(int stationId, int routeld, String place, Timestamp time) {
-
-        StationId = stationId;
+    public Station( int routeld, String place, Timestamp time) {
         Routeld = routeld;
         Place = place;
         this.time = time;

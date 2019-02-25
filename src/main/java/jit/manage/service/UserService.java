@@ -12,4 +12,6 @@ public interface UserService {
     MSG login(String userName,String userPW);
 
     MSG findOne(String userId);
+
+    MSG delete(String userId);
 }

@@ -41,4 +41,12 @@ public class UserServicelmpl implements UserService {
         else
             return new MSG(1, "用户可用");
     }
+
+    @Override
+    public MSG delete(String userId){
+        if (userMapper.delete(userId)){
+            return new MSG(1, "已注销");
+        }else
+            return new MSG(-1, "注销失败");
+    }
 }

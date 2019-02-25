@@ -6,7 +6,6 @@ import java.sql.Timestamp;
  * Created by sunlotus on 2019/2/25.
  */
 public class Route {
-    int RouteId;
     String CarNumber;
     Timestamp StartTime;
     String StartPlace;
@@ -19,9 +18,7 @@ public class Route {
     public Route() {
     }
 
-    public Route(int routeId, String carNumber, Timestamp startTime, String startPlace, Timestamp endTime, String destination, String driverIN, int state, int cost) {
-
-        RouteId = routeId;
+    public Route(String carNumber, Timestamp startTime, String startPlace, Timestamp endTime, String destination, String driverIN, int state, int cost) {
         CarNumber = carNumber;
         StartTime = startTime;
         StartPlace = startPlace;
@@ -32,13 +29,6 @@ public class Route {
         Cost = cost;
     }
 
-    public int getRouteId() {
-        return RouteId;
-    }
-
-    public void setRouteId(int routeId) {
-        RouteId = routeId;
-    }
 
     public String getCarNumber() {
         return CarNumber;
