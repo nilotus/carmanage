@@ -1,5 +1,6 @@
 package jit.manage.service;
 
+import jit.manage.Dto.CarDto;
 import jit.manage.pojo.Car;
 import jit.manage.util.MSG;
 
@@ -8,4 +9,6 @@ import jit.manage.util.MSG;
  */
 public interface CarSerivce {
     MSG insert (Car car);
+//    MSG select (CarDto dto);
+    MSG selectAll();
 }

@@ -3,6 +3,8 @@ package jit.manage.mapper;
 import jit.manage.pojo.Car;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 /**
  * Created by sunlotus on 2019/2/25.
  */
@@ -17,4 +19,9 @@ public interface CarMapper {
     @Delete("DELECT FROM car WHERE CarNumber = #{cn}")
     Boolean delete(@Param("cn")String cn);
 
+    @Select("SELECT * FROM car")
+    List<Car> selectAll();
+
+    @Select("select COUNT(CarNumber) FROM car;")
+    int count();
 }

@@ -1,5 +1,7 @@
 package jit.manage.util;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+
 /**
  * Created by sunlotus on 2019/2/21.
  */
@@ -11,7 +13,7 @@ public class MSG {
 
     public MSG(){}
 
-    public MSG(int code, String msg, Object data, int count) {
+    public MSG(int code, String msg, int count,Object data) {
         this.code = code;
         this.msg = msg;
         this.data = data;
@@ -62,4 +64,7 @@ public class MSG {
     public void setCount(int count) {
         this.count = count;
     }
+
+
+
 }

@@ -8,4 +8,5 @@ import jit.manage.util.MSG;
  */
 public interface StationSerivce {
     MSG insert(Station station);
+    MSG selectAll();
 }

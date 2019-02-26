@@ -8,4 +8,5 @@ import jit.manage.util.MSG;
  */
 public interface DriverSerivce {
     MSG insert(Driver driver);
+    MSG selectAll();
 }

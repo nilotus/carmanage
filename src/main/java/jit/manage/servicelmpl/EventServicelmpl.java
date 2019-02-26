@@ -23,4 +23,8 @@ public class EventServicelmpl implements EventSerivce{
         }else
             return new MSG(-1, "增加失败");
     }
+    @Override
+    public MSG selectAll(){
+        return new MSG(1,"查询所有车辆信息",eventMapper.selectAll());
+    }
 }

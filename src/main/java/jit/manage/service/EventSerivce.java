@@ -8,4 +8,5 @@ import jit.manage.util.MSG;
  */
 public interface EventSerivce {
     MSG insert(Event event);
+    MSG selectAll();
 }
