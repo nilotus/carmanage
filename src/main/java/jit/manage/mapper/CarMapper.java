@@ -19,8 +19,8 @@ public interface CarMapper {
     @Delete("DELECT FROM car WHERE CarNumber = #{cn}")
     Boolean delete(@Param("cn")String cn);
 
-    @Select("SELECT * FROM car")
-    List<Car> selectAll();
+    @Select("SELECT * FROM car limit #{limit} offset #{page}")
+    List<Car> selectAll(@Param("page") int page,@Param("limit") int limit);
 
     @Select("select COUNT(CarNumber) FROM car;")
     int count();

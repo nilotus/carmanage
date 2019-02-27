@@ -11,6 +11,5 @@ import net.sf.json.JSONObject;
 public interface CarSerivce {
     MSG insert (Car car);
 //    MSG select (CarDto dto);
-    MSG selectAll();
-    String selectAll2();
+    String selectAll(int page,int limit);
 }

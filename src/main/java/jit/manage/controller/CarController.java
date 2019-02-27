@@ -17,24 +17,11 @@ public class CarController {
     @Autowired
     private CarSerivce carSerivce;
 
-    @PostMapping("/selectAll2")
-    public String selectAll2(@RequestParam int page, @RequestParam int limit){
-
-//        JSONObject object = JSONObject.fromObject(carSerivce.selectAll());
-//        System.out.println(object);
-//        return object;
-        return carSerivce.selectAll2();
-    }
     @PostMapping("/selectAll")
-    public MSG selectAll(@RequestParam int page, @RequestParam int limit){
-        return carSerivce.selectAll();
-
+    public String selectAll2(@RequestParam int page, @RequestParam int limit){
+        return carSerivce.selectAll(page,limit);
     }
-    @PostMapping("/selectAll3")
-    public MSG selectAll3(){
-        return carSerivce.selectAll();
 
-    }
 
     @PostMapping("/insert")
     public MSG insert(@RequestBody Car car){

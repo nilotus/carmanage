@@ -45,14 +45,10 @@ public class CarServicelmpl implements CarSerivce{
 //    }
 
     @Override
-    public MSG selectAll(){
+    public String selectAll(int page,int limit) {
         int count = carMapper.count();
-        return new MSG(1,"查询所有车辆信息",count,carMapper.selectAll());
-    }
-    @Override
-    public String selectAll2() {
-        int count = carMapper.count();
-        MSG msg = new MSG(0,"",count,carMapper.selectAll());
+        page = (page-1)*limit;
+        MSG msg = new MSG(0,"",count,carMapper.selectAll(page,limit));
         JSONObject object = JSONObject.fromObject(msg);
         return object.toString();
     }
