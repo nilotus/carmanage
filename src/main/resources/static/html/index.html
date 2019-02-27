@@ -91,13 +91,13 @@
     		<div class="layui-inline">
     			<label class="layui-form-label">车牌号</label>
 			    <div class="layui-input-block">
-			      <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="车牌号" class="layui-input">
+			      <input type="text" name="number" lay-verify="title" autocomplete="off" placeholder="车牌号" class="layui-input">
 			    </div>
     		</div> 
 		    <div class="layui-inline">
 		      <label class="layui-form-label">车主</label>
 		      <div class="layui-input-inline">
-		        <input type="text" name="number" lay-verify="required|number" autocomplete="off" placeholder="车主姓名" class="layui-input">
+		        <input type="text" name="name" lay-verify="required|name" autocomplete="off" placeholder="车主姓名" class="layui-input">
 		      </div>
 		    </div>
 		    <div class="layui-inline">
@@ -109,7 +109,7 @@
 		    <div class="layui-inline">
 		      <label class="layui-form-label">获取时间</label>
 		      <div class="layui-input-inline">
-		        <input type="text" class="layui-input" id="nt" placeholder="获取时间">
+		        <input type="text" name="nt"  class="layui-input" id="nt" placeholder="获取时间">
 		      </div>
 		    </div>
 		  </div>
@@ -117,25 +117,25 @@
     		<div class="layui-inline">
 		      <label class="layui-form-label">车辆状态</label>
 		      <div class="layui-inline">
-    				<select name="kind" lay-verify="required" lay-search="">
+    				<select name="state" lay-verify="required" lay-search="">
 		          <option value="">选择状态</option>
-		          <option value="1">运行中</option>
-		          <option value="2">报废</option>
-		          <option value="3">丢失</option>
-		          <option value="4">维修</option>
+		          <option value="运行中">运行中</option>
+		          <option value="报废">报废</option>
+		          <option value="丢失">丢失</option>
+		          <option value="维修">维修</option>
 		        </select>
 		       </div>
 		    </div>
 		    <div class="layui-inline">
 		      <label class="layui-form-label">车辆厂牌</label>
 		      <div class="layui-input-inline">
-		        <input type="tel" name="url" lay-verify="url" autocomplete="off" class="layui-input">
+		        <input type="tel" name="factory" lay-verify="required" autocomplete="off" class="layui-input">
 		      </div>
 		    </div>
 		    <div class="layui-inline">
 		      <label class="layui-form-label">车辆颜色</label>
 		      <div class="layui-input-inline">
-		        <input type="tel" name="url" lay-verify="url" autocomplete="off" class="layui-input">
+		        <input type="tel" name="color" lay-verify="required" autocomplete="off" class="layui-input">
 		      </div>
 		    </div>
 	  	</div>
@@ -145,34 +145,34 @@
     			<div class="layui-inline">
     				<select name="kind" lay-verify="required" lay-search="">
 		          <option value="">选择类型</option>
-		          <option value="1">微型车</option>
-		          <option value="2">小型车</option>
-		          <option value="3">中型车</option>
-		          <option value="4">大型车</option>
+		          <option value="微型车">微型车</option>
+		          <option value="小型车">小型车</option>
+		          <option value="中型车">中型车</option>
+		          <option value="大型车">大型车</option>
 		        </select>
 		       </div>  
     		</div> 
     		<div class="layui-inline">
     			<label class="layui-form-label">车载座</label>
     			<div class="layui-inline">
-    			<select name="kind" lay-verify="required" lay-search="">
+    			<select name="seat" lay-verify="required" lay-search="">
 		          <option value="">选择类型</option>
-		          <option value="1">三座</option>
-		          <option value="2">四座</option>
-		          <option value="3">五座</option>
-		          <option value="4">六座</option>
+		          <option value="3">三座</option>
+		          <option value="4">四座</option>
+		          <option value="5">五座</option>
+		          <option value="5">六座</option>
 		       </select>
 		       </div>
     		</div> 
     		<div class="layui-inline">
     			<label class="layui-form-label">车载载重</label>
     			<div class="layui-inline">
-    			<select name="kind" lay-verify="required" lay-search="">
+    			<select name="heavy" lay-verify="required" lay-search="">
 		          <option value="">选择类型</option>
-		          <option value="1">10kg</option>
-		          <option value="2">20kg</option>
-		          <option value="3">30kg</option>
-		          <option value="4">40kg</option>
+		          <option value="10kg">10kg</option>
+		          <option value="20kg">20kg</option>
+		          <option value="30kg">30kg</option>
+		          <option value="40kg">40kg</option>
 		       </select>
 		       </div> 
     		</div> 
@@ -182,7 +182,7 @@
     </div>   
     <div class="layui-form-item">
 	    <div class="layui-input-block">
-	      <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+	      <button type="submit" lay-submit lay-filter="sub" class="layui-btn">立即提交</button>
 	      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
 	    </div>
   	</div>
@@ -195,14 +195,14 @@
 		  	<div class="layui-inline">
 		  		<label class="layui-form-label">车辆编号</label>
 			    <div class="layui-input-block">
-			      <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="车辆编号" class="layui-input">
+			      <input type="text" name="number2" lay-verify="title" autocomplete="off" placeholder="车辆编号" class="layui-input">
 			    </div>
 		  	</div>	
 
 		    <div class="layui-inline">
       		<label class="layui-form-label">车辆类型</label>
       		<div class="layui-input-inline">
-		        <select name="kind" lay-verify="required" lay-search="">
+		        <select name="kind2" lay-verify="required" lay-search="">
 		          <option value="">选择类型</option>
 		          <option value="1">微型车</option>
 		          <option value="2">小型车</option>
@@ -226,7 +226,7 @@
 			</div>
 			<div class="layui-form-item">
 		    <div class="layui-input-block">
-		      <button class="layui-btn" lay-submit="" lay-filter="demo1">查询</button>
+		      <button type="submit" lay-submit lay-filter="select" class="layui-btn">查询</button>
 		      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
 		    </div>
 	  	</div>
@@ -243,10 +243,12 @@
 <script src="../lib/layui/layui.js"></script>
 <script>
 //JavaScript代码区域
-layui.use(['element','laydate','form','table'], function(){
+layui.use(['element','laydate','form','table','jquery'], function(){
   var element = layui.element;
   var laydate = layui.laydate;
   var table = layui.table;
+  var $      = layui.jquery;
+  var form = layui.form;
   laydate.render({
   	elem: '#nt',
     theme: 'molv'
@@ -262,12 +264,12 @@ layui.use(['element','laydate','form','table'], function(){
   table.render({
     elem: '#demo',
     height: 312,
-    url: '/car/selectAll', //数据接口
+    url: '/car/selectAll2', //数据接口
     method: 'post',
     page: true, //开启分页
     limit:10,
     cols: [[ //表头
-      {field: 'carNumber', title: '车牌号', width:80, sort: true}
+      {field: 'carNumber', title: '车牌号', width:150, sort: true}
       ,{field: 'carKind', title: '车辆类型', width:100}
       ,{field: 'carSeat', title: '车载座', width:100, sort: true}
       ,{field: 'carLoad', title: '车载重', width:100} 
@@ -279,6 +281,32 @@ layui.use(['element','laydate','form','table'], function(){
       ,{field: 'date', title: '日期', width:150}
     ]]
   });
+  form.on('submit(sub)', function(data1) {
+        	console.log(data1);
+        	//console.log("{\"CarNumber\":\"" + data1.field.number + "\",\"CarKind\":\"" + data1.field.kind + "\",\"CarSeat\":\"" + data1.field.seat+ "\",\"CarLoad\":\"" + data1.field.heavy+"\",\"CarFactory\":\"" + data1.field.factory+ "\",\"CarColor\":\"" + data1.field.color+ "\",\"CarState\":\"" + data1.field.state+ "\",\"CarOwner\":\"" + data1.field.name+"\",\"CarON\":\"" + data1.field.phone + "\",\"Date\":\"" + data1.field.nt +"\"}")
+			$.ajax({
+            	type:'post',
+                url:'/car/insert',
+                async:true,
+				dataType: 'json',
+				contentType: 'application/json',
+                data: "{\"carNumber\":\"" + data1.field.number + "\",\"carKind\":\"" + data1.field.kind + "\",\"carSeat\":\"" + data1.field.seat+ "\",\"carLoad\":\"" + data1.field.heavy+"\",\"carFactory\":\"" + data1.field.factory+ "\",\"carColor\":\"" + data1.field.color+ "\",\"carState\":\"" + data1.field.state+ "\",\"carOwner\":\"" + data1.field.name+"\",\"carON\":\"" + data1.field.phone + "\",\"date\":\"" + data1.field.nt +"\"}",
+                //验证用户名是否可用
+                success:function(data){
+                	console.log(data);
+                    if (data.code == 1) {
+                    	layer.msg(data.msg);          	
+                    } else {
+                        layer.msg(data.msg);
+                    }
+                },
+                error: function(){
+									alert("插入失败");
+								}
+            })
+            //防止页面跳转
+            return false;
+        });
 });
 </script>
 </body>

@@ -1,5 +1,6 @@
 package jit.manage.pojo;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 
 /**
@@ -15,9 +16,9 @@ public class Car {
     String CarState;
     String CarOwner;
     String  CarON;
-    Timestamp date;
+    String date;
 
-    public Car(String carNumber, String carKind, int carSeat, String carLoad, String carFactory, String carColor, String carState, String carOwner, String carON, Timestamp date) {
+    public Car(String carNumber, String carKind, int carSeat, String carLoad, String carFactory, String carColor, String carState, String carOwner, String carON, String date) {
         CarNumber = carNumber;
         CarKind = carKind;
         CarSeat = carSeat;
@@ -106,11 +107,27 @@ public class Car {
         CarON = carON;
     }
 
-    public Timestamp getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(String date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "CarNumber='" + CarNumber + '\'' +
+                ", CarKind='" + CarKind + '\'' +
+                ", CarSeat=" + CarSeat +
+                ", CarLoad='" + CarLoad + '\'' +
+                ", CarFactory='" + CarFactory + '\'' +
+                ", CarColor='" + CarColor + '\'' +
+                ", CarState='" + CarState + '\'' +
+                ", CarOwner='" + CarOwner + '\'' +
+                ", CarON='" + CarON + '\'' +
+                ", date='" + date + '\'' +
+                '}';
     }
 }

@@ -13,7 +13,7 @@ public interface CarMapper {
     @Select("SELECT * FROM car WHERE CarNumber = #{cn}")
     Car select(@Param("cn")String cn);
 
-    @Insert("INSERT INTO car(CarNumber,CarKind,CarSeat,CarLoad,CarFactory,CarColor,CarState,CarOwner,CarON,Date) VALUES(#{CarNumber},#{CarKind}，#{CarSeat},#{CarLoad},#{CarFactory},#{CarColor},#{CarState},#{CarOwner},#{CarON},#{date})")
+    @Insert("INSERT INTO car(CarNumber,CarKind,CarSeat,CarLoad,CarFactory,CarColor,CarState,CarOwner,CarON,Date) VALUES(#{CarNumber},#{CarKind},#{CarSeat},#{CarLoad},#{CarFactory},#{CarColor},#{CarState},#{CarOwner},#{CarON},#{date})")
     boolean add(Car car);
 
     @Delete("DELECT FROM car WHERE CarNumber = #{cn}")

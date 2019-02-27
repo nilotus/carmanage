@@ -5,10 +5,13 @@ import jit.manage.mapper.CarMapper;
 import jit.manage.pojo.Car;
 import jit.manage.service.CarSerivce;
 import jit.manage.util.MSG;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.management.Query;
+import java.util.List;
 
 /**
  * Created by sunlotus on 2019/2/25.
@@ -45,5 +48,12 @@ public class CarServicelmpl implements CarSerivce{
     public MSG selectAll(){
         int count = carMapper.count();
         return new MSG(1,"查询所有车辆信息",count,carMapper.selectAll());
+    }
+    @Override
+    public String selectAll2() {
+        int count = carMapper.count();
+        MSG msg = new MSG(0,"",count,carMapper.selectAll());
+        JSONObject object = JSONObject.fromObject(msg);
+        return object.toString();
     }
 }

@@ -65,6 +65,4 @@ public class MSG {
         this.count = count;
     }
 
-
-
 }
