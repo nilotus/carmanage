@@ -8,14 +8,12 @@ import java.sql.Timestamp;
 public class CarDto extends extendDto{
     String CarNumber;
     String CarKind;
-    String CarColor;
-    Timestamp date;
+//    String CarColor;
+//    Timestamp date;
 
-    public CarDto( String carNumber, String carKind, String carColor, Timestamp date) {
+    public CarDto( String carNumber, String carKind) {
         CarNumber = carNumber;
         CarKind = carKind;
-        CarColor = carColor;
-        this.date = date;
     }
 
     public CarDto() {
@@ -36,20 +34,20 @@ public class CarDto extends extendDto{
     public void setCarKind(String carKind) {
         CarKind = carKind;
     }
-
-    public String getCarColor() {
-        return CarColor;
-    }
-
-    public void setCarColor(String carColor) {
-        CarColor = carColor;
-    }
-
-    public Timestamp getDate() {
-        return date;
-    }
-
-    public void setDate(Timestamp date) {
-        this.date = date;
-    }
+//
+//    public String getCarColor() {
+//        return CarColor;
+//    }
+//
+//    public void setCarColor(String carColor) {
+//        CarColor = carColor;
+//    }
+//
+//    public Timestamp getDate() {
+//        return date;
+//    }
+//
+//    public void setDate(Timestamp date) {
+//        this.date = date;
+//    }
 }

@@ -6,22 +6,22 @@ import java.sql.Timestamp;
  * Created by sunlotus on 2019/2/25.
  */
 public class extendDto {
-    Timestamp st;
-    Timestamp et;
+    String st;
+    String et;
 
-    public Timestamp getSt() {
+    public String getSt() {
         return st;
     }
 
-    public void setSt(Timestamp st) {
+    public void setSt(String st) {
         this.st = st;
     }
 
-    public Timestamp getEt() {
+    public String getEt() {
         return et;
     }
 
-    public void setEt(Timestamp et) {
+    public void setEt(String et) {
         this.et = et;
     }
 }
