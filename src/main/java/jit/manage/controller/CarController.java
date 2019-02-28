@@ -29,17 +29,11 @@ public class CarController {
         return carSerivce.insert(car);
     }
 
+
     @PostMapping("/select")
-    public String select(@RequestParam int page, @RequestParam int limit, @RequestBody CarDto dto){
+    public String select(@RequestBody CarDto dto,@RequestParam int page, @RequestParam int limit ){
         System.out.println(page+limit);
         System.out.println(dto.toString());
         return carSerivce.select(page,limit,dto);
-    }
-
-    @PostMapping("/select2")
-    public String select2(CarDto dto,@RequestParam int page, @RequestParam int limit ){
-        System.out.println(page+limit);
-        System.out.println(dto.toString());
-        return carSerivce.select2(page,limit,dto);
     }
 }

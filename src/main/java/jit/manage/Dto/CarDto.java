@@ -5,49 +5,65 @@ import java.sql.Timestamp;
 /**
  * Created by sunlotus on 2019/2/25.
  */
-public class CarDto extends extendDto{
-    String CarNumber;
-    String CarKind;
+public class CarDto extends PageDto{
+    String carNumber;
+    String carKind;
+    String st;
+    String et;
 //    String CarColor;
 //    Timestamp date;
 
-    public CarDto( String carNumber, String carKind) {
-        CarNumber = carNumber;
-        CarKind = carKind;
+
+    public String getSt() {
+        return st;
+    }
+
+    public void setSt(String st) {
+        this.st = st;
+    }
+
+    public String getEt() {
+        return et;
+    }
+
+    public void setEt(String et) {
+        this.et = et;
+    }
+
+    public CarDto(String carNumber, String carKind, String st, String et) {
+
+        this.carNumber = carNumber;
+        this.carKind = carKind;
+        this.st = st;
+        this.et = et;
     }
 
     public CarDto() {
     }
 
     public String getCarNumber() {
-        return CarNumber;
+        return carNumber;
     }
 
     public void setCarNumber(String carNumber) {
-        CarNumber = carNumber;
+        this.carNumber = carNumber;
     }
 
     public String getCarKind() {
-        return CarKind;
+        return carKind;
     }
 
     public void setCarKind(String carKind) {
-        CarKind = carKind;
+        this.carKind = carKind;
     }
-//
-//    public String getCarColor() {
-//        return CarColor;
-//    }
-//
-//    public void setCarColor(String carColor) {
-//        CarColor = carColor;
-//    }
-//
-//    public Timestamp getDate() {
-//        return date;
-//    }
-//
-//    public void setDate(Timestamp date) {
-//        this.date = date;
-//    }
+
+    @Override
+    public String toString() {
+        return "CarDto{" +
+                "carNumber='" + carNumber + '\'' +
+                ", carKind='" + carKind + '\'' +
+                ", st='" + st + '\'' +
+                ", et='" + et + '\'' +
+                '}';
+    }
 }

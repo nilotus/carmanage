@@ -40,9 +40,9 @@ public interface CarMapper {
             + "<if test = 'st !=null and et !=null '>"
             + "and Date BETWEEN #{st} AND #{et}"
             +"</if>"
-            + "LIMIT #{limit} OFFSET #{page}"
+            + "LIMIT #{size} OFFSET #{page}"
             +"</script>")
-    List<Car> find(CarDto dto,@Param("page") int page,@Param("limit") int limit);
+    List<Car> find(CarDto dto);
 
 //    @Select("<script>"
 //            + "SELECT * FROM car where 1=1"
