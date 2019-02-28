@@ -12,14 +12,14 @@
         <div class="layui-logo">车辆管理系统</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">路线规划</a></li>
-            <li class="layui-nav-item"><a href="">路况信息</a></li>
+            <li class="layui-nav-item"><a href="javascript:;"  onclick="menuFunc(15)">路线规划</a></li>
+            <li class="layui-nav-item"><a href="javascript:;"  onclick="menuFunc(16)">路况信息</a></li>
             <li class="layui-nav-item">
                 <a href="javascript:;">其他功能</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">使用反馈</a></dd>
-                    <dd><a href="">在线客服</a></dd>
-                    <dd><a href="">授权管理</a></dd>
+                    <dd><a href="javascript:;">使用反馈</a></dd>
+                    <dd><a href="javascript:;">在线客服</a></dd>
+                    <dd><a href="javascript:;">授权管理</a></dd>
                 </dl>
             </li>
         </ul>
@@ -30,10 +30,10 @@
                     贤心
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="javascript:;">基本资料</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">退出登录</a></li>
+            <li class="layui-nav-item"><a href="javascript:;">退出登录</a></li>
         </ul>
     </div>
 
@@ -44,35 +44,35 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">车辆档案管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">车辆档案录入</a></dd>
-                        <dd><a href="javascript:;">车辆状态修改</a></dd>
-                        <dd><a href="javascript:;">车辆异地运行</a></dd>
-                        <dd><a href="">车辆信息统计</a></dd>
+                        <dd><a href="javascript:;" onclick="menuFunc(1)">车辆档案录入</a></dd>
+                        <dd><a href="javascript:;" onclick="menuFunc(2)">车辆状态修改</a></dd>
+                        <dd><a href="javascript:;" onclick="menuFunc(3)">车辆异地运行</a></dd>
+                        <dd><a href="javascript:;" onclick="menuFunc(4)">车辆信息统计</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">车辆运输管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">车辆运输录入</a></dd>
-                        <dd><a href="javascript:;">运输信息统计</a></dd>
-                        <dd><a href="">运输路径规划</a></dd>
+                        <dd><a href="javascript:;" onclick="menuFunc(5)">车辆运输录入</a></dd>
+                        <dd><a href="javascript:;" onclick="menuFunc(6)">运输信息统计</a></dd>
+                        <dd><a href="javascript:;" onclick="menuFunc(7)">运输路径规划</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">车辆事件管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">车辆违章</a></dd>
-                        <dd><a href="javascript:;">车辆事故</a></dd>
-                        <dd><a href="">车辆维修</a></dd>
-                        <dd><a href="">车辆保养</a></dd>
-                        <dd><a href="">车辆事件统计</a></dd>
+                        <dd><a href="javascript:;" onclick="menuFunc(8)">车辆违章</a></dd>
+                        <dd><a href="javascript:;" onclick="menuFunc(9)">车辆事故</a></dd>
+                        <dd><a href="javascript:;" onclick="menuFunc(10)">车辆维修</a></dd>
+                        <dd><a href="javascript:;" onclick="menuFunc(11)">车辆保养</a></dd>
+                        <dd><a href="javascript:;" onclick="menuFunc(12)">车辆事件统计</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">驾驶员管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">驾驶员信息录入</a></dd>
-                        <dd><a href="">驾驶员信息统计</a></dd>
+                        <dd><a href="javascript:;" onclick="menuFunc(13)">驾驶员信息录入</a></dd>
+                        <dd><a href="javascript:;" onclick="menuFunc(14)">驾驶员信息统计</a></dd>
                     </dl>
                 </li>
             </ul>
@@ -80,164 +80,241 @@
     </div>
 
     <div class="layui-body">
-        <form class="layui-form" action="">
-            <!-- 内容主体区域 -->
-            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-                <legend>信息录入</legend>
-            </fieldset>
-            <!--信息录入部分-->
-            <div class="layui-form">
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">车牌号</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="number" lay-verify="title" autocomplete="off" placeholder="车牌号"
-                                   class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">车主</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="name" lay-verify="required|name" autocomplete="off"
-                                   placeholder="车主姓名" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">联系方式</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="phone" id="phone" lay-verify="required|phone" placeholder="联系方式"
-                                   autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">获取时间</label>
-                        <div class="layui-input-inline">
-                            <input type="text" name="nt" class="layui-input" id="nt" placeholder="获取时间">
-                        </div>
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">车辆状态</label>
-                        <div class="layui-inline">
-                            <select name="state" lay-verify="required" lay-search="">
-                                <option value="">选择状态</option>
-                                <option value="运行中">运行中</option>
-                                <option value="报废">报废</option>
-                                <option value="丢失">丢失</option>
-                                <option value="维修">维修</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">车辆厂牌</label>
-                        <div class="layui-input-inline">
-                            <input type="tel" name="factory" lay-verify="required" autocomplete="off"
-                                   class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">车辆颜色</label>
-                        <div class="layui-input-inline">
-                            <input type="tel" name="color" lay-verify="required" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">车辆类型</label>
-                        <div class="layui-inline">
-                            <select name="kind" lay-verify="required" lay-search="">
-                                <option value="">选择类型</option>
-                                <option value="微型车">微型车</option>
-                                <option value="小型车">小型车</option>
-                                <option value="中型车">中型车</option>
-                                <option value="大型车">大型车</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">车载座</label>
-                        <div class="layui-inline">
-                            <select name="seat" lay-verify="required" lay-search="">
-                                <option value="">选择类型</option>
-                                <option value="3">三座</option>
-                                <option value="4">四座</option>
-                                <option value="5">五座</option>
-                                <option value="5">六座</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">车载载重</label>
-                        <div class="layui-inline">
-                            <select name="heavy" lay-verify="required" lay-search="">
-                                <option value="">选择类型</option>
-                                <option value="10kg">10kg</option>
-                                <option value="20kg">20kg</option>
-                                <option value="30kg">30kg</option>
-                                <option value="40kg">40kg</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <button type="submit" lay-submit lay-filter="sub" class="layui-btn">立即提交</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                </div>
-            </div>
-        </form>
-        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-            <legend>信息查询</legend>
-        </fieldset>
-        <form class="layui-form" action="">
-            <div class="layui-form-item">
-                <div class="layui-inline">
-                    <label class="layui-form-label">车辆编号</label>
-                    <div class="layui-input-block">
-                        <input type="text" name="number2" lay-verify="title" autocomplete="off" placeholder="车辆编号"
-                               class="layui-input">
-                    </div>
-                </div>
-
-                <div class="layui-inline">
-                    <label class="layui-form-label">车辆类型</label>
-                    <div class="layui-input-inline">
-                        <select name="kind2"  lay-search="">
-                            <option value="">选择类型</option>
-                            <option value="微型车">微型车</option>
-                            <option value="小型车">小型车</option>
-                            <option value="中型车">中型车</option>
-                            <option value="大型车">大型车</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">开始时间</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="st" class="layui-input" id="st" placeholder="开始时间">
-                    </div>
-                </div>
-                <div class="layui-inline">
-                    <label class="layui-form-label">结束时间</label>
-                    <div class="layui-input-inline">
-                        <input type="text" name="et" class="layui-input" id="et" placeholder="结束时间">
-                    </div>
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <div class="layui-input-block">
-                    <button type="submit" lay-submit lay-filter="select" class="layui-btn">查询</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                </div>
-            </div>
-        </form>
-        <!--表格部分-->
-        <table class="layui-table" id="demo" lay-filter="demo"></table>
+    	<div id="content1" style="display: block;">
+	        <form class="layui-form" action="">
+	            <!-- 内容主体区域 -->
+	            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>信息录入</legend>
+	            </fieldset>
+	            <!--信息录入部分-->
+	            <div class="layui-form">
+	                <div class="layui-form-item">
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">车牌号</label>
+	                        <div class="layui-input-block">
+	                            <input type="text" name="number" lay-verify="title" autocomplete="off" placeholder="车牌号"
+	                                   class="layui-input">
+	                        </div>
+	                    </div>
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">车主</label>
+	                        <div class="layui-input-inline">
+	                            <input type="text" name="name" lay-verify="required|name" autocomplete="off"
+	                                   placeholder="车主姓名" class="layui-input">
+	                        </div>
+	                    </div>
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">联系方式</label>
+	                        <div class="layui-input-inline">
+	                            <input type="text" name="phone" id="phone" lay-verify="required|phone" placeholder="联系方式"
+	                                   autocomplete="off" class="layui-input">
+	                        </div>
+	                    </div>
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">获取时间</label>
+	                        <div class="layui-input-inline">
+	                            <input type="text" name="nt" class="layui-input" id="nt" placeholder="获取时间">
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="layui-form-item">
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">车辆状态</label>
+	                        <div class="layui-inline">
+	                            <select name="state" lay-verify="required" lay-search="">
+	                                <option value="">选择状态</option>
+	                                <option value="运行中">运行中</option>
+	                                <option value="报废">报废</option>
+	                                <option value="丢失">丢失</option>
+	                                <option value="维修">维修</option>
+	                            </select>
+	                        </div>
+	                    </div>
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">车辆厂牌</label>
+	                        <div class="layui-input-inline">
+	                            <input type="tel" name="factory" lay-verify="required" autocomplete="off"
+	                                   class="layui-input">
+	                        </div>
+	                    </div>
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">车辆颜色</label>
+	                        <div class="layui-input-inline">
+	                            <input type="tel" name="color" lay-verify="required" autocomplete="off" class="layui-input">
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="layui-form-item">
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">车辆类型</label>
+	                        <div class="layui-inline">
+	                            <select name="kind" lay-verify="required" lay-search="">
+	                                <option value="">选择类型</option>
+	                                <option value="微型车">微型车</option>
+	                                <option value="小型车">小型车</option>
+	                                <option value="中型车">中型车</option>
+	                                <option value="大型车">大型车</option>
+	                            </select>
+	                        </div>
+	                    </div>
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">车载座</label>
+	                        <div class="layui-inline">
+	                            <select name="seat" lay-verify="required" lay-search="">
+	                                <option value="">选择类型</option>
+	                                <option value="3">三座</option>
+	                                <option value="4">四座</option>
+	                                <option value="5">五座</option>
+	                                <option value="5">六座</option>
+	                            </select>
+	                        </div>
+	                    </div>
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">车载载重</label>
+	                        <div class="layui-inline">
+	                            <select name="heavy" lay-verify="required" lay-search="">
+	                                <option value="">选择类型</option>
+	                                <option value="10kg">10kg</option>
+	                                <option value="20kg">20kg</option>
+	                                <option value="30kg">30kg</option>
+	                                <option value="40kg">40kg</option>
+	                            </select>
+	                        </div>
+	                    </div>
+	                </div>
+	
+	
+	            </div>
+	            <div class="layui-form-item">
+	                <div class="layui-input-block">
+	                    <button type="submit" lay-submit lay-filter="sub" class="layui-btn">立即提交</button>
+	                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+	                </div>
+	            </div>
+	        </form>
+	        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	            <legend>信息查询</legend>
+	        </fieldset>
+	        <form class="layui-form" action="">
+	            <div class="layui-form-item">
+	                <div class="layui-inline">
+	                    <label class="layui-form-label">车辆编号</label>
+	                    <div class="layui-input-block">
+	                        <input type="text" name="number2" lay-verify="title" autocomplete="off" placeholder="车辆编号"
+	                               class="layui-input">
+	                    </div>
+	                </div>
+	
+	                <div class="layui-inline">
+	                    <label class="layui-form-label">车辆类型</label>
+	                    <div class="layui-input-inline">
+	                        <select name="kind2"  lay-search="">
+	                            <option value="">选择类型</option>
+	                            <option value="微型车">微型车</option>
+	                            <option value="小型车">小型车</option>
+	                            <option value="中型车">中型车</option>
+	                            <option value="大型车">大型车</option>
+	                        </select>
+	                    </div>
+	                </div>
+	                <div class="layui-inline">
+	                    <label class="layui-form-label">开始时间</label>
+	                    <div class="layui-input-inline">
+	                        <input type="text" name="st" class="layui-input" id="st" placeholder="开始时间">
+	                    </div>
+	                </div>
+	                <div class="layui-inline">
+	                    <label class="layui-form-label">结束时间</label>
+	                    <div class="layui-input-inline">
+	                        <input type="text" name="et" class="layui-input" id="et" placeholder="结束时间">
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="layui-form-item">
+	                <div class="layui-input-block">
+	                    <button type="submit" lay-submit lay-filter="select" class="layui-btn">查询</button>
+	                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+	                </div>
+	            </div>
+	        </form>
+	        <!--表格部分-->
+	        <table class="layui-table" id="demo" lay-filter="demo"></table>
+    	</div>
+    	<div id="content2" style="display: none;">
+    		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>信息录入2</legend>
+	        </fieldset>
+    	</div>
+    	<div id="content3" style="display: none;">
+    		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>信息录入3</legend>
+	       </fieldset>
+    	</div>
+    	<div id="content4" style="display: none;">
+    		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>信息录入4</legend>
+	        </fieldset>
+    	</div>
+    	<div id="content5" style="display: none;">
+    		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>信息录入5</legend>
+	        </fieldset>
+    	</div>
+    	<div id="content6" style="display: none;">
+    		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>信息录入6</legend>
+	        </fieldset>
+    	</div>
+    	<div id="content7" style="display: none;">
+    		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>信息录入7</legend>
+	        </fieldset>
+    	</div>
+    	<div id="content8" style="display: none;">
+    		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>信息录入8</legend>
+	        </fieldset>
+    	</div>
+    	<div id="content9" style="display: none;">
+    		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>信息录入9</legend>
+	        </fieldset>
+    	</div>
+    	<div id="content10" style="display: none;">
+    		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>信息录入10</legend>
+	        </fieldset>
+    	</div>
+    	<div id="content11" style="display: none;">
+    		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>信息录入11</legend>
+	        </fieldset>
+    	</div>
+    	<div id="content12" style="display: none;">
+    		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>信息录入12</legend>
+	        </fieldset>
+    	</div>
+    	<div id="content13" style="display: none;">
+    		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>信息录入13</legend>
+	        </fieldset>
+    	</div>
+    	<div id="content14" style="display: none;">
+    		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>信息录入14</legend>
+	        </fieldset>
+    	</div>
+    	<div id="content15" style="display: none;">
+    		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>信息录入15</legend>
+	        </fieldset>
+    	</div>
+    	<div id="content16" style="display: none;">
+    		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>信息录入16</legend>
+	        </fieldset>
+    	</div>
     </div>
 
     <div class="layui-footer">
@@ -246,111 +323,7 @@
     </div>
 </div>
 <script src="../lib/layui/layui.js"></script>
-<script>
-    //JavaScript代码区域
-    layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
-        var element = layui.element;
-        var laydate = layui.laydate;
-        var table = layui.table;
-        var $ = layui.jquery;
-        var form = layui.form;
-        //渲染laydate
-        laydate.render({
-            elem: '#nt',
-            theme: 'molv'
-        });
-        laydate.render({
-            elem: '#st',
-            theme: 'molv'
-        });
-        laydate.render({
-            elem: '#et',
-            theme: 'molv'
-        });
-        //渲染表格
-        var tableIns = table.render({
-            elem: '#demo',
-            height: 312,
-            url: '/car/selectAll', //数据接口
-            method: 'post',
-            page: true, //开启分页
-            limit: 10,
-            cols: [[ //表头
-                {field: 'carNumber', title: '车牌号', width: '10%', sort: true, align:'center'}
-                , {field: 'carKind', title: '车辆类型', width: '10%', align:'center'}
-                , {field: 'carSeat', title: '车载座', width: '6%', sort: true, align:'center'}
-                , {field: 'carLoad', title: '车载重', width: '6%', align:'center'}
-                , {field: 'carFactory', title: '车厂', width: '15%', align:'center'}
-                , {field: 'carColor', title: '车颜色', width:'9%',align:'center' }
-                , {field: 'carState', title: '车辆状态', width: '9%', align:'center'}
-                , {field: 'carOwner', title: '车主', width: '10%', align:'center'}
-                , {field: 'carON', title: '车主联系方式', width: '10%', align:'center'}
-                , {field: 'date', title: '日期', width: '15%', align:'center'}
-            ]]
-        });
-        //提交表单--插入数据
-        form.on('submit(sub)', function (data1) {
-            console.log(data1);
-            var adata = {
-            	"carNumber": data1.field.number,
-            	"carKind": data1.field.kind,
-            	"carSeat": data1.field.seat,
-            	"carLoad": data1.field.heavy,
-            	"carFactory": data1.field.factory,
-            	"carColor": data1.field.color,
-            	"carState": data1.field.state,
-            	"carOwner": data1.field.name,
-            	"carON": data1.field.phone,
-            	"date": data1.field.nt
-            }
-            var ndata = JSON.stringify(adata);
-            $.ajax({
-                type: 'post',
-                url: '/car/insert',
-                async: true,
-                dataType: 'json',
-                contentType: 'application/json',
-                data: ndata,
-                //data: "{\"carNumber\":\"" + data1.field.number + "\",\"carKind\":\"" + data1.field.kind + "\",\"carSeat\":\"" + data1.field.seat + "\",\"carLoad\":\"" + data1.field.heavy + "\",\"carFactory\":\"" + data1.field.factory + "\",\"carColor\":\"" + data1.field.color + "\",\"carState\":\"" + data1.field.state + "\",\"carOwner\":\"" + data1.field.name + "\",\"carON\":\"" + data1.field.phone + "\",\"date\":\"" + data1.field.nt + "\"}",
-                //验证用户名是否可用
-                success: function (data) {
-                    console.log(data);
-                    if (data.code == 1) {
-                        layer.msg(data.msg);
-                    } else {
-                        layer.msg(data.msg);
-                    }
-                },
-                error: function () {
-                    alert("插入失败");
-                }
-            })
-            //防止页面跳转
-            return false;
-        });
-        //提交表单--重载表格
-        form.on('submit(select)',function(data2){
-        	var adata = {
-        		"carNumber":data2.field.number2,
-        		"carKind": data2.field.kind2,
-				"st":data2.field.st,
-				"et":data2.field.et
-          };
-        	var ndata = JSON.stringify(adata);
-        	tableIns.reload({
-        		url: '/car/select',
-        		method: 'post',
-        		contentType: 'application/json',
-        		where:{
-        			"carNumber":data2.field.number2,
-	        		"carKind": data2.field.kind2,
-					"st":data2.field.st,
-					"et":data2.field.et
-        		}
-        	});
-        	return false;
-        });
-    });
-</script>
+<script src="../lib/layui/js/car1.js"></script>
+<script src="../lib/layui/js/show.js"></script>
 </body>
 </html>
