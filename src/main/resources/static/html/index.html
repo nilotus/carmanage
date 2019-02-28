@@ -209,10 +209,10 @@
                     <div class="layui-input-inline">
                         <select name="kind2"  lay-search="">
                             <option value="">选择类型</option>
-                            <option value="1">微型车</option>
-                            <option value="2">小型车</option>
-                            <option value="3">中型车</option>
-                            <option value="4">大型车</option>
+                            <option value="微型车">微型车</option>
+                            <option value="小型车">小型车</option>
+                            <option value="中型车">中型车</option>
+                            <option value="大型车">大型车</option>
                         </select>
                     </div>
                 </div>
@@ -254,6 +254,7 @@
         var table = layui.table;
         var $ = layui.jquery;
         var form = layui.form;
+        //渲染laydate
         laydate.render({
             elem: '#nt',
             theme: 'molv'
@@ -266,7 +267,8 @@
             elem: '#et',
             theme: 'molv'
         });
-        table.render({
+        //渲染表格
+        var tableIns = table.render({
             elem: '#demo',
             height: 312,
             url: '/car/selectAll', //数据接口
@@ -274,18 +276,19 @@
             page: true, //开启分页
             limit: 10,
             cols: [[ //表头
-                {field: 'carNumber', title: '车牌号', width: 150, sort: true}
-                , {field: 'carKind', title: '车辆类型', width: 100}
-                , {field: 'carSeat', title: '车载座', width: 100, sort: true}
-                , {field: 'carLoad', title: '车载重', width: 100}
-                , {field: 'carFactory', title: '车厂', width: 250}
-                , {field: 'carColor', title: '车颜色', width: 80, sort: true}
-                , {field: 'carState', title: '车辆状态', width: 100, sort: true}
-                , {field: 'carOwner', title: '车主', width: 100}
-                , {field: 'carON', title: '车主联系方式', width: 200}
-                , {field: 'date', title: '日期', width: 150}
+                {field: 'carNumber', title: '车牌号', width: '10%', sort: true, align:'center'}
+                , {field: 'carKind', title: '车辆类型', width: '10%', align:'center'}
+                , {field: 'carSeat', title: '车载座', width: '6%', sort: true, align:'center'}
+                , {field: 'carLoad', title: '车载重', width: '6%', align:'center'}
+                , {field: 'carFactory', title: '车厂', width: '15%', align:'center'}
+                , {field: 'carColor', title: '车颜色', width:'9%',align:'center' }
+                , {field: 'carState', title: '车辆状态', width: '9%', align:'center'}
+                , {field: 'carOwner', title: '车主', width: '10%', align:'center'}
+                , {field: 'carON', title: '车主联系方式', width: '10%', align:'center'}
+                , {field: 'date', title: '日期', width: '15%', align:'center'}
             ]]
         });
+        //提交表单--插入数据
         form.on('submit(sub)', function (data1) {
             console.log(data1);
             var adata = {
@@ -325,15 +328,26 @@
             //防止页面跳转
             return false;
         });
+        //提交表单--重载表格
         form.on('submit(select)',function(data2){
-        	console.log(data2);
-        	var numb = "";
-        	if(numb.length > 0){
-        		console.log("yes");
-        	}else{
-        		console.log("no");
-        	}
-        	
+        	var adata = {
+        		"carNumber":data2.field.number2,
+        		"carKind": data2.field.kind2,
+				"st":data2.field.st,
+				"et":data2.field.et
+          };
+        	var ndata = JSON.stringify(adata);
+        	tableIns.reload({
+        		url: '/car/select',
+        		method: 'post',
+        		contentType: 'application/json',
+        		where:{
+        			"carNumber":data2.field.number2,
+	        		"carKind": data2.field.kind2,
+					"st":data2.field.st,
+					"et":data2.field.et
+        		}
+        	});
         	return false;
         });
     });

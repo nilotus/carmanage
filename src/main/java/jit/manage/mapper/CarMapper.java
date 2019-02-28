@@ -31,32 +31,18 @@ public interface CarMapper {
 
     @Select("<script>"
             + "SELECT * FROM car where 1=1"
-            + "<if test = 'carNumber !=null'>"
+            + "<if test = 'carNumber !=\"\"'>"
             + "and CarNumber = #{carNumber}"
             +"</if>"
-            + "<if test = 'carKind !=null'>"
+            + "<if test = 'carKind !=\"\"'>"
             + "and CarKind = #{carKind}"
             +"</if>"
-            + "<if test = 'st !=null and et !=null '>"
+            + "<if test = 'st !=\"\" and et !=\"\" '>"
             + "and Date BETWEEN #{st} AND #{et}"
             +"</if>"
-            + "LIMIT #{size} OFFSET #{page}"
+            + "LIMIT #{limit} OFFSET #{page}"
             +"</script>")
     List<Car> find(CarDto dto);
 
-//    @Select("<script>"
-//            + "SELECT * FROM car where 1=1"
-//            + "<if test = 'carNumber !=null'>"
-//            + "and CarNumber = #{carNumber}"
-//            +"</if>"
-//            + "<if test = 'carKind !=null'>"
-//            + "and CarKind = #{carKind}"
-//            +"</if>"
-//            + "<if test = 'st !=null and et !=null '>"
-//            + "and Date BETWEEN #{st} AND #{et}"
-//            +"</if>"
-//            + "LIMIT #{limit} OFFSET #{page}"
-//            +"</script>")
-//    List<Car> select2(@Param("page") int page, @Param("limit") int limit, CarDto dto);
 
 }

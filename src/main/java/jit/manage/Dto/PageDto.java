@@ -5,7 +5,7 @@ package jit.manage.Dto;
  */
 public class PageDto {
     private int page;
-    private int size;
+    private int limit;
 
     public int getPage() {
         return page;
@@ -15,11 +15,11 @@ public class PageDto {
         this.page = page;
     }
 
-    public int getSize() {
-        return size;
+    public int getLimit() {
+        return limit;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setLimit(int limit) {
+        this.limit = limit;
     }
 }

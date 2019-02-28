@@ -55,13 +55,15 @@ public class CarServicelmpl implements CarSerivce{
 
 
     @Override
-    public String select(int page,int limit,CarDto dto){
+    public String select(CarDto dto){
         int count = carMapper.count();
+        int page = dto.getPage();
+        int limit = dto.getLimit();
         page = (page-1)*limit;
         System.out.println(page);
         System.out.println(limit);
         dto.setPage(page);
-        dto.setSize(limit);
+        dto.setLimit(limit);
         MSG msg = new MSG(0,"",count,carMapper.find(dto));
         System.out.println(dto.toString());
         JSONObject object = JSONObject.fromObject(msg);
