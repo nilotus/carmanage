@@ -148,7 +148,7 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 	    var tableIns2 = table.render({
 	        elem: '#router',
 	        height: 312,
-	        url: '/car/selectAll', //数据接口
+	        url: '/route/selectAll', //数据接口
 	        method: 'post',
 	        page: true, //开启分页
 	        limit: 10,
@@ -167,42 +167,35 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 	    var tableIns3 = table.render({
 	        elem: '#event',
 	        height: 312,
-	        url: '/car/selectAll', //数据接口
+	        url: '/event/selectAll', //数据接口
 	        method: 'post',
 	        page: true, //开启分页
 	        limit: 10,
 	        cols: [[ //表头
 	            {field: 'carNumber', title: '车牌号', width: '10%', sort: true, align:'center'}
-	            , {field: 'carKind', title: '车辆类型', width: '10%', align:'center'}
-	            , {field: 'carSeat', title: '车载座', width: '6%', sort: true, align:'center'}
-	            , {field: 'carLoad', title: '车载重', width: '6%', align:'center'}
-	            , {field: 'carFactory', title: '车厂', width: '15%', align:'center'}
-	            , {field: 'carColor', title: '车颜色', width:'9%',align:'center' }
-	            , {field: 'carState', title: '车辆状态', width: '9%', align:'center'}
-	            , {field: 'carOwner', title: '车主', width: '10%', align:'center'}
-	            , {field: 'carON', title: '车主联系方式', width: '10%', align:'center'}
-	            , {field: 'date', title: '日期', width: '15%', align:'center'}
+	            , {field: 'eventTime', title: '事件时间', width: '15%', align:'center'}
+	            , {field: 'eventPlace', title: '事件地点', width: '15%', sort: true, align:'center'}
+	            , {field: 'eventKind', title: '事件类型', width: '10%', align:'center'}
+	            , {field: 'driverIN', title: '驾驶员编号', width: '15%', align:'center'}
+	            , {field: 'eventReason', title: '事件原因', width:'15%',align:'center' }
+	            , {field: 'eventInfo', title: '事件信息', width: '20%', align:'center'}
 	        ]]
 	    });
 	    //渲染表格 driver
 	    var tableIns4 = table.render({
 	        elem: '#driver',
 	        height: 312,
-	        url: '/car/selectAll', //数据接口
+	        url: '/driver/selectAll', //数据接口
 	        method: 'post',
 	        page: true, //开启分页
 	        limit: 10,
 	        cols: [[ //表头
-	            {field: 'carNumber', title: '车牌号', width: '10%', sort: true, align:'center'}
-	            , {field: 'carKind', title: '车辆类型', width: '10%', align:'center'}
-	            , {field: 'carSeat', title: '车载座', width: '6%', sort: true, align:'center'}
-	            , {field: 'carLoad', title: '车载重', width: '6%', align:'center'}
-	            , {field: 'carFactory', title: '车厂', width: '15%', align:'center'}
-	            , {field: 'carColor', title: '车颜色', width:'9%',align:'center' }
-	            , {field: 'carState', title: '车辆状态', width: '9%', align:'center'}
-	            , {field: 'carOwner', title: '车主', width: '10%', align:'center'}
-	            , {field: 'carON', title: '车主联系方式', width: '10%', align:'center'}
-	            , {field: 'date', title: '日期', width: '15%', align:'center'}
+	            {field: 'LN', title: '驾驶员编号', width: '17%', sort: true, align:'center'}
+	            , {field: 'name', title: '驾驶员姓名', width: '17%', align:'center'}
+	            , {field: 'sex', title: '性别', width: '16%', sort: true, align:'center'}
+	            , {field: 'age', title: '年龄', width: '16%', align:'center'}
+	            , {field: 'phone', title: '联系方式', width: '17%', align:'center'}
+	            , {field: 'LK', title: '驾照类型', width:'17%',align:'center' }
 	        ]]
 	    });
 });

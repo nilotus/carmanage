@@ -33,6 +33,7 @@ public interface DriverMapper {
             +"</if>"
             + "<if test = 'LK !=\"\"'>"
             + "and LN = #{LK}"
+            +"</if>"
             + "LIMIT #{limit} OFFSET #{page}"
             +"</script>")
     List<Driver> find(DriverDto dto);
