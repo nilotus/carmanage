@@ -19,7 +19,7 @@ public class CarController {
     private CarSerivce carSerivce;
 
     @PostMapping("/selectAll")
-    public String selectAll2(@RequestParam int page, @RequestParam int limit){
+    public String selectAll(@RequestParam int page, @RequestParam int limit){
         return carSerivce.selectAll(page,limit);
     }
 
@@ -36,12 +36,4 @@ public class CarController {
         return carSerivce.select(dto);
     }
 
-    @PostMapping("/select2")
-    public String select2(@RequestParam String data,@RequestParam int page, @RequestParam int limit ){
-        System.out.println(data);
-//        System.out.println(page+limit);
-//        System.out.println(dto.toString());
-//        return carSerivce.select(page,limit,dto);
-        return  "0";
-    }
 }

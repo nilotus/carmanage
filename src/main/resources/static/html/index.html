@@ -133,14 +133,14 @@
 	                    <div class="layui-inline">
 	                        <label class="layui-form-label">车辆厂牌</label>
 	                        <div class="layui-input-inline">
-	                            <input type="tel" name="factory" lay-verify="required" autocomplete="off"
+	                            <input type="tel" name="factory" lay-verify="required" autocomplete="off"  placeholder="厂牌"
 	                                   class="layui-input">
 	                        </div>
 	                    </div>
 	                    <div class="layui-inline">
 	                        <label class="layui-form-label">车辆颜色</label>
 	                        <div class="layui-input-inline">
-	                            <input type="tel" name="color" lay-verify="required" autocomplete="off" class="layui-input">
+	                            <input type="tel" name="color" lay-verify="required" autocomplete="off" class="layui-input"  placeholder="颜色">
 	                        </div>
 	                    </div>
 	                </div>
@@ -256,9 +256,139 @@
 	        </fieldset>
     	</div>
     	<div id="content5" style="display: none;">
-    		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-	                <legend>信息录入5</legend>
+    		<form class="layui-form" action="">
+	            <!-- 内容主体区域 -->
+	            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>信息录入</legend>
+	            </fieldset>
+	            <!--信息录入部分-->
+	            <div class="layui-form">
+	                <div class="layui-form-item">
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">车牌号</label>
+	                        <div class="layui-input-block">
+	                            <input type="text" name="rnumber" lay-verify="title" autocomplete="off" placeholder="车牌号"
+	                                   class="layui-input">
+	                        </div>
+	                    </div>
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">开始地点</label>
+	                        <div class="layui-input-inline">
+	                            <input type="text" name="rsp" lay-verify="required" autocomplete="off"
+	                                   placeholder="开始地点" class="layui-input">
+	                        </div>
+	                    </div>
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">开始时间</label>
+	                        <div class="layui-input-inline">
+	                            <input type="text" name="rst" class="layui-input" id="rst" placeholder="获取时间">
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="layui-form-item">
+	                	<div class="layui-inline">
+	                        <label class="layui-form-label">花费</label>
+	                        <div class="layui-input-inline">
+	                            <input type="text" name="rcost" lay-verify="required" autocomplete="off"
+	                                   placeholder="花费" class="layui-input">
+	                        </div>
+	                    </div>
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">目的地</label>
+	                        <div class="layui-input-inline">
+	                            <input type="text" name="rep" lay-verify="required" autocomplete="off"
+	                                   placeholder="目的地" class="layui-input">
+	                        </div>
+	                    </div>
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">结束时间</label>
+	                        <div class="layui-input-inline">
+	                            <input type="text" name="ret" class="layui-input" id="ret" placeholder="获取时间">
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="layui-form-item">
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">驾驶证编号</label>
+	                        <div class="layui-input-block">
+	                            <input type="text" name="rIN" lay-verify="title" autocomplete="off" placeholder="驾驶证编号"
+	                                   class="layui-input">
+	                        </div>
+	                    </div>
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">运行状态</label>
+	                        <div class="layui-inline">
+	                            <select name="rstate" lay-verify="required" lay-search="">
+	                                <option value="">选择状态</option>
+	                                <option value="1">运行中</option>
+	                                <option value="0">未开始</option>
+	                                <option value="2">已结束</option>
+	                                <option value="3">已取消</option>
+	                            </select>
+	                        </div>
+	                    </div>
+	                </div>	
+	            </div>
+	            <div class="layui-form-item">
+	                <div class="layui-input-block">
+	                    <button type="submit" lay-submit lay-filter="subr" class="layui-btn">立即提交</button>
+	                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+	                </div>
+	            </div>
+	        </form>
+	        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	            <legend>信息查询</legend>
 	        </fieldset>
+	        <form class="layui-form" action="">
+	            <div class="layui-form-item">
+	                <div class="layui-inline">
+	                    <label class="layui-form-label">车辆编号</label>
+	                    <div class="layui-input-block">
+	                        <input type="text" name="rNumber2" lay-verify="title" autocomplete="off" placeholder="车辆编号"
+	                               class="layui-input">
+	                    </div>
+	                </div>
+					<div class="layui-inline">
+	                    <label class="layui-form-label">驾驶证编号</label>
+	                    <div class="layui-input-block">
+	                        <input type="text" name="rIN2" lay-verify="title" autocomplete="off" placeholder="车辆编号"
+	                               class="layui-input">
+	                    </div>
+	                </div>
+	                <div class="layui-inline">
+	                    <label class="layui-form-label">运行状态</label>
+	                    <div class="layui-inline">
+	                            <select name="rstate2" lay-verify="required" lay-search="">
+	                                <option value="">选择状态</option>
+	                                <option value="1">运行中</option>
+	                                <option value="0">未开始</option>
+	                                <option value="2">已结束</option>
+	                                <option value="3">已取消</option>
+	                            </select>
+	                        </div>
+	                </div>
+	                <div class="layui-inline">
+	                    <label class="layui-form-label">开始时间</label>
+	                    <div class="layui-input-inline">
+	                        <input type="text" name="rst2" class="layui-input" id="rst2" placeholder="开始时间">
+	                    </div>
+	                </div>
+	                <div class="layui-inline">
+	                    <label class="layui-form-label">结束时间</label>
+	                    <div class="layui-input-inline">
+	                        <input type="text" name="ret2" class="layui-input" id="ret2" placeholder="结束时间">
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="layui-form-item">
+	                <div class="layui-input-block">
+	                    <button type="submit" lay-submit lay-filter="subr2" class="layui-btn">查询</button>
+	                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+	                </div>
+	            </div>
+	        </form>
+	        <!--表格部分-->
+	        <table class="layui-table" id="router" lay-filter="router"></table>
     	</div>
     	<div id="content6" style="display: none;">
     		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
@@ -271,9 +401,123 @@
 	        </fieldset>
     	</div>
     	<div id="content8" style="display: none;">
-    		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-	                <legend>信息录入8</legend>
+    		<form class="layui-form" action="">
+	            <!-- 内容主体区域 -->
+	            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>信息录入</legend>
+	            </fieldset>
+	            <!--信息录入部分-->
+	            <div class="layui-form">
+	                <div class="layui-form-item">
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">车牌号</label>
+	                        <div class="layui-input-block">
+	                            <input type="text" name="eNumber" lay-verify="title" autocomplete="off" placeholder="车牌号"
+	                                   class="layui-input">
+	                        </div>
+	                    </div>
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">驾驶证编号</label>
+	                        <div class="layui-input-inline">
+	                            <input type="text" name="eIN" lay-verify="required" autocomplete="off"
+	                                   placeholder="驾驶证编号" class="layui-input">
+	                        </div>
+	                    </div>
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">事件时间</label>
+	                        <div class="layui-input-inline">
+	                            <input type="text" name="eventime" class="layui-input" id="eventime" placeholder="事件时间">
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="layui-form-item"> 
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">事件地点</label>
+	                        <div class="layui-input-inline">
+	                            <input type="tel" name="eplace" lay-verify="required" autocomplete="off"  placeholder="事件地点"
+	                                   class="layui-input">
+	                        </div>
+	                    </div>
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">事件原因</label>
+	                        <div class="layui-input-inline">
+	                            <input type="tel" name="ereason" lay-verify="required" autocomplete="off" class="layui-input"  placeholder="事件原因">
+	                        </div>
+	                    </div>
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">事件类型</label>
+	                        <div class="layui-inline">
+	                            <select name="ekind" lay-verify="required" lay-search="">
+	                                <option value="">选择类型</option>
+	                                <option value="违章">违章</option>
+	                                <option value="事故">事故</option>
+	                                <option value="保养">保养</option>
+	                                <option value="维修">维修</option>
+	                            </select>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="layui-form-item layui-form-text">
+					    <label class="layui-form-label">事件原因</label>
+					    <div class="layui-input-block">
+					      <textarea placeholder="请输入内容" class="layui-textarea" name="einfo"></textarea>
+					    </div>
+					</div>
+	            </div>
+	            <div class="layui-form-item">
+	                <div class="layui-input-block">
+	                    <button type="submit" lay-submit lay-filter="sube" class="layui-btn">立即提交</button>
+	                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+	                </div>
+	            </div>
+	        </form>
+	        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	            <legend>信息查询</legend>
 	        </fieldset>
+	        <form class="layui-form" action="">
+	            <div class="layui-form-item">
+	                <div class="layui-inline">
+	                    <label class="layui-form-label">车辆编号</label>
+	                    <div class="layui-input-block">
+	                        <input type="text" name="eNumber2" lay-verify="title" autocomplete="off" placeholder="车辆编号"
+	                               class="layui-input">
+	                    </div>
+	                </div>
+	
+	                <div class="layui-inline">
+	                    <label class="layui-form-label">事件类型</label>
+	                    <div class="layui-input-inline">
+	                        <select name="ekind2"  lay-search="">
+	                            <option value="">选择类型</option>
+	                            <option value="违章">违章</option>
+	                            <option value="事故">事故</option>
+	                            <option value="保养">保养</option>
+	                            <option value="维修">维修</option>
+	                        </select>
+	                    </div>
+	                </div>
+	                <div class="layui-inline">
+	                    <label class="layui-form-label">开始时间</label>
+	                    <div class="layui-input-inline">
+	                        <input type="text" name="est2" class="layui-input" id="est" placeholder="开始时间">
+	                    </div>
+	                </div>
+	                <div class="layui-inline">
+	                    <label class="layui-form-label">结束时间</label>
+	                    <div class="layui-input-inline">
+	                        <input type="text" name="eet2" class="layui-input" id="eet" placeholder="结束时间">
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="layui-form-item">
+	                <div class="layui-input-block">
+	                    <button type="submit" lay-submit lay-filter="select" class="layui-btn">查询</button>
+	                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+	                </div>
+	            </div>
+	        </form>
+	        <!--表格部分-->
+	        <table class="layui-table" id="event" lay-filter="event"></table>
     	</div>
     	<div id="content9" style="display: none;">
     		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
@@ -296,9 +540,106 @@
 	        </fieldset>
     	</div>
     	<div id="content13" style="display: none;">
-    		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-	                <legend>信息录入13</legend>
+    		<form class="layui-form" action="">
+	            <!-- 内容主体区域 -->
+	            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>信息录入</legend>
+	            </fieldset>
+	            <!--信息录入部分-->
+	            <div class="layui-form">
+	                <div class="layui-form-item">
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">驾驶证编号</label>
+	                        <div class="layui-input-block">
+	                            <input type="text" name="dIN" lay-verify="title" autocomplete="off" placeholder="驾驶证编号"
+	                                   class="layui-input">
+	                        </div>
+	                    </div>
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">姓名</label>
+	                        <div class="layui-input-inline">
+	                            <input type="text" name="dname" lay-verify="required|name" autocomplete="off"
+	                                   placeholder="驾驶员姓名" class="layui-input">
+	                        </div>
+	                    </div>
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">出生日期</label>
+	                        <div class="layui-input-inline">
+	                            <input type="text" name="dbd" class="layui-input" id="dbd" placeholder="获取出生日期">
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="layui-form-item">
+	                	<div class="layui-inline">
+	                        <label class="layui-form-label">联系方式</label>
+	                        <div class="layui-input-inline">
+	                            <input type="tel" name="dphone" lay-verify="required|phone" autocomplete="off" placeholder="获取联系方式" class="layui-input">
+	                        </div>
+	                    </div>
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">性别</label>
+	                        <div class="layui-inline">
+	                            <select name="dsex" lay-verify="required" lay-search="">
+	                                <option value="">选择性别</option>
+	                                <option value="男">男</option>
+	                                <option value="女">女</option>
+	                            </select>
+	                        </div>
+	                    </div>
+	                    <div class="layui-inline">
+	                        <label class="layui-form-label">驾照类型</label>
+	                        <div class="layui-inline">
+	                            <select name="dLK" lay-verify="required" lay-search="">
+	                                <option value="">选择类型</option>
+	                                <option value="A1">A1</option>
+	                                <option value="B1">B1</option>
+	                                <option value="C1">C1</option>
+	                            </select>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="layui-form-item">
+	                <div class="layui-input-block">
+	                    <button type="submit" lay-submit lay-filter="subd" class="layui-btn">立即提交</button>
+	                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+	                </div>
+	            </div>
+	        </form>
+	        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	            <legend>信息查询</legend>
 	        </fieldset>
+	        <form class="layui-form" action="">
+	            <div class="layui-form-item">
+	                <div class="layui-inline">
+	                    <label class="layui-form-label">驾驶证编号</label>
+	                    <div class="layui-input-block">
+	                        <input type="text" name="dIN2" lay-verify="title" autocomplete="off" placeholder="驾驶证编号"
+	                               class="layui-input">
+	                    </div>
+	                </div>
+	
+	                <div class="layui-inline">
+	                    <label class="layui-form-label">驾照类型</label>
+	                        <div class="layui-inline">
+	                            <select name="dLK2" lay-verify="required" lay-search="">
+	                                <option value="">选择类型</option>
+	                                <option value="A1">A1</option>
+	                                <option value="B1">B1</option>
+	                                <option value="C1">C1</option>
+	                            </select>
+	                        </div>
+	                </div>
+	            </div>
+	            <div class="layui-form-item">
+	                <div class="layui-input-block">
+	                    <button type="submit" lay-submit lay-filter="subd2" class="layui-btn">查询</button>
+	                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+	                </div>
+	            </div>
+	        </form>
+	        <!--表格部分-->
+	        <table class="layui-table" id="driver" lay-filter="driver"></table>
     	</div>
     	<div id="content14" style="display: none;">
     		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
@@ -325,5 +666,6 @@
 <script src="../lib/layui/layui.js"></script>
 <script src="../lib/layui/js/car1.js"></script>
 <script src="../lib/layui/js/show.js"></script>
+
 </body>
 </html>

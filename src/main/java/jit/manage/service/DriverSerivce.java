@@ -1,5 +1,6 @@
 package jit.manage.service;
 
+import jit.manage.Dto.DriverDto;
 import jit.manage.pojo.Driver;
 import jit.manage.util.MSG;
 
@@ -8,5 +9,6 @@ import jit.manage.util.MSG;
  */
 public interface DriverSerivce {
     MSG insert(Driver driver);
-    MSG selectAll();
+    String selectAll(int page,int limit);
+    String select(DriverDto dto);
 }

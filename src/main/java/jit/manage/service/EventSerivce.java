@@ -1,5 +1,6 @@
 package jit.manage.service;
 
+import jit.manage.Dto.EventDto;
 import jit.manage.pojo.Event;
 import jit.manage.util.MSG;
 
@@ -8,5 +9,6 @@ import jit.manage.util.MSG;
  */
 public interface EventSerivce {
     MSG insert(Event event);
-    MSG selectAll();
+    String selectAll(int page,int limit);
+    String select(EventDto dto);
 }

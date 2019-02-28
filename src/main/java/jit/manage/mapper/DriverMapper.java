@@ -1,5 +1,6 @@
 package jit.manage.mapper;
 
+import jit.manage.Dto.DriverDto;
 import jit.manage.pojo.Driver;
 import org.apache.ibatis.annotations.*;
 
@@ -13,12 +14,27 @@ public interface DriverMapper {
     @Select("select * from driver where LN = #{LN}")
     Driver select(@Param("LN") String LN);
 
-    @Insert("INSERT INTO driver(LN,Name, Sex, Age, Phone, LK) VALUES(#{LN},#{Name}, #{Sex}, #{Age}, #{Phone}, #{LK})")
-    boolean insert(Driver driver);
+    @Insert("INSERT INTO driver(LN,Name, Sex, Age, Phone, LK) VALUES(#{LN},#{name}, #{sex}, #{age}, #{phone}, #{LK})")
+    boolean add(Driver driver);
 
     @Delete("DELETE FROM driver where LN = #{LN}")
     boolean delete(@Param("LN") String LN);
 
-    @Select("select * from driver")
-    List<Driver> selectAll();
+    @Select("select * from driver limit #{limit} offset #{page}")
+    List<Driver> selectAll(@Param("page") int page,@Param("limit") int limit);
+
+    @Select("select COUNT(LN) FROM driver")
+    int count();
+
+    @Select("<script>"
+            + "SELECT * FROM driver where 1=1"
+            + "<if test = 'LN !=\"\"'>"
+            + "and LN = #{LN}"
+            +"</if>"
+            + "<if test = 'LK !=\"\"'>"
+            + "and LN = #{LK}"
+            + "LIMIT #{limit} OFFSET #{page}"
+            +"</script>")
+    List<Driver> find(DriverDto dto);
+
 }

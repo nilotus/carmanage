@@ -5,73 +5,62 @@ import java.sql.Timestamp;
 /**
  * Created by sunlotus on 2019/2/25.
  */
-public class EventDto extends extendDto{
-    String CarNumber;
-    Timestamp EventTime;
-    String EventPlace;
-    String EventKind;
-    String DriverIN;
-    String EventReason;
+public class EventDto extends PageDto{
+    String carNumber;
+    String eventKind;
+    String st;
+    String et;
+
+    public EventDto() {
+    }
+
+    public EventDto(String carNumber, String eventKind, String st, String et) {
+
+        this.carNumber = carNumber;
+        this.eventKind = eventKind;
+        this.st = st;
+        this.et = et;
+    }
 
     public String getCarNumber() {
-        return CarNumber;
+        return carNumber;
     }
 
     public void setCarNumber(String carNumber) {
-        CarNumber = carNumber;
-    }
-
-    public Timestamp getEventTime() {
-        return EventTime;
-    }
-
-    public void setEventTime(Timestamp eventTime) {
-        EventTime = eventTime;
-    }
-
-    public String getEventPlace() {
-        return EventPlace;
-    }
-
-    public void setEventPlace(String eventPlace) {
-        EventPlace = eventPlace;
+        this.carNumber = carNumber;
     }
 
     public String getEventKind() {
-        return EventKind;
+        return eventKind;
     }
 
     public void setEventKind(String eventKind) {
-        EventKind = eventKind;
+        this.eventKind = eventKind;
     }
 
-    public String getDriverIN() {
-        return DriverIN;
+    public String getSt() {
+        return st;
     }
 
-    public void setDriverIN(String driverIN) {
-        DriverIN = driverIN;
+    public void setSt(String st) {
+        this.st = st;
     }
 
-    public String getEventReason() {
-        return EventReason;
+    public String getEt() {
+        return et;
     }
 
-    public void setEventReason(String eventReason) {
-        EventReason = eventReason;
+    public void setEt(String et) {
+        this.et = et;
     }
 
-    public EventDto() {
-
-    }
-
-    public EventDto(String carNumber, Timestamp eventTime, String eventPlace, String eventKind, String driverIN, String eventReason) {
-
-        CarNumber = carNumber;
-        EventTime = eventTime;
-        EventPlace = eventPlace;
-        EventKind = eventKind;
-        DriverIN = driverIN;
-        EventReason = eventReason;
+    @Override
+    public String toString() {
+        return "EventDto{" +
+                "carNumber='" + carNumber + '\'' +
+                ", eventKind='" + eventKind + '\'' +
+                ", st='" + st + '\'' +
+                ", et='" + et + '\'' +
+                '}';
     }
 }

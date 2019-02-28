@@ -6,22 +6,22 @@ import java.sql.Timestamp;
  * Created by sunlotus on 2019/2/25.
  */
 public class Event {
-    String CarNumber;
-    Timestamp EventTime;
-    String EventPlace;
-    String EventKind;
-    String DriverIN;
-    String EventReason;
-    String EventInfo;
+    String carNumber;
+    Timestamp eventTime;
+    String eventPlace;
+    String eventKind;
+    String driverIN;
+    String eventReason;
+    String eventInfo;
 
     public Event(String carNumber, Timestamp eventTime, String eventPlace, String eventKind, String driverIN, String eventReason, String eventInfo) {
-        CarNumber = carNumber;
-        EventTime = eventTime;
-        EventPlace = eventPlace;
-        EventKind = eventKind;
-        DriverIN = driverIN;
-        EventReason = eventReason;
-        EventInfo = eventInfo;
+        this.carNumber = carNumber;
+        this.eventTime = eventTime;
+        this.eventPlace = eventPlace;
+        this.eventKind = eventKind;
+        this.driverIN = driverIN;
+        this.eventReason = eventReason;
+        this.eventInfo = eventInfo;
     }
 
     public Event() {
@@ -29,58 +29,71 @@ public class Event {
 
 
     public String getCarNumber() {
-        return CarNumber;
+        return carNumber;
     }
 
     public void setCarNumber(String carNumber) {
-        CarNumber = carNumber;
+        this.carNumber = carNumber;
     }
 
     public Timestamp getEventTime() {
-        return EventTime;
+        return eventTime;
     }
 
     public void setEventTime(Timestamp eventTime) {
-        EventTime = eventTime;
+        this.eventTime = eventTime;
     }
 
     public String getEventPlace() {
-        return EventPlace;
+        return eventPlace;
     }
 
     public void setEventPlace(String eventPlace) {
-        EventPlace = eventPlace;
+        this.eventPlace = eventPlace;
     }
 
     public String getEventKind() {
-        return EventKind;
+        return eventKind;
     }
 
     public void setEventKind(String eventKind) {
-        EventKind = eventKind;
+        this.eventKind = eventKind;
     }
 
     public String getDriverIN() {
-        return DriverIN;
+        return driverIN;
     }
 
     public void setDriverIN(String driverIN) {
-        DriverIN = driverIN;
+        this.driverIN = driverIN;
     }
 
     public String getEventReason() {
-        return EventReason;
+        return eventReason;
     }
 
     public void setEventReason(String eventReason) {
-        EventReason = eventReason;
+        this.eventReason = eventReason;
     }
 
     public String getEventInfo() {
-        return EventInfo;
+        return eventInfo;
     }
 
     public void setEventInfo(String eventInfo) {
-        EventInfo = eventInfo;
+        this.eventInfo = eventInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "carNumber='" + carNumber + '\'' +
+                ", eventTime=" + eventTime +
+                ", eventPlace='" + eventPlace + '\'' +
+                ", eventKind='" + eventKind + '\'' +
+                ", driverIN='" + driverIN + '\'' +
+                ", eventReason='" + eventReason + '\'' +
+                ", eventInfo='" + eventInfo + '\'' +
+                '}';
     }
 }

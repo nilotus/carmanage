@@ -5,22 +5,35 @@ package jit.manage.pojo;
  */
 public class Driver {
     String LN;
-    String Name;
-    String Sex;
-    int Age;
-    String Phone;
+    String name;
+    String sex;
+    String age;
+    String phone;
     String LK;
 
-    public Driver(String LN, String name, String sex, int age, String phone, String LK) {
+    public Driver() {
+    }
+
+    public Driver(String LN, String name, String sex, String age, String phone, String LK) {
+
         this.LN = LN;
-        Name = name;
-        Sex = sex;
-        Age = age;
-        Phone = phone;
+        this.name = name;
+        this.sex = sex;
+        this.age = age;
+        this.phone = phone;
         this.LK = LK;
     }
 
-    public Driver() {
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "LN='" + LN + '\'' +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", age='" + age + '\'' +
+                ", phone='" + phone + '\'' +
+                ", LK='" + LK + '\'' +
+                '}';
     }
 
     public String getLN() {
@@ -32,35 +45,35 @@ public class Driver {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getSex() {
-        return Sex;
+        return sex;
     }
 
     public void setSex(String sex) {
-        Sex = sex;
+        this.sex = sex;
     }
 
-    public int getAge() {
-        return Age;
+    public String getAge() {
+        return age;
     }
 
-    public void setAge(int age) {
-        Age = age;
+    public void setAge(String age) {
+        this.age = age;
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
-        Phone = phone;
+        this.phone = phone;
     }
 
     public String getLK() {

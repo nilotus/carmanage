@@ -3,11 +3,8 @@ package jit.manage.Dto;
 /**
  * Created by sunlotus on 2019/2/25.
  */
-public class DriverDto extends extendDto{
+public class DriverDto extends PageDto{
     String LN;
-    String Name;
-    String Sex;
-    int Age;
     String LK;
 
     public String getLN() {
@@ -16,30 +13,6 @@ public class DriverDto extends extendDto{
 
     public void setLN(String LN) {
         this.LN = LN;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public String getSex() {
-        return Sex;
-    }
-
-    public void setSex(String sex) {
-        Sex = sex;
-    }
-
-    public int getAge() {
-        return Age;
-    }
-
-    public void setAge(int age) {
-        Age = age;
     }
 
     public String getLK() {
@@ -54,12 +27,16 @@ public class DriverDto extends extendDto{
 
     }
 
-    public DriverDto(String LN, String name, String sex, int age, String LK) {
+    @Override
+    public String toString() {
+        return "DriverDto{" +
+                "LN='" + LN + '\'' +
+                ", LK='" + LK + '\'' +
+                '}';
+    }
 
+    public DriverDto(String LN, String LK) {
         this.LN = LN;
-        Name = name;
-        Sex = sex;
-        Age = age;
         this.LK = LK;
     }
 }

@@ -11,23 +11,23 @@ import java.util.List;
  */
 @Mapper
 public interface CarMapper {
-    @Select("SELECT * FROM car WHERE CarNumber = #{cn}")
-    Car select(@Param("cn")String cn);
+//    @Select("SELECT * FROM car WHERE CarNumber = #{cn}")
+//    Car select(@Param("cn")String cn);
 
     @Insert("INSERT INTO car(CarNumber,CarKind,CarSeat,CarLoad,CarFactory,CarColor,CarState,CarOwner,CarON,Date) VALUES(#{CarNumber},#{CarKind},#{CarSeat},#{CarLoad},#{CarFactory},#{CarColor},#{CarState},#{CarOwner},#{CarON},#{date})")
     boolean add(Car car);
 
-    @Delete("DELECT FROM car WHERE CarNumber = #{cn}")
-    Boolean delete(@Param("cn")String cn);
+//    @Delete("DELECT FROM car WHERE CarNumber = #{cn}")
+//    Boolean delete(@Param("cn")String cn);
 
     @Select("SELECT * FROM car limit #{limit} offset #{page}")
     List<Car> selectAll(@Param("page") int page,@Param("limit") int limit);
 
-    @Select("select COUNT(CarNumber) FROM car;")
+    @Select("select COUNT(CarNumber) FROM car")
     int count();
 
-    @Select("SELECT * FROM car WHERE CarNumber = #{arg0} and CarKind = #{param1} and Date BETWEEN #{param2} AND #{param3} limit #{limit} offset #{page}")
-    List<Car> change(CarDto dto,@Param("page") int page,@Param("limit") int limit);
+//    @Select("SELECT * FROM car WHERE CarNumber = #{arg0} and CarKind = #{param1} and Date BETWEEN #{param2} AND #{param3} limit #{limit} offset #{page}")
+//    List<Car> change(CarDto dto,@Param("page") int page,@Param("limit") int limit);
 
     @Select("<script>"
             + "SELECT * FROM car where 1=1"

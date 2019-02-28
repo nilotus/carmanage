@@ -1,8 +1,10 @@
 package jit.manage.mapper;
 
+import jit.manage.Dto.RouteDto;
 import jit.manage.pojo.Route;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -12,8 +14,30 @@ import java.util.List;
  */
 @Mapper
 public interface RouteMapper {
-    @Insert("INSERT INTO routerecord (CarNumber,StartTime,StartPlace,EndTime,Destination,DriverIN,State,Cost) VALUES(#{CarNumber},#{StartTime},#{StartPlace},#{EndTime},#{Destination},#{DriverIN},#{State},#{Cost})")
-    boolean insert(Route route);
-    @Select("select * from routerecord")
-    List<Route> selectAll();
+    @Insert("INSERT INTO routerecord (CarNumber,StartTime,StartPlace,EndTime,Destination,DriverIN,State,Cost) VALUES(#{carNumber},#{st},#{startPlace},#{et},#{destination},#{driverIN},#{state},#{cost})")
+    boolean add(Route route);
+
+    @Select("select * from routerecord limit #{limit} offset #{page}")
+    List<Route> selectAll(@Param("page") int page, @Param("limit") int limit);
+
+    @Select("select COUNT(RouteId) FROM routerecord")
+    int count();
+
+    @Select("<script>"
+            + "SELECT * FROM car where 1=1"
+            + "<if test = 'carNumber !=\"\"'>"
+            + "and CarNumber = #{carNumber}"
+            +"</if>"
+            + "<if test = 'driverIN !=\"\"'>"
+            + "and CarKind = #{driverIN}"
+            +"</if>"
+            + "<if test = 'state !=\"\"'>"
+            + "and CarKind = #{state}"
+            +"</if>"
+            + "<if test = 'st !=\"\" and et !=\"\" '>"
+            + "and Date BETWEEN #{st} AND #{et}"
+            +"</if>"
+            + "LIMIT #{limit} OFFSET #{page}"
+            +"</script>")
+    List<Route> find(RouteDto dto);
 }

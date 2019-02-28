@@ -1,5 +1,6 @@
 package jit.manage.service;
 
+import jit.manage.Dto.RouteDto;
 import jit.manage.pojo.Route;
 import jit.manage.util.MSG;
 
@@ -8,5 +9,6 @@ import jit.manage.util.MSG;
  */
 public interface RouteSerivce {
     MSG insert(Route route);
-    MSG selectAll();
+    String selectAll(int page,int limit);
+    String select(RouteDto dto);
 }

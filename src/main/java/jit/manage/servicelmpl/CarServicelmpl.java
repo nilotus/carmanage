@@ -28,21 +28,6 @@ public class CarServicelmpl implements CarSerivce{
         }else
             return new MSG(-1, "增加失败");
     }
-//    @Override
-//    public MSG select(CarDto dto){
-//        String sql ="select * from car ";
-//        sql+= "where date between "+"'"+ dto.getSt()+"'"+" and "+"'"+ dto.getEt()+"'";
-//        if (dto.getCarNumber().length()>0){
-//            sql += " AND CarNumber = '"+dto.getCarNumber()+"'";
-//        }
-//        if (dto.getCarKind().length()>0){
-//            sql += " AND CarKind = '"+dto.getCarKind()+"'";
-//        }
-//        if (dto.getCarColor().length()>0){
-//            sql += " AND CarColor = '"+dto.getCarColor()+"'";
-//        }
-//        Query nativeQuery =
-//    }
 
     @Override
     public String selectAll(int page,int limit) {

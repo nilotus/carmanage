@@ -6,91 +6,91 @@ import java.sql.Timestamp;
  * Created by sunlotus on 2019/2/25.
  */
 public class Route {
-    String CarNumber;
-    Timestamp StartTime;
-    String StartPlace;
-    Timestamp EndTime;
-    String Destination;
-    String DriverIN;
-    int State;
-    int Cost;
+    String carNumber;
+    String st;
+    String startPlace;
+    String et;
+    String destination;
+    String driverIN;
+    int state;
+    int cost;
 
     public Route() {
     }
 
-    public Route(String carNumber, Timestamp startTime, String startPlace, Timestamp endTime, String destination, String driverIN, int state, int cost) {
-        CarNumber = carNumber;
-        StartTime = startTime;
-        StartPlace = startPlace;
-        EndTime = endTime;
-        Destination = destination;
-        DriverIN = driverIN;
-        State = state;
-        Cost = cost;
-    }
-
-
     public String getCarNumber() {
-        return CarNumber;
+        return carNumber;
     }
 
     public void setCarNumber(String carNumber) {
-        CarNumber = carNumber;
+        this.carNumber = carNumber;
     }
 
-    public Timestamp getStartTime() {
-        return StartTime;
+    public String getSt() {
+        return st;
     }
 
-    public void setStartTime(Timestamp startTime) {
-        StartTime = startTime;
+    public void setSt(String st) {
+        this.st = st;
     }
 
     public String getStartPlace() {
-        return StartPlace;
+        return startPlace;
     }
 
     public void setStartPlace(String startPlace) {
-        StartPlace = startPlace;
+        this.startPlace = startPlace;
     }
 
-    public Timestamp getEndTime() {
-        return EndTime;
+    public String getEt() {
+        return et;
     }
 
-    public void setEndTime(Timestamp endTime) {
-        EndTime = endTime;
+    public void setEt(String et) {
+        this.et = et;
     }
 
     public String getDestination() {
-        return Destination;
+        return destination;
     }
 
     public void setDestination(String destination) {
-        Destination = destination;
+        this.destination = destination;
     }
 
     public String getDriverIN() {
-        return DriverIN;
+        return driverIN;
     }
 
     public void setDriverIN(String driverIN) {
-        DriverIN = driverIN;
+        this.driverIN = driverIN;
     }
 
     public int getState() {
-        return State;
+        return state;
     }
 
     public void setState(int state) {
-        State = state;
+        this.state = state;
     }
 
     public int getCost() {
-        return Cost;
+        return cost;
     }
 
     public void setCost(int cost) {
-        Cost = cost;
+        this.cost = cost;
+    }
+
+    public Route(String carNumber, String st, String startPlace, String et, String destination, String driverIN, int state, int cost) {
+
+        this.carNumber = carNumber;
+        this.st = st;
+        this.startPlace = startPlace;
+        this.et = et;
+        this.destination = destination;
+        this.driverIN = driverIN;
+        this.state = state;
+        this.cost = cost;
     }
 }

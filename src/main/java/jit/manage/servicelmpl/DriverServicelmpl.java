@@ -1,9 +1,11 @@
 package jit.manage.servicelmpl;
 
+import jit.manage.Dto.DriverDto;
 import jit.manage.mapper.DriverMapper;
 import jit.manage.pojo.Driver;
 import jit.manage.service.DriverSerivce;
 import jit.manage.util.MSG;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,14 +19,32 @@ public class DriverServicelmpl implements DriverSerivce{
 
     @Override
     public MSG insert(Driver driver){
-        if (driverMapper.insert(driver)){
+        if (driverMapper.add(driver)){
             return new MSG(1, "增加成功");
         }else
             return new MSG(-1, "增加失败");
     }
 
     @Override
-    public MSG selectAll(){
-        return new MSG(1,"查询所有车辆信息",driverMapper.selectAll());
+    public String selectAll(int page,int limit){
+        int count = driverMapper.count();
+        page = (page-1)*limit;
+        MSG msg = new MSG(0,"",count,driverMapper.selectAll(page,limit));
+        JSONObject object = JSONObject.fromObject(msg);
+        return object.toString();
+    }
+    public String select(DriverDto dto){
+        int count = driverMapper.count();
+        int page = dto.getPage();
+        int limit = dto.getLimit();
+        page = (page-1)*limit;
+        System.out.println(page);
+        System.out.println(limit);
+        dto.setPage(page);
+        dto.setLimit(limit);
+        MSG msg = new MSG(0,"",count,driverMapper.find(dto));
+        System.out.println(dto.toString());
+        JSONObject object = JSONObject.fromObject(msg);
+        return object.toString();
     }
 }
