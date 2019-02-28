@@ -163,6 +163,68 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 	            , {field: 'cost', title: '花销', width: '10%', align:'center'}
 	        ]]
 	    });
+	    //提交表单--插入数据 router
+        form.on('submit(subr)', function (data1) {
+            console.log(data1);
+            var adata = {
+            	"carNumber": data1.field.rnumber,
+            	"driverIN": data1.field.rIN,
+            	"st": data1.field.rst,
+            	"startPlace": rsp,
+            	"et": data1.ret,
+            	"destination": data1.field.rep,
+            	"state": data1.field.rstate,
+            	"cost": data1.field.rcost
+            }
+            var ndata = JSON.stringify(adata);
+            $.ajax({
+                type: 'post',
+                url: '/route/insert',
+                async: true,
+                dataType: 'json',
+                contentType: 'application/json',
+                data: ndata,
+                //data: "{\"carNumber\":\"" + data1.field.number + "\",\"carKind\":\"" + data1.field.kind + "\",\"carSeat\":\"" + data1.field.seat + "\",\"carLoad\":\"" + data1.field.heavy + "\",\"carFactory\":\"" + data1.field.factory + "\",\"carColor\":\"" + data1.field.color + "\",\"carState\":\"" + data1.field.state + "\",\"carOwner\":\"" + data1.field.name + "\",\"carON\":\"" + data1.field.phone + "\",\"date\":\"" + data1.field.nt + "\"}",
+                //验证用户名是否可用
+                success: function (data) {
+                    console.log(data);
+                    if (data.code == 1) {
+                        layer.msg(data.msg);
+                    } else {
+                        layer.msg(data.msg);
+                    }
+                },
+                error: function () {
+                    alert("插入失败");
+                }
+            })
+            //防止页面跳转
+            return false;
+        });
+        //提交表单--重载表格 router
+        form.on('submit(subr2)',function(data2){
+        	console.log(data2);
+        	var adata = {
+        		"carNumber":data2.field.rnumber2,
+        		"driverIN": data2.field.rIN2,
+				"st":data2.field.rst2,
+				"et":data2.field.ret2,
+				"state":data2.field.rstate2
+          };
+        	var ndata = JSON.stringify(adata);
+        	tableIns.reload({
+        		url: '/route/select',
+        		method: 'post',
+        		contentType: 'application/json',
+        		where:{
+        			"carNumber":data2.field.number2,
+	        		"carKind": data2.field.kind2,
+					"st":data2.field.st,
+					"et":data2.field.et
+        		}
+        	});
+        	return false;
+        });
 	    //渲染表格 event
 	    var tableIns3 = table.render({
 	        elem: '#event',
@@ -181,6 +243,66 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 	            , {field: 'eventInfo', title: '事件信息', width: '20%', align:'center'}
 	        ]]
 	    });
+	    //提交表单--插入数据 event
+        form.on('submit(sube)', function (data1) {
+            console.log(data1);
+            var adata = {
+            	"carNumber": data1.field.eNumber,
+            	"eventTime": data1.field.eventime,
+            	"eventPlace": data1.field.eplace,
+            	"eventKind": data1.field.ekind,
+            	"driverIN": data1.field.eIN,
+            	"eventReason": data1.field.ereason,
+            	"eventInfo": data1.field.einfo
+            }
+            var ndata = JSON.stringify(adata);
+            $.ajax({
+                type: 'post',
+                url: '/event/insert',
+                async: true,
+                dataType: 'json',
+                contentType: 'application/json',
+                data: ndata,
+                //data: "{\"carNumber\":\"" + data1.field.number + "\",\"carKind\":\"" + data1.field.kind + "\",\"carSeat\":\"" + data1.field.seat + "\",\"carLoad\":\"" + data1.field.heavy + "\",\"carFactory\":\"" + data1.field.factory + "\",\"carColor\":\"" + data1.field.color + "\",\"carState\":\"" + data1.field.state + "\",\"carOwner\":\"" + data1.field.name + "\",\"carON\":\"" + data1.field.phone + "\",\"date\":\"" + data1.field.nt + "\"}",
+                //验证用户名是否可用
+                success: function (data) {
+                    console.log(data);
+                    if (data.code == 1) {
+                        layer.msg(data.msg);
+                    } else {
+                        layer.msg(data.msg);
+                    }
+                },
+                error: function () {
+                    alert("插入失败");
+                }
+            })
+            //防止页面跳转
+            return false;
+        });
+        //提交表单--重载表格 event
+        form.on('submit(sube2)',function(data2){
+        	console.log(data2);
+        	var adata = {
+        		"carNumber":data2.field.eNumber2,
+        		"eventKind": data2.field.ekind2,
+				"st":data2.field.est2,
+				"et":data2.field.eet2
+          };
+        	var ndata = JSON.stringify(adata);
+        	tableIns.reload({
+        		url: '/event/select',
+        		method: 'post',
+        		contentType: 'application/json',
+        		where:{
+        			"carNumber":data2.field.number2,
+	        		"carKind": data2.field.kind2,
+					"st":data2.field.st,
+					"et":data2.field.et
+        		}
+        	});
+        	return false;
+        });
 	    //渲染表格 driver
 	    var tableIns4 = table.render({
 	        elem: '#driver',
@@ -198,4 +320,61 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 	            , {field: 'LK', title: '驾照类型', width:'17%',align:'center' }
 	        ]]
 	    });
+	    //提交表单--插入数据 driver
+        form.on('submit(subd)', function (data1) {
+            console.log(data1);
+            var adata = {
+            	"LN": data1.field.dIN,
+            	"name": data1.field.dname,
+            	"sex": data1.field.dsex,
+            	"age": data1.field.dbd,
+            	"phone": data1.field.dphone,
+            	"LK": data1.field.dLK
+            }
+            var ndata = JSON.stringify(adata);
+            $.ajax({
+                type: 'post',
+                url: '/driver/insert',
+                async: true,
+                dataType: 'json',
+                contentType: 'application/json',
+                data: ndata,
+                //data: "{\"carNumber\":\"" + data1.field.number + "\",\"carKind\":\"" + data1.field.kind + "\",\"carSeat\":\"" + data1.field.seat + "\",\"carLoad\":\"" + data1.field.heavy + "\",\"carFactory\":\"" + data1.field.factory + "\",\"carColor\":\"" + data1.field.color + "\",\"carState\":\"" + data1.field.state + "\",\"carOwner\":\"" + data1.field.name + "\",\"carON\":\"" + data1.field.phone + "\",\"date\":\"" + data1.field.nt + "\"}",
+                //验证用户名是否可用
+                success: function (data) {
+                    console.log(data);
+                    if (data.code == 1) {
+                        layer.msg(data.msg);
+                    } else {
+                        layer.msg(data.msg);
+                    }
+                },
+                error: function () {
+                    alert("插入失败");
+                }
+            })
+            //防止页面跳转
+            return false;
+        });
+        //提交表单--重载表格 driver
+        form.on('submit(subd2)',function(data2){
+        	console.log(data2);
+        	var adata = {
+        		"LN":data2.field.dIN2,
+        		"LK": data2.field.dLK2
+          };
+        	var ndata = JSON.stringify(adata);
+        	tableIns.reload({
+        		url: '/driver/select',
+        		method: 'post',
+        		contentType: 'application/json',
+        		where:{
+        			"carNumber":data2.field.number2,
+	        		"carKind": data2.field.kind2,
+					"st":data2.field.st,
+					"et":data2.field.et
+        		}
+        	});
+        	return false;
+        });
 });
