@@ -52,4 +52,22 @@ public class CarServicelmpl implements CarSerivce{
         JSONObject object = JSONObject.fromObject(msg);
         return object.toString();
     }
+
+    @Override
+    public String select(int page,int limit,CarDto dto){
+        int count = carMapper.count();
+        page = (page-1)*limit;
+        MSG msg = new MSG(0,"",count,carMapper.change(dto,page,limit));
+        JSONObject object = JSONObject.fromObject(msg);
+        return object.toString();
+    }
+
+    @Override
+    public String select2(int page,int limit,CarDto dto){
+        int count = carMapper.count();
+        page = (page-1)*limit;
+        MSG msg = new MSG(0,"",count,carMapper.find(dto,page,limit));
+        JSONObject object = JSONObject.fromObject(msg);
+        return object.toString();
+    }
 }

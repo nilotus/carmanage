@@ -288,14 +288,27 @@
         });
         form.on('submit(sub)', function (data1) {
             console.log(data1);
-            //console.log("{\"CarNumber\":\"" + data1.field.number + "\",\"CarKind\":\"" + data1.field.kind + "\",\"CarSeat\":\"" + data1.field.seat+ "\",\"CarLoad\":\"" + data1.field.heavy+"\",\"CarFactory\":\"" + data1.field.factory+ "\",\"CarColor\":\"" + data1.field.color+ "\",\"CarState\":\"" + data1.field.state+ "\",\"CarOwner\":\"" + data1.field.name+"\",\"CarON\":\"" + data1.field.phone + "\",\"Date\":\"" + data1.field.nt +"\"}")
+            var adata = {
+            	"carNumber": data1.field.number,
+            	"carKind": data1.field.kind,
+            	"carSeat": data1.field.seat,
+            	"carLoad": data1.field.heavy,
+            	"carFactory": data1.field.factory,
+            	"carColor": data1.field.color,
+            	"carState": data1.field.state,
+            	"carOwner": data1.field.name,
+            	"carON": data1.field.phone,
+            	"date": data1.field.nt
+            }
+            var ndata = JSON.stringify(adata);
             $.ajax({
                 type: 'post',
                 url: '/car/insert',
                 async: true,
                 dataType: 'json',
                 contentType: 'application/json',
-                data: "{\"carNumber\":\"" + data1.field.number + "\",\"carKind\":\"" + data1.field.kind + "\",\"carSeat\":\"" + data1.field.seat + "\",\"carLoad\":\"" + data1.field.heavy + "\",\"carFactory\":\"" + data1.field.factory + "\",\"carColor\":\"" + data1.field.color + "\",\"carState\":\"" + data1.field.state + "\",\"carOwner\":\"" + data1.field.name + "\",\"carON\":\"" + data1.field.phone + "\",\"date\":\"" + data1.field.nt + "\"}",
+                data: ndata,
+                //data: "{\"carNumber\":\"" + data1.field.number + "\",\"carKind\":\"" + data1.field.kind + "\",\"carSeat\":\"" + data1.field.seat + "\",\"carLoad\":\"" + data1.field.heavy + "\",\"carFactory\":\"" + data1.field.factory + "\",\"carColor\":\"" + data1.field.color + "\",\"carState\":\"" + data1.field.state + "\",\"carOwner\":\"" + data1.field.name + "\",\"carON\":\"" + data1.field.phone + "\",\"date\":\"" + data1.field.nt + "\"}",
                 //验证用户名是否可用
                 success: function (data) {
                     console.log(data);

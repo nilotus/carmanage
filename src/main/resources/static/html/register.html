@@ -186,13 +186,21 @@
         //添加表单监听事件,提交注册信息
         form.on('submit(sub)', function(data1) {
         	console.log(data1);
+        	var adata = {
+        		"userId": data1.field.id,
+        		"userName": data1.field.name,
+        		"userPW": data1.field.password,
+        		"userUid": data1.field.userUid
+        	}
+        	var ndata = JSON.stringify(adata);
 			$.ajax({
             	type:'post',
                 url:'/user/adduser',
                 async:true,
 				dataType: 'json',
 				contentType: 'application/json',
-                data: "{\"userId\":\"" + data1.field.id + "\",\"userName\":\"" + data1.field.name + "\",\"userPW\":\"" + data1.field.password + "\",\"userUid\":\"" + data1.field.userUid +"\"}",
+				data: ndata,
+                //data: "{\"userId\":\"" + data1.field.id + "\",\"userName\":\"" + data1.field.name + "\",\"userPW\":\"" + data1.field.password + "\",\"userUid\":\"" + data1.field.userUid +"\"}",
                 //验证用户名是否可用
                 success:function(data){
                 	console.log(data);

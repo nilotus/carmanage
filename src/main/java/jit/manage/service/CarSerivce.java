@@ -12,4 +12,6 @@ public interface CarSerivce {
     MSG insert (Car car);
 //    MSG select (CarDto dto);
     String selectAll(int page,int limit);
+    String select(int page,int limit,CarDto dto);
+    String select2(int page,int limit,CarDto dto);
 }

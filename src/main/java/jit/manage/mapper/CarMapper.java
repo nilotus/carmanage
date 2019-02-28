@@ -1,5 +1,6 @@
 package jit.manage.mapper;
 
+import jit.manage.Dto.CarDto;
 import jit.manage.pojo.Car;
 import org.apache.ibatis.annotations.*;
 
@@ -24,4 +25,38 @@ public interface CarMapper {
 
     @Select("select COUNT(CarNumber) FROM car;")
     int count();
+
+    @Select("SELECT * FROM car WHERE CarNumber = #{arg0} and CarKind = #{param1} and Date BETWEEN #{param2} AND #{param3} limit #{limit} offset #{page}")
+    List<Car> change(CarDto dto,@Param("page") int page,@Param("limit") int limit);
+
+    @Select("<script>"
+            + "SELECT * FROM car where 1=1"
+            + "<if test = 'carNumber !=null'>"
+            + "and CarNumber = #{carNumber}"
+            +"</if>"
+            + "<if test = 'carKind !=null'>"
+            + "and CarKind = #{carKind}"
+            +"</if>"
+            + "<if test = 'st !=null and et !=null '>"
+            + "and Date BETWEEN #{st} AND #{et}"
+            +"</if>"
+            + "LIMIT #{limit} OFFSET #{page}"
+            +"</script>")
+    List<Car> find(CarDto dto,@Param("page") int page,@Param("limit") int limit);
+
+//    @Select("<script>"
+//            + "SELECT * FROM car where 1=1"
+//            + "<if test = 'carNumber !=null'>"
+//            + "and CarNumber = #{carNumber}"
+//            +"</if>"
+//            + "<if test = 'carKind !=null'>"
+//            + "and CarKind = #{carKind}"
+//            +"</if>"
+//            + "<if test = 'st !=null and et !=null '>"
+//            + "and Date BETWEEN #{st} AND #{et}"
+//            +"</if>"
+//            + "LIMIT #{limit} OFFSET #{page}"
+//            +"</script>")
+//    List<Car> select2(@Param("page") int page, @Param("limit") int limit, CarDto dto);
+
 }

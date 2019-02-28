@@ -1,5 +1,6 @@
 package jit.manage.controller;
 
+import jit.manage.Dto.CarDto;
 import jit.manage.pojo.Car;
 import jit.manage.service.CarSerivce;
 import jit.manage.util.MSG;
@@ -22,10 +23,23 @@ public class CarController {
         return carSerivce.selectAll(page,limit);
     }
 
-
     @PostMapping("/insert")
     public MSG insert(@RequestBody Car car){
         System.out.println(car.toString());
         return carSerivce.insert(car);
+    }
+
+    @PostMapping("/select")
+    public String select(@RequestParam int page, @RequestParam int limit, @RequestBody CarDto dto){
+        System.out.println(page+limit);
+        System.out.println(dto.toString());
+        return carSerivce.select(page,limit,dto);
+    }
+
+    @PostMapping("/select2")
+    public String select2(CarDto dto,@RequestParam int page, @RequestParam int limit ){
+        System.out.println(page+limit);
+        System.out.println(dto.toString());
+        return carSerivce.select2(page,limit,dto);
     }
 }
