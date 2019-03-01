@@ -45,8 +45,6 @@ public class CarServicelmpl implements CarSerivce{
         int page = dto.getPage();
         int limit = dto.getLimit();
         page = (page-1)*limit;
-        System.out.println(page);
-        System.out.println(limit);
         dto.setPage(page);
         dto.setLimit(limit);
         MSG msg = new MSG(0,"",count,carMapper.find(dto));

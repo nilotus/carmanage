@@ -37,7 +37,6 @@ public interface CarMapper {
             + "<if test = 'st !=\"\" and et !=\"\" '>"
             + "and Date BETWEEN #{st} AND #{et}"
             +"</if>"
-            + "LIMIT #{limit} OFFSET #{page}"
             +"</script>")
     int count2();
 

@@ -203,6 +203,8 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
         		url: '/car/select',
         		method: 'post',
         		contentType: 'application/json',
+        		page: true, //开启分页
+            	limit: 10,
         		where:{
         			"carNumber":data2.field.number2,
 	        		"carKind": data2.field.kind2,
@@ -224,6 +226,8 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
         		url: '/car/select',
         		method: 'post',
         		contentType: 'application/json',
+        		page: true, //开启分页
+            	limit: 10,
         		where:{
         			"carNumber":data2.field.number2,
 	        		"carKind": data2.field.kind2,
@@ -305,6 +309,8 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
         		url: '/route/select',
         		method: 'post',
         		contentType: 'application/json',
+        		page: true, //开启分页
+            	limit: 10,
         		where:{
         			"carNumber":data2.field.rNumber2,
 	        		"driverIN": data2.field.rIN2,
@@ -579,6 +585,8 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
         		url: '/event/select',
         		method: 'post',
         		contentType: 'application/json',
+        		page: true, //开启分页
+            	limit: 10,
         		where:{
         			"carNumber":data2.field.eNumber2,
 	        		"eventKind": data2.field.ekind2,
@@ -602,6 +610,8 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
         		url: '/event/select',
         		method: 'post',
         		contentType: 'application/json',
+        		page: true, //开启分页
+            	limit: 10,
         		where:{
         			"carNumber":data2.field.eNumber2,
 	        		"eventKind": data2.field.ekind2,
@@ -625,6 +635,8 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
         		url: '/event/select',
         		method: 'post',
         		contentType: 'application/json',
+        		page: true, //开启分页
+            	limit: 10,
         		where:{
         			"carNumber":data2.field.eNumber2,
 	        		"eventKind": data2.field.ekind2,
@@ -648,6 +660,8 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
         		url: '/event/select',
         		method: 'post',
         		contentType: 'application/json',
+        		page: true, //开启分页
+            	limit: 10,
         		where:{
         			"carNumber":data2.field.eNumber2,
 	        		"eventKind": data2.field.ekind2,
@@ -722,6 +736,8 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
         		url: '/driver/select',
         		method: 'post',
         		contentType: 'application/json',
+        		page: true, //开启分页
+            	limit: 10,
         		where:{
         			"ln":data2.field.dIN2,
         			"lk": data2.field.dLK2

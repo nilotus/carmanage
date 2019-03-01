@@ -34,7 +34,6 @@ public interface DriverMapper {
             + "<if test = 'LK !=\"\"'>"
             + "and LK = #{LK}"
             +"</if>"
-            + "LIMIT #{limit} OFFSET #{page}"
             +"</script>")
     int count2();
 

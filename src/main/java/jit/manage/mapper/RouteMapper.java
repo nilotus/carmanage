@@ -37,7 +37,6 @@ public interface RouteMapper {
             + "<if test = 'st !=\"\" and et !=\"\" '>"
             + "and StartTime BETWEEN #{st} AND #{et}"
             +"</if>"
-            + "LIMIT #{limit} OFFSET #{page}"
             +"</script>")
     int count2();
 

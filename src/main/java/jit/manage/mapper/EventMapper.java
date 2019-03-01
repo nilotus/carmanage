@@ -34,7 +34,6 @@ public interface EventMapper {
             + "<if test = 'st !=\"\" and et !=\"\" '>"
             + "and EventTime BETWEEN #{st} AND #{et}"
             +"</if>"
-            + "LIMIT #{limit} OFFSET #{page}"
             +"</script>")
     int count2();
 
