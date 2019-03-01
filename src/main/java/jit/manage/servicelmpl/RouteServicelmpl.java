@@ -34,7 +34,7 @@ public class RouteServicelmpl implements RouteSerivce{
     }
     @Override
     public String select(RouteDto dto){
-        int count = routeMapper.count();
+        int count = routeMapper.count2();
         int page = dto.getPage();
         int limit = dto.getLimit();
         page = (page-1)*limit;

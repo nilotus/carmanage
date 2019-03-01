@@ -24,6 +24,21 @@ public interface EventMapper {
     int count();
 
     @Select("<script>"
+            + "SELECT COUNT(EventId) FROM eventrecord where 1=1"
+            + "<if test = 'carNumber !=\"\"'>"
+            + "and CarNumber = #{carNumber}"
+            +"</if>"
+            + "<if test = 'eventKind !=\"\"'>"
+            + "and EventKind = #{eventKind}"
+            +"</if>"
+            + "<if test = 'st !=\"\" and et !=\"\" '>"
+            + "and EventTime BETWEEN #{st} AND #{et}"
+            +"</if>"
+            + "LIMIT #{limit} OFFSET #{page}"
+            +"</script>")
+    int count2();
+
+    @Select("<script>"
             + "SELECT * FROM eventrecord where 1=1"
             + "<if test = 'carNumber !=\"\"'>"
             + "and CarNumber = #{carNumber}"

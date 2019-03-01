@@ -61,9 +61,77 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
             elem: '#dbd',
             theme: 'molv'
         });
+        laydate.render({
+            elem: '#e21',
+            theme: 'molv'
+        });
+        laydate.render({
+            elem: '#e22',
+            theme: 'molv'
+        });
+        laydate.render({
+            elem: '#e23',
+            theme: 'molv'
+        });
+        laydate.render({
+            elem: '#e81',
+            theme: 'molv'
+        });
+        laydate.render({
+            elem: '#e82',
+            theme: 'molv'
+        });
+        laydate.render({
+            elem: '#e83',
+            theme: 'molv'
+        });
+        laydate.render({
+            elem: '#e84',
+            theme: 'molv'
+        });
+        laydate.render({
+            elem: '#e85',
+            theme: 'molv'
+        });
+        laydate.render({
+            elem: '#e86',
+            theme: 'molv'
+        });
+        laydate.render({
+            elem: '#e87',
+            theme: 'molv'
+        });
+        laydate.render({
+            elem: '#e88',
+            theme: 'molv'
+        });
+        laydate.render({
+            elem: '#e89',
+            theme: 'molv'
+        });
         //渲染表格 car
         var tableIns = table.render({
             elem: '#demo',
+            height: 312,
+            url: '/car/selectAll', //数据接口
+            method: 'post',
+            page: true, //开启分页
+            limit: 10,
+            cols: [[ //表头
+                {field: 'carNumber', title: '车牌号', width: '10%', sort: true, align:'center'}
+                , {field: 'carKind', title: '车辆类型', width: '10%', align:'center'}
+                , {field: 'carSeat', title: '车载座', width: '6%', sort: true, align:'center'}
+                , {field: 'carLoad', title: '车载重', width: '6%', align:'center'}
+                , {field: 'carFactory', title: '车厂', width: '15%', align:'center'}
+                , {field: 'carColor', title: '车颜色', width:'9%',align:'center' }
+                , {field: 'carState', title: '车辆状态', width: '9%', align:'center'}
+                , {field: 'carOwner', title: '车主', width: '10%', align:'center'}
+                , {field: 'carON', title: '车主联系方式', width: '10%', align:'center'}
+                , {field: 'date', title: '日期', width: '15%', align:'center'}
+            ]]
+        });
+        var tableIns5 = table.render({
+            elem: '#demo2',
             height: 312,
             url: '/car/selectAll', //数据接口
             method: 'post',
@@ -116,7 +184,7 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                     }
                 },
                 error: function () {
-                    alert("插入失败");
+                    alert("已存在");
                 }
             })
             //防止页面跳转
@@ -132,6 +200,27 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
           };
         	var ndata = JSON.stringify(adata);
         	tableIns.reload({
+        		url: '/car/select',
+        		method: 'post',
+        		contentType: 'application/json',
+        		where:{
+        			"carNumber":data2.field.number2,
+	        		"carKind": data2.field.kind2,
+					"st":data2.field.st,
+					"et":data2.field.et
+        		}
+        	});
+        	return false;
+        });
+        form.on('submit(select2)',function(data2){
+        	var adata = {
+        		"carNumber":data2.field.number2,
+        		"carKind": data2.field.kind2,
+				"st":data2.field.st,
+				"et":data2.field.et
+          };
+        	var ndata = JSON.stringify(adata);
+        	tableIns5.reload({
         		url: '/car/select',
         		method: 'post',
         		contentType: 'application/json',
@@ -196,7 +285,7 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                     }
                 },
                 error: function () {
-                    alert("插入失败");
+                    alert("已存在");
                 }
             });
             return false;
@@ -244,6 +333,57 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 	            , {field: 'eventInfo', title: '事件信息', width: '20%', align:'center'}
 	        ]]
 	    });
+	    var tableIns6 = table.render({
+	        elem: '#event2',
+	        height: 312,
+	        url: '/event/selectAll', //数据接口
+	        method: 'post',
+	        page: true, //开启分页
+	        limit: 10,
+	        cols: [[ //表头
+	            {field: 'carNumber', title: '车牌号', width: '10%', sort: true, align:'center'}
+	            , {field: 'eventTime', title: '事件时间', width: '15%', align:'center'}
+	            , {field: 'eventPlace', title: '事件地点', width: '15%', sort: true, align:'center'}
+	            , {field: 'eventKind', title: '事件类型', width: '10%', align:'center'}
+	            , {field: 'driverIN', title: '驾驶员编号', width: '15%', align:'center'}
+	            , {field: 'eventReason', title: '事件原因', width:'15%',align:'center' }
+	            , {field: 'eventInfo', title: '事件信息', width: '20%', align:'center'}
+	        ]]
+	    });
+	    var tableIns7 = table.render({
+	        elem: '#event3',
+	        height: 312,
+	        url: '/event/selectAll', //数据接口
+	        method: 'post',
+	        page: true, //开启分页
+	        limit: 10,
+	        cols: [[ //表头
+	            {field: 'carNumber', title: '车牌号', width: '10%', sort: true, align:'center'}
+	            , {field: 'eventTime', title: '事件时间', width: '15%', align:'center'}
+	            , {field: 'eventPlace', title: '事件地点', width: '15%', sort: true, align:'center'}
+	            , {field: 'eventKind', title: '事件类型', width: '10%', align:'center'}
+	            , {field: 'driverIN', title: '驾驶员编号', width: '15%', align:'center'}
+	            , {field: 'eventReason', title: '事件原因', width:'15%',align:'center' }
+	            , {field: 'eventInfo', title: '事件信息', width: '20%', align:'center'}
+	        ]]
+	    });
+	    var tableIns8 = table.render({
+	        elem: '#event4',
+	        height: 312,
+	        url: '/event/selectAll', //数据接口
+	        method: 'post',
+	        page: true, //开启分页
+	        limit: 10,
+	        cols: [[ //表头
+	            {field: 'carNumber', title: '车牌号', width: '10%', sort: true, align:'center'}
+	            , {field: 'eventTime', title: '事件时间', width: '15%', align:'center'}
+	            , {field: 'eventPlace', title: '事件地点', width: '15%', sort: true, align:'center'}
+	            , {field: 'eventKind', title: '事件类型', width: '10%', align:'center'}
+	            , {field: 'driverIN', title: '驾驶员编号', width: '15%', align:'center'}
+	            , {field: 'eventReason', title: '事件原因', width:'15%',align:'center' }
+	            , {field: 'eventInfo', title: '事件信息', width: '20%', align:'center'}
+	        ]]
+	    });
 	    //提交表单--插入数据 event
         form.on('submit(sube)', function (data1) {
             console.log(data1);
@@ -275,11 +415,224 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                     }
                 },
                 error: function () {
-                    alert("插入失败");
+                    alert("已存在");
                 }
             })
             //防止页面跳转
             return false;
+        });
+        form.on('submit(sube3)', function (data1) {
+            console.log(data1);
+            var adata = {
+            	"carNumber": data1.field.eNumber,
+            	"eventTime": data1.field.eventime,
+            	"eventPlace": data1.field.eplace,
+            	"eventKind": data1.field.ekind,
+            	"driverIN": data1.field.eIN,
+            	"eventReason": data1.field.ereason,
+            	"eventInfo": data1.field.einfo
+            }
+            var ndata = JSON.stringify(adata);
+            $.ajax({
+                type: 'post',
+                url: '/event/insert',
+                async: true,
+                dataType: 'json',
+                contentType: 'application/json',
+                data: ndata,
+                //data: "{\"carNumber\":\"" + data1.field.number + "\",\"carKind\":\"" + data1.field.kind + "\",\"carSeat\":\"" + data1.field.seat + "\",\"carLoad\":\"" + data1.field.heavy + "\",\"carFactory\":\"" + data1.field.factory + "\",\"carColor\":\"" + data1.field.color + "\",\"carState\":\"" + data1.field.state + "\",\"carOwner\":\"" + data1.field.name + "\",\"carON\":\"" + data1.field.phone + "\",\"date\":\"" + data1.field.nt + "\"}",
+                //验证用户名是否可用
+                success: function (data) {
+                    console.log(data);
+                    if (data.code == 1) {
+                        layer.msg(data.msg);
+                    } else {
+                        layer.msg(data.msg);
+                    }
+                },
+                error: function () {
+                    alert("已存在");
+                }
+            })
+            //防止页面跳转
+            return false;
+        });
+        form.on('submit(sube5)', function (data1) {
+            console.log(data1);
+            var adata = {
+            	"carNumber": data1.field.eNumber,
+            	"eventTime": data1.field.eventime,
+            	"eventPlace": data1.field.eplace,
+            	"eventKind": data1.field.ekind,
+            	"driverIN": data1.field.eIN,
+            	"eventReason": data1.field.ereason,
+            	"eventInfo": data1.field.einfo
+            }
+            var ndata = JSON.stringify(adata);
+            $.ajax({
+                type: 'post',
+                url: '/event/insert',
+                async: true,
+                dataType: 'json',
+                contentType: 'application/json',
+                data: ndata,
+                //data: "{\"carNumber\":\"" + data1.field.number + "\",\"carKind\":\"" + data1.field.kind + "\",\"carSeat\":\"" + data1.field.seat + "\",\"carLoad\":\"" + data1.field.heavy + "\",\"carFactory\":\"" + data1.field.factory + "\",\"carColor\":\"" + data1.field.color + "\",\"carState\":\"" + data1.field.state + "\",\"carOwner\":\"" + data1.field.name + "\",\"carON\":\"" + data1.field.phone + "\",\"date\":\"" + data1.field.nt + "\"}",
+                //验证用户名是否可用
+                success: function (data) {
+                    console.log(data);
+                    if (data.code == 1) {
+                        layer.msg(data.msg);
+                    } else {
+                        layer.msg(data.msg);
+                    }
+                },
+                error: function () {
+                    alert("已存在");
+                }
+            })
+            //防止页面跳转
+            return false;
+        });
+        form.on('submit(sube7)', function (data1) {
+            console.log(data1);
+            var adata = {
+            	"carNumber": data1.field.eNumber,
+            	"eventTime": data1.field.eventime,
+            	"eventPlace": data1.field.eplace,
+            	"eventKind": data1.field.ekind,
+            	"driverIN": data1.field.eIN,
+            	"eventReason": data1.field.ereason,
+            	"eventInfo": data1.field.einfo
+            }
+            var ndata = JSON.stringify(adata);
+            $.ajax({
+                type: 'post',
+                url: '/event/insert',
+                async: true,
+                dataType: 'json',
+                contentType: 'application/json',
+                data: ndata,
+                //data: "{\"carNumber\":\"" + data1.field.number + "\",\"carKind\":\"" + data1.field.kind + "\",\"carSeat\":\"" + data1.field.seat + "\",\"carLoad\":\"" + data1.field.heavy + "\",\"carFactory\":\"" + data1.field.factory + "\",\"carColor\":\"" + data1.field.color + "\",\"carState\":\"" + data1.field.state + "\",\"carOwner\":\"" + data1.field.name + "\",\"carON\":\"" + data1.field.phone + "\",\"date\":\"" + data1.field.nt + "\"}",
+                //验证用户名是否可用
+                success: function (data) {
+                    console.log(data);
+                    if (data.code == 1) {
+                        layer.msg(data.msg);
+                    } else {
+                        layer.msg(data.msg);
+                    }
+                },
+                error: function () {
+                    alert("已存在");
+                }
+            })
+            //防止页面跳转
+            return false;
+        });
+        form.on('submit(sube9)', function (data1) {
+            console.log(data1);
+            var adata = {
+            	"carNumber": data1.field.eNumber,
+            	"eventTime": data1.field.eventime,
+            	"eventPlace": data1.field.eplace,
+            	"eventKind": data1.field.ekind,
+            	"driverIN": data1.field.eIN,
+            	"eventReason": data1.field.ereason,
+            	"eventInfo": data1.field.einfo
+            }
+            var ndata = JSON.stringify(adata);
+            $.ajax({
+                type: 'post',
+                url: '/event/insert',
+                async: true,
+                dataType: 'json',
+                contentType: 'application/json',
+                data: ndata,
+                //data: "{\"carNumber\":\"" + data1.field.number + "\",\"carKind\":\"" + data1.field.kind + "\",\"carSeat\":\"" + data1.field.seat + "\",\"carLoad\":\"" + data1.field.heavy + "\",\"carFactory\":\"" + data1.field.factory + "\",\"carColor\":\"" + data1.field.color + "\",\"carState\":\"" + data1.field.state + "\",\"carOwner\":\"" + data1.field.name + "\",\"carON\":\"" + data1.field.phone + "\",\"date\":\"" + data1.field.nt + "\"}",
+                //验证用户名是否可用
+                success: function (data) {
+                    console.log(data);
+                    if (data.code == 1) {
+                        layer.msg(data.msg);
+                    } else {
+                        layer.msg(data.msg);
+                    }
+                },
+                error: function () {
+                    alert("已存在");
+                }
+            })
+            //防止页面跳转
+            return false;
+        });
+        //提交表单--重载表格 event
+        form.on('submit(sube4)',function(data2){
+        	console.log(data2);
+        	var adata = {
+        		"carNumber":data2.field.eNumber2,
+        		"eventKind": data2.field.ekind2,
+				"st":data2.field.est2,
+				"et":data2.field.eet2
+          };
+        	var ndata = JSON.stringify(adata);
+        	tableIns6.reload({
+        		url: '/event/select',
+        		method: 'post',
+        		contentType: 'application/json',
+        		where:{
+        			"carNumber":data2.field.eNumber2,
+	        		"eventKind": data2.field.ekind2,
+					"st":data2.field.est2,
+					"et":data2.field.eet2
+        		}
+        	});
+        	return false;
+        });
+        //提交表单--重载表格 event
+        form.on('submit(sube6)',function(data2){
+        	console.log(data2);
+        	var adata = {
+        		"carNumber":data2.field.eNumber2,
+        		"eventKind": data2.field.ekind2,
+				"st":data2.field.est2,
+				"et":data2.field.eet2
+          };
+        	var ndata = JSON.stringify(adata);
+        	tableIns7.reload({
+        		url: '/event/select',
+        		method: 'post',
+        		contentType: 'application/json',
+        		where:{
+        			"carNumber":data2.field.eNumber2,
+	        		"eventKind": data2.field.ekind2,
+					"st":data2.field.est2,
+					"et":data2.field.eet2
+        		}
+        	});
+        	return false;
+        });
+        //提交表单--重载表格 event
+        form.on('submit(sube8)',function(data2){
+        	console.log(data2);
+        	var adata = {
+        		"carNumber":data2.field.eNumber2,
+        		"eventKind": data2.field.ekind2,
+				"st":data2.field.est2,
+				"et":data2.field.eet2
+          };
+        	var ndata = JSON.stringify(adata);
+        	tableIns8.reload({
+        		url: '/event/select',
+        		method: 'post',
+        		contentType: 'application/json',
+        		where:{
+        			"carNumber":data2.field.eNumber2,
+	        		"eventKind": data2.field.ekind2,
+					"st":data2.field.est2,
+					"et":data2.field.eet2
+        		}
+        	});
+        	return false;
         });
         //提交表单--重载表格 event
         form.on('submit(sube2)',function(data2){
@@ -351,7 +704,7 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                     }
                 },
                 error: function () {
-                    alert("插入失败");
+                    alert("已存在");
                 }
             })
             //防止页面跳转

@@ -27,6 +27,18 @@ public interface DriverMapper {
     int count();
 
     @Select("<script>"
+            + "select COUNT(LN) FROM driver where 1=1"
+            + "<if test = 'LN !=\"\"'>"
+            + "and LN = #{LN}"
+            +"</if>"
+            + "<if test = 'LK !=\"\"'>"
+            + "and LK = #{LK}"
+            +"</if>"
+            + "LIMIT #{limit} OFFSET #{page}"
+            +"</script>")
+    int count2();
+
+    @Select("<script>"
             + "SELECT * FROM driver where 1=1"
             + "<if test = 'LN !=\"\"'>"
             + "and LN = #{LN}"

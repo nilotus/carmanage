@@ -26,6 +26,21 @@ public interface CarMapper {
     @Select("select COUNT(CarNumber) FROM car")
     int count();
 
+    @Select("<script>"
+            + "SELECT COUNT(CarNumber) FROM car where 1=1"
+            + "<if test = 'carNumber !=\"\"'>"
+            + "and CarNumber = #{carNumber}"
+            +"</if>"
+            + "<if test = 'carKind !=\"\"'>"
+            + "and CarKind = #{carKind}"
+            +"</if>"
+            + "<if test = 'st !=\"\" and et !=\"\" '>"
+            + "and Date BETWEEN #{st} AND #{et}"
+            +"</if>"
+            + "LIMIT #{limit} OFFSET #{page}"
+            +"</script>")
+    int count2();
+
 //    @Select("SELECT * FROM car WHERE CarNumber = #{arg0} and CarKind = #{param1} and Date BETWEEN #{param2} AND #{param3} limit #{limit} offset #{page}")
 //    List<Car> change(CarDto dto,@Param("page") int page,@Param("limit") int limit);
 
