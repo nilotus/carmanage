@@ -41,7 +41,7 @@ public class CarServicelmpl implements CarSerivce{
 
     @Override
     public String select(CarDto dto){
-        int count = carMapper.count2();
+        int count = carMapper.count2(dto);
         int page = dto.getPage();
         int limit = dto.getLimit();
         page = (page-1)*limit;

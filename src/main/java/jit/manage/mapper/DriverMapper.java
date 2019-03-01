@@ -28,14 +28,14 @@ public interface DriverMapper {
 
     @Select("<script>"
             + "select COUNT(LN) FROM driver where 1=1"
-            + "<if test = 'LN !=\"\"'>"
+            + "<if test = 'LN !=\"\" and LN !=null'>"
             + "and LN = #{LN}"
             +"</if>"
-            + "<if test = 'LK !=\"\"'>"
+            + "<if test = 'LK !=\"\" and LK !=null'>"
             + "and LK = #{LK}"
             +"</if>"
             +"</script>")
-    int count2();
+    int count2(DriverDto dto);
 
     @Select("<script>"
             + "SELECT * FROM driver where 1=1"

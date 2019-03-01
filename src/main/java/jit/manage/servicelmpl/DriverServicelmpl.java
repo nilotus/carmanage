@@ -34,7 +34,7 @@ public class DriverServicelmpl implements DriverSerivce{
         return object.toString();
     }
     public String select(DriverDto dto){
-        int count = driverMapper.count2();
+        int count = driverMapper.count2(dto);
         int page = dto.getPage();
         int limit = dto.getLimit();
         page = (page-1)*limit;

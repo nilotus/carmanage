@@ -35,7 +35,7 @@ public class EventServicelmpl implements EventSerivce{
     }
     @Override
     public String select(EventDto dto){
-        int count = eventMapper.count2();
+        int count = eventMapper.count2(dto);
         int page = dto.getPage();
         int limit = dto.getLimit();
         page = (page-1)*limit;

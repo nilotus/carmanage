@@ -25,20 +25,20 @@ public interface RouteMapper {
 
     @Select("<script>"
             + "SELECT COUNT(RouteId) FROM routerecord where 1=1"
-            + "<if test = 'carNumber !=\"\"'>"
+            + "<if test = 'carNumber !=\"\" and carNumber !=null'>"
             + "and CarNumber = #{carNumber}"
             +"</if>"
-            + "<if test = 'driverIN !=\"\"'>"
+            + "<if test = 'driverIN !=\"\" and driverIN !=null'>"
             + "and DriverIN = #{driverIN}"
             +"</if>"
-            + "<if test = 'state !=\"\"'>"
+            + "<if test = 'state !=\"\" and state !=null'>"
             + "and State = #{state}"
             +"</if>"
-            + "<if test = 'st !=\"\" and et !=\"\" '>"
+            + "<if test = 'st !=\"\" and et !=\"\" and st != null and et !=null '>"
             + "and StartTime BETWEEN #{st} AND #{et}"
             +"</if>"
             +"</script>")
-    int count2();
+    int count2(RouteDto dto);
 
     @Select("<script>"
             + "SELECT * FROM routerecord where 1=1"
