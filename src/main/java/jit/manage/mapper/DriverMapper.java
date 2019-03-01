@@ -32,7 +32,7 @@ public interface DriverMapper {
             + "and LN = #{LN}"
             +"</if>"
             + "<if test = 'LK !=\"\"'>"
-            + "and LN = #{LK}"
+            + "and LK = #{LK}"
             +"</if>"
             + "LIMIT #{limit} OFFSET #{page}"
             +"</script>")

@@ -163,19 +163,20 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 	            , {field: 'cost', title: '花销', width: '10%', align:'center'}
 	        ]]
 	    });
+	    
 	    //提交表单--插入数据 router
-        form.on('submit(subr)', function (data1) {
-            console.log(data1);
+	    form.on('submit(subr1)', function (data1) {
+	    	console.log(data1);
             var adata = {
             	"carNumber": data1.field.rnumber,
             	"driverIN": data1.field.rIN,
             	"st": data1.field.rst,
-            	"startPlace": rsp,
-            	"et": data1.ret,
+            	"startPlace": data1.field.rsp,
+            	"et": data1.field.ret,
             	"destination": data1.field.rep,
             	"state": data1.field.rstate,
             	"cost": data1.field.rcost
-            }
+            };
             var ndata = JSON.stringify(adata);
             $.ajax({
                 type: 'post',
@@ -197,30 +198,30 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                 error: function () {
                     alert("插入失败");
                 }
-            })
-            //防止页面跳转
+            });
             return false;
         });
         //提交表单--重载表格 router
         form.on('submit(subr2)',function(data2){
         	console.log(data2);
         	var adata = {
-        		"carNumber":data2.field.rnumber2,
+        		"carNumber":data2.field.rNumber2,
         		"driverIN": data2.field.rIN2,
 				"st":data2.field.rst2,
 				"et":data2.field.ret2,
 				"state":data2.field.rstate2
           };
         	var ndata = JSON.stringify(adata);
-        	tableIns.reload({
+        	tableIns2.reload({
         		url: '/route/select',
         		method: 'post',
         		contentType: 'application/json',
         		where:{
-        			"carNumber":data2.field.number2,
-	        		"carKind": data2.field.kind2,
-					"st":data2.field.st,
-					"et":data2.field.et
+        			"carNumber":data2.field.rNumber2,
+	        		"driverIN": data2.field.rIN2,
+					"st":data2.field.rst2,
+					"et":data2.field.ret2,
+					"state":data2.field.rstate2
         		}
         	});
         	return false;
@@ -290,15 +291,15 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 				"et":data2.field.eet2
           };
         	var ndata = JSON.stringify(adata);
-        	tableIns.reload({
+        	tableIns3.reload({
         		url: '/event/select',
         		method: 'post',
         		contentType: 'application/json',
         		where:{
-        			"carNumber":data2.field.number2,
-	        		"carKind": data2.field.kind2,
-					"st":data2.field.st,
-					"et":data2.field.et
+        			"carNumber":data2.field.eNumber2,
+	        		"eventKind": data2.field.ekind2,
+					"st":data2.field.est2,
+					"et":data2.field.eet2
         		}
         	});
         	return false;
@@ -324,12 +325,12 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
         form.on('submit(subd)', function (data1) {
             console.log(data1);
             var adata = {
-            	"LN": data1.field.dIN,
+            	"ln": data1.field.dIN,
             	"name": data1.field.dname,
             	"sex": data1.field.dsex,
             	"age": data1.field.dbd,
             	"phone": data1.field.dphone,
-            	"LK": data1.field.dLK
+            	"lk": data1.field.dLK
             }
             var ndata = JSON.stringify(adata);
             $.ajax({
@@ -364,15 +365,13 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
         		"LK": data2.field.dLK2
           };
         	var ndata = JSON.stringify(adata);
-        	tableIns.reload({
+        	tableIns4.reload({
         		url: '/driver/select',
         		method: 'post',
         		contentType: 'application/json',
         		where:{
-        			"carNumber":data2.field.number2,
-	        		"carKind": data2.field.kind2,
-					"st":data2.field.st,
-					"et":data2.field.et
+        			"ln":data2.field.dIN2,
+        			"lk": data2.field.dLK2
         		}
         	});
         	return false;

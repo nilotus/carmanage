@@ -29,10 +29,10 @@ public interface EventMapper {
             + "and CarNumber = #{carNumber}"
             +"</if>"
             + "<if test = 'eventKind !=\"\"'>"
-            + "and CarKind = #{eventKind}"
+            + "and EventKind = #{eventKind}"
             +"</if>"
             + "<if test = 'st !=\"\" and et !=\"\" '>"
-            + "and Date BETWEEN #{st} AND #{et}"
+            + "and EventTime BETWEEN #{st} AND #{et}"
             +"</if>"
             + "LIMIT #{limit} OFFSET #{page}"
             +"</script>")

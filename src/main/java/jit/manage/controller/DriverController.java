@@ -30,6 +30,8 @@ public class DriverController {
     @PostMapping("/select")
     public String select(@RequestBody DriverDto dto){
         System.out.println(dto.toString());
+        System.out.println(dto.getPage());
+        System.out.println(dto.getLimit());
         return driverSerivce.select(dto);
     }
 }

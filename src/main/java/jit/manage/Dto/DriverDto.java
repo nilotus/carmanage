@@ -7,7 +7,16 @@ public class DriverDto extends PageDto{
     String LN;
     String LK;
 
+    public DriverDto() {
+    }
+
+    public DriverDto(String LN, String LK) {
+        this.LN = LN;
+        this.LK = LK;
+    }
+
     public String getLN() {
+
         return LN;
     }
 
@@ -23,20 +32,11 @@ public class DriverDto extends PageDto{
         this.LK = LK;
     }
 
-    public DriverDto() {
-
-    }
-
     @Override
     public String toString() {
         return "DriverDto{" +
                 "LN='" + LN + '\'' +
                 ", LK='" + LK + '\'' +
                 '}';
-    }
-
-    public DriverDto(String LN, String LK) {
-        this.LN = LN;
-        this.LK = LK;
     }
 }
