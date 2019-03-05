@@ -58,5 +58,6 @@ public interface CarMapper {
             +"</script>")
     List<Car> find(CarDto dto);
 
-
+    @Update("UPDATE car set CarState = #{CarState} where CarNumber = #{CarNumber}")
+    boolean updateState(@Param("CarState") String CarState,@Param("CarNumber") String CarNumber);
 }

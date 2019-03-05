@@ -13,4 +13,5 @@ public interface CarSerivce {
 //    MSG select (CarDto dto);
     String selectAll(int page,int limit);
     String select(CarDto dto);
+    MSG update(String state,String number);
 }

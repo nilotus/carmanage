@@ -36,6 +36,7 @@ public class CarServicelmpl implements CarSerivce{
         MSG msg = new MSG(0,"",count,carMapper.selectAll(page,limit));
         JSONObject object = JSONObject.fromObject(msg);
         return object.toString();
+
     }
 
 
@@ -51,5 +52,13 @@ public class CarServicelmpl implements CarSerivce{
         System.out.println(dto.toString());
         JSONObject object = JSONObject.fromObject(msg);
         return object.toString();
+    }
+
+    @Override
+    public MSG update(String state,String number){
+        if (carMapper.updateState(state, number)){
+            return new MSG(1, "更新成功");
+        }else
+            return new MSG(-1, "更新失败");
     }
 }

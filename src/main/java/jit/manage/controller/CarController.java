@@ -25,15 +25,18 @@ public class CarController {
 
     @PostMapping("/insert")
     public MSG insert(@RequestBody Car car){
-        System.out.println(car.toString());
         return carSerivce.insert(car);
     }
 
 
     @PostMapping("/select")
     public String select(@RequestBody CarDto dto){
-        System.out.println(dto.toString());
         return carSerivce.select(dto);
+    }
+
+    @PostMapping("/update")
+    public MSG update(@RequestParam String state, @RequestParam String number){
+        return carSerivce.update(state, number);
     }
 
 }
