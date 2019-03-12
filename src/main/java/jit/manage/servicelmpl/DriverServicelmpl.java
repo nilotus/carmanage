@@ -9,6 +9,9 @@ import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by sunlotus on 2019/2/25.
  */
@@ -19,6 +22,8 @@ public class DriverServicelmpl implements DriverSerivce{
 
     @Override
     public MSG insert(Driver driver){
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        driver.setDate(df.format(new Date()));
         if (driverMapper.add(driver)){
             return new MSG(1, "增加成功");
         }else
@@ -44,5 +49,13 @@ public class DriverServicelmpl implements DriverSerivce{
         System.out.println(dto.toString());
         JSONObject object = JSONObject.fromObject(msg);
         return object.toString();
+    }
+
+    public MSG driversex(){
+        return new MSG(1,"sucess",driverMapper.driveSex());
+    }
+
+    public MSG driverLK(){
+        return new MSG(1,"sucess",driverMapper.driverLK());
     }
 }

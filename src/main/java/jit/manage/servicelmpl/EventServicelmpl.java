@@ -46,4 +46,9 @@ public class EventServicelmpl implements EventSerivce{
         JSONObject object = JSONObject.fromObject(msg);
         return object.toString();
     }
+
+    @Override
+    public MSG kind(){
+        return new MSG(1,"sucess",eventMapper.kind());
+    }
 }

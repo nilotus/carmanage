@@ -1,6 +1,7 @@
 package jit.manage.mapper;
 
 import jit.manage.Dto.EventDto;
+import jit.manage.Dto.TongjiDto;
 import jit.manage.pojo.Event;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -51,4 +52,8 @@ public interface EventMapper {
             + "LIMIT #{limit} OFFSET #{page}"
             +"</script>")
     List<Event> find(EventDto dto);
+
+    //近一年发生的事件占比
+    @Select("select EventKind kind,count(EventKind) count from eventrecord where YEAR(EventTime)=YEAR(NOW()) GROUP BY EventKind")
+    List<TongjiDto> kind();
 }

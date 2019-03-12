@@ -7,6 +7,8 @@ import jit.manage.util.MSG;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.PastOrPresent;
+
 /**
  * Created by sunlotus on 2019/2/25.
  */
@@ -33,5 +35,15 @@ public class DriverController {
         System.out.println(dto.getPage());
         System.out.println(dto.getLimit());
         return driverSerivce.select(dto);
+    }
+
+    @PostMapping("/sex")
+    public MSG sex(){
+        return driverSerivce.driversex();
+    }
+
+    @PostMapping("/lk")
+    public MSG lk(){
+        return driverSerivce.driverLK();
     }
 }

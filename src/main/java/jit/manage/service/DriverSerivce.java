@@ -11,4 +11,6 @@ public interface DriverSerivce {
     MSG insert(Driver driver);
     String selectAll(int page,int limit);
     String select(DriverDto dto);
+    MSG driversex();
+    MSG driverLK();
 }

@@ -10,6 +10,7 @@ public class Driver {
     String age;
     String phone;
     String LK;
+    String date;
 
     public Driver() {
     }
@@ -22,6 +23,17 @@ public class Driver {
         this.age = age;
         this.phone = phone;
         this.LK = LK;
+
+    }
+
+    public Driver(String LN, String name, String sex, String age, String phone, String LK, String date) {
+        this.LN = LN;
+        this.name = name;
+        this.sex = sex;
+        this.age = age;
+        this.phone = phone;
+        this.LK = LK;
+        this.date = date;
     }
 
     @Override
@@ -82,5 +94,13 @@ public class Driver {
 
     public void setLK(String LK) {
         this.LK = LK;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

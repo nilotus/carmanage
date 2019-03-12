@@ -11,4 +11,5 @@ public interface EventSerivce {
     MSG insert(Event event);
     String selectAll(int page,int limit);
     String select(EventDto dto);
+    MSG kind();
 }

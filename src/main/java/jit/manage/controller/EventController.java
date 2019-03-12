@@ -31,4 +31,9 @@ public class EventController {
         System.out.println(dto.toString());
         return eventSerivce.select(dto);
     }
+
+    @PostMapping("/kind")
+    public MSG kind(){
+        return eventSerivce.kind();
+    }
 }

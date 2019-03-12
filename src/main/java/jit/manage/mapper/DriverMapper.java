@@ -1,6 +1,7 @@
 package jit.manage.mapper;
 
 import jit.manage.Dto.DriverDto;
+import jit.manage.Dto.TongjiDto;
 import jit.manage.pojo.Driver;
 import org.apache.ibatis.annotations.*;
 
@@ -14,13 +15,13 @@ public interface DriverMapper {
     @Select("select * from driver where LN = #{LN}")
     Driver select(@Param("LN") String LN);
 
-    @Insert("INSERT INTO driver(LN,Name, Sex, Age, Phone, LK) VALUES(#{LN},#{name}, #{sex}, #{age}, #{phone}, #{LK})")
+    @Insert("INSERT INTO driver(LN,Name, Sex, Age, Phone, LK,date) VALUES(#{LN},#{name}, #{sex}, #{age}, #{phone}, #{LK},#{date})")
     boolean add(Driver driver);
 
     @Delete("DELETE FROM driver where LN = #{LN}")
     boolean delete(@Param("LN") String LN);
 
-    @Select("select * from driver limit #{limit} offset #{page}")
+    @Select("select LN,Name,Sex,Age,Phone,LK from driver limit #{limit} offset #{page}")
     List<Driver> selectAll(@Param("page") int page,@Param("limit") int limit);
 
     @Select("select COUNT(LN) FROM driver")
@@ -49,4 +50,10 @@ public interface DriverMapper {
             +"</script>")
     List<Driver> find(DriverDto dto);
 
+    //近一年新增的司机数量，男女比例
+    @Select("select Sex kind,count(Sex) count from driver where YEAR(Date)=YEAR(NOW()) GROUP BY Sex")
+    List<TongjiDto> driveSex();
+    //近1年驾照类型占比
+    @Select("select LK kind,count(LK) count from driver where YEAR(Date)=YEAR(NOW()) GROUP BY Lk")
+    List<TongjiDto> driverLK();
 }
