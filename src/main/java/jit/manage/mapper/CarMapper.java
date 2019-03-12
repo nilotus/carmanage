@@ -1,6 +1,7 @@
 package jit.manage.mapper;
 
 import jit.manage.Dto.CarDto;
+import jit.manage.Dto.TongjiDto;
 import jit.manage.pojo.Car;
 import org.apache.ibatis.annotations.*;
 
@@ -60,4 +61,46 @@ public interface CarMapper {
 
     @Update("UPDATE car set CarState = #{CarState} where CarNumber = #{CarNumber}")
     boolean updateState(@Param("CarState") String CarState,@Param("CarNumber") String CarNumber);
+
+    //近30天
+    @Select("SELECT COUNT(CarNumber) FROM car where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <=date(Date) ")
+    List<Car> month30();
+
+    //近七天
+    @Select("SELECT COUNT(CarNumber) FROM car where DATE_SUB(CURDATE(), INTERVAL 7 DAY) <=date(Date) ")
+    List<Car> week();
+
+    //这个月
+    @Select("SELECT COUNT(CarNumber) FROM car WHERE DATE_FORMAT( Date, '%Y%m' ) =DATE_FORMAT( CURDATE( ) , '%Y%m' ) ")
+    List<Car> month();
+
+    //前n个月
+    @Select("SELECT COUNT(CarNumber) FROM car WHERE PERIOD_DIFF( date_format( now( ) , '%Y%m' ) , date_format( Date, '%Y%m' ) ) = #{n} ")
+    List<Car> month1(@Param("n") String n);
+
+    //今年
+    @Select("select COUNT(CarNumber) from car where YEAR(Date)=YEAR(NOW())  ")
+    List<Car> year();
+
+    //第前n年各种车型的统计
+    @Select("select CarKind kind,count(CarKind) count from car where year(Date)=year(date_sub(now(),interval #{n} year)) GROUP BY CarKind")
+    List<TongjiDto> yeark(int n);
+
+    //今年各种车型的统计
+    @Select("select CarKind kind,count(CarKind) count from car where YEAR(Date)=YEAR(NOW()) GROUP BY CarKind")
+    List<TongjiDto> yeark2();
+
+
+    //今年各种车状态的统计
+    @Select("select CarState kind,count(CarState) count from car where YEAR(Date)=YEAR(NOW()) GROUP BY CarState")
+    List<TongjiDto> years2();
+
+    //第前n年各种车状态的统计
+    @Select("select CarState kind,count(CarState) count from car where year(Date)=year(date_sub(now(),interval #{n} year)) GROUP BY CarState")
+    List<TongjiDto> years(int n);
+
+    //近一年字段统计
+    @Select("select ${name} kind,count(${name}) count from car where YEAR(Date)=YEAR(NOW()) GROUP BY ${name}")
+    List<TongjiDto> yearKind(@Param("name") String name);
+
 }

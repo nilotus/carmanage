@@ -39,4 +39,34 @@ public class CarController {
         return carSerivce.update(state, number);
     }
 
+    //近一年车辆类型统计
+    @PostMapping("/year")
+    public MSG year(){
+        return carSerivce.yearkind();
+    }
+
+    //近一年车辆状态统计
+    @PostMapping("/year2")
+    public MSG year2(){
+        return carSerivce.yearkind2();
+    }
+
+
+    //根据字段来查询近一年该字段的统计信息
+    @PostMapping("/yearn")
+    public MSG yearn(@RequestParam String name){
+        return carSerivce.yearkindn(name);
+    }
+
+    //近7年车辆类型统计
+    @PostMapping("/countkind")
+    public MSG countkind(){
+        return carSerivce.countkind();
+    }
+    //近7年车辆状态统计
+    @PostMapping("/countstate")
+    public MSG countstate(){
+        return carSerivce.countstate();
+    }
+
 }

@@ -14,4 +14,9 @@ public interface CarSerivce {
     String selectAll(int page,int limit);
     String select(CarDto dto);
     MSG update(String state,String number);
+    MSG yearkind();
+    MSG yearkind2();
+    MSG yearkindn(String name);
+    MSG countkind();
+    MSG countstate();
 }
