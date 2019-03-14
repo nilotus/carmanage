@@ -32,6 +32,7 @@ public class RouteServicelmpl implements RouteSerivce{
         JSONObject object = JSONObject.fromObject(msg);
         return object.toString();
     }
+
     @Override
     public String select(RouteDto dto){
         int count = routeMapper.count2(dto);
@@ -42,6 +43,15 @@ public class RouteServicelmpl implements RouteSerivce{
         dto.setLimit(limit);
         MSG msg = new MSG(0,"",count,routeMapper.find(dto));
         System.out.println(dto.toString());
+        JSONObject object = JSONObject.fromObject(msg);
+        return object.toString();
+    }
+
+    @Override
+    public String select1(int page,int limit){
+        int count = routeMapper.count1();
+        page = (page-1)*limit;
+        MSG msg = new MSG(0,"",count,routeMapper.select1(page,limit));
         JSONObject object = JSONObject.fromObject(msg);
         return object.toString();
     }

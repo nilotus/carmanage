@@ -14,14 +14,20 @@ import java.util.List;
  */
 @Mapper
 public interface RouteMapper {
-    @Insert("INSERT INTO routerecord (CarNumber,StartTime,StartPlace,EndTime,Destination,DriverIN,State,Cost) VALUES(#{carNumber},#{st},#{startPlace},#{et},#{destination},#{driverIN},#{state},#{cost})")
+    @Insert("INSERT INTO routerecord (CarNumber,StartTime,StartPlace,EndTime,Destination,DriverIN,State,Cost) VALUES(#{carNumber},#{startTime},#{startPlace},#{endTime},#{destination},#{driverIN},#{state},#{cost})")
     boolean add(Route route);
 
     @Select("select * from routerecord limit #{limit} offset #{page}")
     List<Route> selectAll(@Param("page") int page, @Param("limit") int limit);
 
+    @Select("select * from routerecord where State='1' limit #{limit} offset #{page}")
+    List<Route> select1(@Param("page") int page, @Param("limit") int limit);
+
     @Select("select COUNT(RouteId) FROM routerecord")
     int count();
+
+    @Select("select COUNT(RouteId) FROM routerecord where State='1'" )
+    int count1();
 
     @Select("<script>"
             + "SELECT COUNT(RouteId) FROM routerecord where 1=1"
@@ -34,8 +40,8 @@ public interface RouteMapper {
             + "<if test = 'state !=\"\" and state !=null'>"
             + "and State = #{state}"
             +"</if>"
-            + "<if test = 'st !=\"\" and et !=\"\" and st != null and et !=null '>"
-            + "and StartTime BETWEEN #{st} AND #{et}"
+            + "<if test = 'startTime !=\"\" and endTime !=\"\" and startTime != null and endTime !=null '>"
+            + "and StartTime BETWEEN #{startTime} AND #{endTime}"
             +"</if>"
             +"</script>")
     int count2(RouteDto dto);
@@ -51,8 +57,8 @@ public interface RouteMapper {
             + "<if test = 'state !=\"\"'>"
             + "and State = #{state}"
             +"</if>"
-            + "<if test = 'st !=\"\" and et !=\"\" '>"
-            + "and StartTime BETWEEN #{st} AND #{et}"
+            + "<if test = 'startTime !=\"\" and endTime !=\"\" '>"
+            + "and StartTime BETWEEN #{startTime} AND #{endTime}"
             +"</if>"
             + "LIMIT #{limit} OFFSET #{page}"
             +"</script>")

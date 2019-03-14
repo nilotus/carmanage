@@ -11,4 +11,5 @@ public interface RouteSerivce {
     MSG insert(Route route);
     String selectAll(int page,int limit);
     String select(RouteDto dto);
+    String select1(int page,int limit);
 }

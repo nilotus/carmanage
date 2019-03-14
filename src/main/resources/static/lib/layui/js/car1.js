@@ -248,24 +248,52 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 	        cols: [[ //表头
 	            {field: 'carNumber', title: '车牌号', width: '10%', sort: true, align:'center'}
 	            , {field: 'driverIN', title: '驾驶员编号', width: '12%', align:'center'}
-	            , {field: 'st', title: '出发时间', width: '14%', align:'center'}
+	            , {field: 'startTime', title: '出发时间', width: '14%', align:'center'}
 	            , {field: 'startPlace', title: '出发地点', width: '15%', sort: true, align:'center'}    
-	            , {field: 'et', title: '到达时间', width: '14%', align:'center'}
+	            , {field: 'endTime', title: '到达时间', width: '14%', align:'center'}
 	            , {field: 'destination', title: '目的地', width:'15%',align:'center' }
 	            , {field: 'state', title: '运行状态', width: '10%', align:'center'}
 	            , {field: 'cost', title: '花销', width: '10%', align:'center'}
 	        ]]
 	    });
-	    
+	    var tableStation = table.render({
+	        elem: '#station',
+	        height: 312,
+	        url: '/route/select1', //数据接口
+	        method: 'post',
+	        page: true, //开启分页
+	        limit: 10,
+	        cols: [[ //表头
+	            {field: 'routeId', title: 'routeID', width: '10%', sort: true, align:'center'}
+	            , {field: 'carNumber', title: '车牌号', width: '20%', sort: true, align:'center'}
+	            , {field: 'driverIN', title: '驾驶员编号', width: '20%', align:'center'}
+	            , {field: 'startTime', title: '出发时间', width: '25%', align:'center'}
+	            , {field: 'startPlace', title: '出发地点', width: '25%', sort: true, align:'center'}
+	            ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
+	        ]]
+	    });
+	    //监听行工具事件
+		  table.on('tool(station)', function(obj){
+		    var data = obj.data;
+		    //console.log(obj)
+		    if(obj.event === 'del'){
+		      layer.confirm('真的删除行么', function(index){
+		        obj.del();
+		        layer.close(index);
+		      });
+		    } else if(obj.event === 'edit'){
+		    	getRoute(data.routeId);
+		    }
+		  });
 	    //提交表单--插入数据 router
 	    form.on('submit(subr1)', function (data1) {
 	    	console.log(data1);
             var adata = {
             	"carNumber": data1.field.rnumber,
             	"driverIN": data1.field.rIN,
-            	"st": data1.field.rst,
+            	"startTime": data1.field.rst,
             	"startPlace": data1.field.rsp,
-            	"et": data1.field.ret,
+            	"endTime": data1.field.ret,
             	"destination": data1.field.rep,
             	"state": data1.field.rstate,
             	"cost": data1.field.rcost
@@ -300,8 +328,8 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
         	var adata = {
         		"carNumber":data2.field.rNumber2,
         		"driverIN": data2.field.rIN2,
-				"st":data2.field.rst2,
-				"et":data2.field.ret2,
+				"startTime":data2.field.rst2,
+				"endTime":data2.field.ret2,
 				"state":data2.field.rstate2
           };
         	var ndata = JSON.stringify(adata);
@@ -314,8 +342,8 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
         		where:{
         			"carNumber":data2.field.rNumber2,
 	        		"driverIN": data2.field.rIN2,
-					"st":data2.field.rst2,
-					"et":data2.field.ret2,
+					"startTime":data2.field.rst2,
+					"endTime":data2.field.ret2,
 					"state":data2.field.rstate2
         		}
         	});

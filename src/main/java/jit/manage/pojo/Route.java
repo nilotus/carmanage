@@ -6,16 +6,48 @@ import java.sql.Timestamp;
  * Created by sunlotus on 2019/2/25.
  */
 public class Route {
+    String RouteId;
     String carNumber;
-    String st;
+    String startTime;
     String startPlace;
-    String et;
+    String endTime;
     String destination;
     String driverIN;
     int state;
     int cost;
 
     public Route() {
+    }
+
+    public Route(String routeId, String carNumber, String startTime, String startPlace, String endTime, String destination, String driverIN, int state, int cost) {
+        RouteId = routeId;
+        this.carNumber = carNumber;
+        this.startTime = startTime;
+        this.startPlace = startPlace;
+        this.endTime = endTime;
+        this.destination = destination;
+        this.driverIN = driverIN;
+        this.state = state;
+        this.cost = cost;
+    }
+
+    public Route(String carNumber, String startTime, String startPlace, String endTime, String destination, String driverIN, int state, int cost) {
+        this.carNumber = carNumber;
+        this.startTime = startTime;
+        this.startPlace = startPlace;
+        this.endTime = endTime;
+        this.destination = destination;
+        this.driverIN = driverIN;
+        this.state = state;
+        this.cost = cost;
+    }
+
+    public String getRouteId() {
+        return RouteId;
+    }
+
+    public void setRouteId(String routeId) {
+        RouteId = routeId;
     }
 
     public String getCarNumber() {
@@ -26,12 +58,20 @@ public class Route {
         this.carNumber = carNumber;
     }
 
-    public String getSt() {
-        return st;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setSt(String st) {
-        this.st = st;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
     public String getStartPlace() {
@@ -40,14 +80,6 @@ public class Route {
 
     public void setStartPlace(String startPlace) {
         this.startPlace = startPlace;
-    }
-
-    public String getEt() {
-        return et;
-    }
-
-    public void setEt(String et) {
-        this.et = et;
     }
 
     public String getDestination() {
@@ -82,15 +114,17 @@ public class Route {
         this.cost = cost;
     }
 
-    public Route(String carNumber, String st, String startPlace, String et, String destination, String driverIN, int state, int cost) {
-
-        this.carNumber = carNumber;
-        this.st = st;
-        this.startPlace = startPlace;
-        this.et = et;
-        this.destination = destination;
-        this.driverIN = driverIN;
-        this.state = state;
-        this.cost = cost;
+    @Override
+    public String toString() {
+        return "Route{" +
+                "carNumber='" + carNumber + '\'' +
+                ", startTime='" + startTime + '\'' +
+                ", startPlace='" + startPlace + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", destination='" + destination + '\'' +
+                ", driverIN='" + driverIN + '\'' +
+                ", state=" + state +
+                ", cost=" + cost +
+                '}';
     }
 }

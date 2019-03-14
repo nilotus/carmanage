@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.*;
  */
 @Mapper
 public interface UserMapper {
-    @Insert("INSERT INTO yonghu(UserId,UserName,UserPW,UserUid) VALUES(#{userId},#{userName},#{userPW},#{userUid})")
+    @Insert("INSERT INTO yonghu(UserId,UserName,UserPW,UserUid,Image) VALUES(#{userId},#{userName},#{userPW},#{userUid},#{image})")
     boolean addUser(User user);
 
     @Select("select UserPW from yonghu where UserId = #{userName}")

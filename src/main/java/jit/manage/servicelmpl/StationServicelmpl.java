@@ -26,4 +26,14 @@ public class StationServicelmpl implements StationSerivce{
     public MSG selectAll(){
         return new MSG(1,"查询所有车辆信息",stationMapper.selectAll());
     }
+
+    @Override
+    public MSG route(String id){
+        return new MSG(1,"查询路线",stationMapper.route(id));
+    }
+
+    @Override
+    public MSG routeids(){
+        return new MSG(1,"查询执行中的ids",stationMapper.select1());
+    }
 }

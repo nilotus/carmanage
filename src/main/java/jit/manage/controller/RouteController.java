@@ -32,4 +32,9 @@ public class RouteController {
         System.out.println(dto.toString());
         return routeSerivce.select(dto);
     }
+
+    @PostMapping("/select1")
+    public String select1(@RequestParam int page, @RequestParam int limit){
+        return routeSerivce.select1(page,limit);
+    }
 }

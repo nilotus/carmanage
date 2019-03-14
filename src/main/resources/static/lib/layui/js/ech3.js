@@ -1,10 +1,10 @@
 $('#ech3').one('click',function(){
-	    var myCharts1 = echarts.init(document.getElementById('ech31'));   
+	    var myCharts1 = echarts.init(document.getElementById('ech31'))     
 	    //var colors = [  '#8DB6CD','#D2691E', '#5F9EA0', '#A52A2A','#CDB7B5' ];
 	    myCharts1.setOption({
 	    	//color:colors,
 	    	title: {
-		        text: '司机性别统计',
+		        text: '事故类型统计',
 		        subtext: '近一年',
 		        left: 'center'
 	    	},
@@ -29,7 +29,7 @@ $('#ech3').one('click',function(){
     		},
 	    	series : [
 	            {
-	                name:'近一年司机性别统计',
+	                name:'近一年事故类型统计',
 	                type:'pie',
 	                clockwise:'true',
 	                startAngle:'0',
@@ -42,14 +42,14 @@ $('#ech3').one('click',function(){
 	    
         
 	    myCharts1.showLoading();
-	    
+	   
 	    var arr =[];
 		var names =[];
 		
 	    $.ajax({
 	    	type:"post",
 	    	dataType: 'json',
-	    	url: '/driver/sex',
+	    	url: '/event/kind',
 	    	async:true,
 	    	success:function(result){
 	    		console.log(result);

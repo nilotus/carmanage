@@ -17,7 +17,8 @@ public class UserServicelmpl implements UserService {
 
     @Override
     public MSG addUser(User user) {
-        user.setImage("http://120.78.168.194/images/cs1.jpg");
+        user.setImage("\"http://120.78.168.194/images/cs1.jpg\"");
+        System.out.println(user.toString());
         if (userMapper.addUser(user))
             return new MSG(1, "增加用户成功");
         else

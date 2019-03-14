@@ -8,8 +8,8 @@ import java.sql.Timestamp;
 public class RouteDto extends PageDto{
     String carNumber;
     String driverIN;
-    String st;
-    String et;
+    String startTime;
+    String endTime;
     String state;
 
     @Override
@@ -17,17 +17,17 @@ public class RouteDto extends PageDto{
         return "RouteDto{" +
                 "carNumber='" + carNumber + '\'' +
                 ", driverIN='" + driverIN + '\'' +
-                ", st='" + st + '\'' +
-                ", et='" + et + '\'' +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
                 ", state='" + state + '\'' +
                 '}';
     }
 
-    public RouteDto(String carNumber, String driverIN, String st, String et, String state) {
+    public RouteDto(String carNumber, String driverIN, String startTime, String endTime, String state) {
         this.carNumber = carNumber;
         this.driverIN = driverIN;
-        this.st = st;
-        this.et = et;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.state = state;
     }
 
@@ -51,20 +51,20 @@ public class RouteDto extends PageDto{
         this.driverIN = driverIN;
     }
 
-    public String getSt() {
-        return st;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setSt(String st) {
-        this.st = st;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
-    public String getEt() {
-        return et;
+    public String getEndTime() {
+        return endTime;
     }
 
-    public void setEt(String et) {
-        this.et = et;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
     public String getState() {
