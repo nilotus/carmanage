@@ -11,10 +11,10 @@ public interface UserMapper {
     @Insert("INSERT INTO yonghu(UserId,UserName,UserPW,UserUid) VALUES(#{userId},#{userName},#{userPW},#{userUid})")
     boolean addUser(User user);
 
-    @Select("select UserPW from yonghu where UserName = #{userName}")
+    @Select("select UserPW from yonghu where UserId = #{userName}")
     String login(@Param("userName") String userName);
 
-    @Select("select UserUid from yonghu where UserName = #{userName}")
+    @Select("select UserUid from yonghu where UserId = #{userName}")
     int identify(@Param("userName") String userName);
 
     @Select("SELECT * FROM yonghu WHERE UserId = #{userId}")

@@ -14,4 +14,6 @@ public interface UserService {
     MSG findOne(String userId);
 
     MSG delete(String userId);
+
+    MSG userInfo(String userId);
 }

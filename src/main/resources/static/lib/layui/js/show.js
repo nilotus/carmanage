@@ -3,7 +3,7 @@
 function menuFunc(x){
 	var i;
 	var index;
-	for(i=1;i<=15;i++){
+	for(i=1;i<=16;i++){
 		index = document.getElementById('content'+i);
 		index.style.display = 'none';
 	}

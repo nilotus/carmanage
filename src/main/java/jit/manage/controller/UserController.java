@@ -38,4 +38,8 @@ public class UserController {
         return userService.delete(id);
     }
 
+    @PostMapping("/userInfo/{id}")
+    public MSG userInfo(@PathVariable("id") String id){
+        return  userService.userInfo(id);
+    }
 }

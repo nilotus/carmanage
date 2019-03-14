@@ -21,7 +21,7 @@
     <header class="layui-elip">登录</header>
     <form class="layui-form">
         <div class="layui-input-inline">
-            <input type="text" name="account" required lay-verify="required" placeholder="用户名" autocomplete="off"
+            <input type="text" name="account" required lay-verify="required" placeholder="手机号" autocomplete="off"
                    class="layui-input" id="id">
         </div>
         <div class="layui-input-inline">
@@ -74,9 +74,9 @@
 						console.log("选择的uid："+data1.field.uid);
 						if(data.data == data1.field.uid){
 							if(data.data == 1){
-								window.location.href = 'index1.html';
+								window.location.href = 'index1.html?user_id='+data1.field.account;
 							}else{
-								window.location.href = 'index.html';
+								window.location.href = 'index.html?user_id='+data1.field.account;
 							}
 						}else{
 							layer.msg("身份信息错误，请重新确认身份")

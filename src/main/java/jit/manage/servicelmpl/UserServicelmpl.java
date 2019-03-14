@@ -17,6 +17,7 @@ public class UserServicelmpl implements UserService {
 
     @Override
     public MSG addUser(User user) {
+        user.setImage("http://120.78.168.194/images/cs1.jpg");
         if (userMapper.addUser(user))
             return new MSG(1, "增加用户成功");
         else
@@ -48,5 +49,10 @@ public class UserServicelmpl implements UserService {
             return new MSG(1, "已注销");
         }else
             return new MSG(-1, "注销失败");
+    }
+
+    @Override
+    public MSG userInfo(String userId){
+        return new MSG(1, "sucess",userMapper.findbyid(userId));
     }
 }

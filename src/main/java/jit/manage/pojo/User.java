@@ -8,12 +8,21 @@ public class User {
     private String userName;
     private String userPW;
     private int userUid;
+    private String image;
 
     public User(String userId, String userName, String userPW, int userUid) {
         this.userId = userId;
         this.userName = userName;
         this.userPW = userPW;
         this.userUid = userUid;
+    }
+
+    public User(String userId, String userName, String userPW, int userUid, String image) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userPW = userPW;
+        this.userUid = userUid;
+        this.image = image;
     }
 
     public User(){
@@ -50,6 +59,14 @@ public class User {
 
     public void setUserUid(int userUid) {
         userUid = userUid;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override
