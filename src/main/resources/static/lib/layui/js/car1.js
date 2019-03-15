@@ -8,107 +8,136 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
         laydate.render({
             elem: '#nt',
             theme: 'molv'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#st',
             theme: 'molv'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#et',
             theme: 'molv'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#rst2',
             theme: 'molv'
+            ,type: 'datetime'
         });
         
         laydate.render({
             elem: '#ret2',
             theme: 'molv'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#rst',
             theme: 'molv'
+            ,type: 'datetime'
         });
         
         laydate.render({
             elem: '#ret',
             theme: 'molv'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#est2',
             theme: 'molv'
+            ,type: 'datetime'
         });
         
         laydate.render({
             elem: '#eet2',
             theme: 'molv'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#est',
             theme: 'molv'
+            ,type: 'datetime'
         });
         
         laydate.render({
             elem: '#eet',
             theme: 'molv'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#eventime',
             theme: 'molv'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#dbd',
             theme: 'molv'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#e21',
             theme: 'molv'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#e22',
             theme: 'molv'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#e23',
             theme: 'molv'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#e81',
             theme: 'molv'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#e82',
             theme: 'molv'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#e83',
             theme: 'molv'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#e84',
             theme: 'molv'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#e85',
             theme: 'molv'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#e86',
             theme: 'molv'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#e87',
             theme: 'molv'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#e88',
             theme: 'molv'
+            ,type: 'datetime'
         });
         laydate.render({
             elem: '#e89',
             theme: 'molv'
+            ,type: 'datetime'
         });
+        form.on('submit(demo1)', function(data){
+  		addstation(routeid,data.field.place,data.field.time);
+  		return false;
+    	})
         //渲染表格 car
         var tableIns = table.render({
             elem: '#demo',
@@ -268,7 +297,7 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 	            , {field: 'carNumber', title: '车牌号', width: '20%', sort: true, align:'center'}
 	            , {field: 'driverIN', title: '驾驶员编号', width: '20%', align:'center'}
 	            , {field: 'startTime', title: '出发时间', width: '25%', align:'center'}
-	            , {field: 'startPlace', title: '出发地点', width: '25%', sort: true, align:'center'}
+	            , {field: 'startPlace', title: '出发地点', width: '25%', align:'center'}
 	            ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
 	        ]]
 	    });
@@ -277,10 +306,11 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 		    var data = obj.data;
 		    //console.log(obj)
 		    if(obj.event === 'del'){
-		      layer.confirm('真的删除行么', function(index){
-		        obj.del();
-		        layer.close(index);
-		      });
+		    	layer.confirm('确定要取消运输么？', {
+                btn: ['确定','取消'], //按钮
+	            }, function(){
+	                deleteRoute(data.routeId);
+	            });	      
 		    } else if(obj.event === 'edit'){
 		    	getRoute(data.routeId);
 		    }

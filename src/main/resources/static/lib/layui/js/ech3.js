@@ -4,7 +4,7 @@ $('#ech3').one('click',function(){
 	    myCharts1.setOption({
 	    	//color:colors,
 	    	title: {
-		        text: '事故类型统计',
+		        text: '事件类型统计',
 		        subtext: '近一年',
 		        left: 'center'
 	    	},

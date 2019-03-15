@@ -55,4 +55,12 @@ public class RouteServicelmpl implements RouteSerivce{
         JSONObject object = JSONObject.fromObject(msg);
         return object.toString();
     }
+
+    @Override
+    public MSG state(String id){
+        if (routeMapper.state(id)){
+            return new MSG(1, "行程已结束");
+        }else
+            return new MSG(-1, "修改失败");
+    }
 }

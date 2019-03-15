@@ -37,4 +37,9 @@ public class RouteController {
     public String select1(@RequestParam int page, @RequestParam int limit){
         return routeSerivce.select1(page,limit);
     }
+
+    @PostMapping("/state/{id}")
+    public MSG state(@PathVariable("id")String id){
+        return routeSerivce.state(id);
+    }
 }

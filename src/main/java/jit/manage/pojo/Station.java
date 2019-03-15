@@ -6,41 +6,49 @@ import java.sql.Timestamp;
  * Created by sunlotus on 2019/2/25.
  */
 public class Station {
-    int Routeld;
-    String Place;
-    Timestamp time;
+    private String routeld;
+    private String place;
+    private String time;
 
-    public int getRouteld() {
-        return Routeld;
-    }
-
-    public void setRouteld(int routeld) {
-        Routeld = routeld;
-    }
-
-    public String getPlace() {
-        return Place;
-    }
-
-    public void setPlace(String place) {
-        Place = place;
-    }
-
-    public Timestamp getTime() {
-        return time;
-    }
-
-    public void setTime(Timestamp time) {
+    public Station(String routeld, String place, String time) {
+        this.routeld = routeld;
+        this.place = place;
         this.time = time;
     }
 
     public Station() {
-
     }
 
-    public Station( int routeld, String place, Timestamp time) {
-        Routeld = routeld;
-        Place = place;
+    public String getRouteld() {
+        return routeld;
+    }
+
+    public void setRouteld(String routeld) {
+        this.routeld = routeld;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
         this.time = time;
+    }
+
+    @Override
+    public String toString() {
+        return "Station{" +
+                "routeld=" + routeld +
+                ", place='" + place + '\'' +
+                ", time=" + time +
+                '}';
     }
 }
