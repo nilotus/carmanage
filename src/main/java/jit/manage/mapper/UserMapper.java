@@ -3,6 +3,8 @@ package jit.manage.mapper;
 import jit.manage.pojo.User;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 /**
  * Created by sunlotus on 2019/2/21.
  */
@@ -28,4 +30,10 @@ public interface UserMapper {
 
     @Select("select * from yonghu where UserName = #{userId}")
     User select(@Param("userId") String userId);
+
+    @Select("SELECT * from yonghu WHERE UserUid = '0' limit #{limit} offset #{page}")
+    List<User> selectAll(@Param("page") int page,@Param("limit") int limit);
+
+    @Select("SELECT count(UserId) from yonghu WHERE UserUid = '0'")
+    int countAll();
 }

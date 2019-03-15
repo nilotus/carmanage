@@ -16,4 +16,6 @@ public interface UserService {
     MSG delete(String userId);
 
     MSG userInfo(String userId);
+
+    String users(int page,int limit);
 }

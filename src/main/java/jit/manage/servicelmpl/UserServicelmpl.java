@@ -4,6 +4,7 @@ import jit.manage.mapper.UserMapper;
 import jit.manage.pojo.User;
 import jit.manage.service.UserService;
 import jit.manage.util.MSG;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,5 +56,14 @@ public class UserServicelmpl implements UserService {
     @Override
     public MSG userInfo(String userId){
         return new MSG(1, "sucess",userMapper.findbyid(userId));
+    }
+
+    @Override
+    public String users(int page,int limit){
+        page = (page-1)*limit;
+        int count = userMapper.countAll();
+        MSG msg = new MSG(0,"",count,userMapper.selectAll(page,limit));
+        JSONObject object = JSONObject.fromObject(msg);
+        return object.toString();
     }
 }

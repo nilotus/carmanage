@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>堆叠图练习</title>
+    <style>
+        #pic{
+            width:700px;
+            height:400px;
+            margin: 20px auto;
+        }
+    </style>
+    <script src="../lib/layui/js/echarts.common.min.js"></script>
+    <script src="../lib/layui/js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+	<button id="but">按钮</button>
+    <div id="pic"></div>
+<script>
+	$('#but').one('click',function() {
+        var myCharts4 = echarts.init(document.getElementById('pic'));
+        var option = {
+            title: {
+                text: '堆叠区域图'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
+            },
+            legend: {
+                data: ['微型车', '小型车', '中型车', '大型车']
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['2013年', '2014年', '2015年', '2016年', '2017年', '2018年', '2019年']
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+                }
+            ],
+            series: [
+                {
+                    name: '微型车',
+                    type: 'line',
+                    stack: '总量',
+                    areaStyle: {},
+                    data: []
+                },
+                {
+                    name: '小型车',
+                    type: 'line',
+                    stack: '总量',
+                    areaStyle: {},
+                    data: []
+                },
+                {
+                    name: '中型车',
+                    type: 'line',
+                    stack: '总量',
+                    areaStyle: {},
+                    data: []
+                },
+                {
+                    name: '大型车',
+                    type: 'line',
+                    stack: '总量',
+                    areaStyle: {normal: {}},
+                    data: []
+                }
+                
+            ]
+        };
+        myCharts4.setOption(option);
+        myCharts4.showLoading();
+        var a=[];
+        var b=[];
+        var c=[];
+        var d=[];
+        $.ajax({
+        	type:"post",
+        	url:"/car/countkind",
+        	async:true,
+        	dataType: 'json',
+			contentType: 'application/json',
+			success:function(result){
+				for (var i=result.data.kind1.length-1;i>=0;i--) {
+						a.push(result.data.kind1[i]);
+					}
+				for (var i=result.data.kind1.length-1;i>=0;i--) {
+						b.push(result.data.kind2[i]);
+					}
+				for (var i=result.data.kind1.length-1;i>=0;i--) {
+						c.push(result.data.kind3[i]);
+					}
+				for (var i=result.data.kind1.length-1;i>=0;i--) {
+						d.push(result.data.kind4[i]);
+				}
+				myCharts4.hideLoading();
+				myCharts4.setOption({
+					series:[
+					{
+						name:'微型车',
+						data:a
+					},
+					{
+						name:'小型车',
+						data:b
+					},
+					{
+						name:'中型车',
+						data:c
+					},
+					{
+						name:'大型车',
+						data:d
+					}]
+				});
+			},
+			error:function(){
+				alert("failed");
+			}
+        	
+        });
+    })
+</script>
+</body>
+</html>

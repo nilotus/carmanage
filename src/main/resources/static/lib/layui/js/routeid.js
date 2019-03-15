@@ -44,6 +44,18 @@ function deleteRoute(id){
 	});
 }
 
+function deleteUser(id){
+	$.ajax({
+		type:"post",
+		url:"/user/delete/"+id,
+		async:true,
+		dataType: 'json',
+		success:function(data){
+			layer.msg(data.msg);
+		}
+	});
+}
+
 function deletediv(o){
 	var $parent = $(o).parent().parent();
 	$parent.remove();

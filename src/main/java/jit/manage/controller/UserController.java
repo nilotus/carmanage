@@ -33,13 +33,18 @@ public class UserController {
         return userService.findOne(id);
     }
 
-    @DeleteMapping("/delete")
-    public MSG delete(@RequestParam("id") String id){
+    @PostMapping("/delete/{id}")
+    public MSG delete(@PathVariable("id") String id){
         return userService.delete(id);
     }
 
     @PostMapping("/userInfo/{id}")
     public MSG userInfo(@PathVariable("id") String id){
         return  userService.userInfo(id);
+    }
+
+    @PostMapping("/selectAll")
+    public String users(int page,int limit){
+        return userService.users(page,limit);
     }
 }

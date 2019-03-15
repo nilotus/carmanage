@@ -1,6 +1,7 @@
 package jit.manage.servicelmpl;
 
 import jit.manage.Dto.RouteDto;
+import jit.manage.Dto.TongjiDto;
 import jit.manage.mapper.RouteMapper;
 import jit.manage.pojo.Route;
 import jit.manage.service.RouteSerivce;
@@ -8,6 +9,9 @@ import jit.manage.util.MSG;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by sunlotus on 2019/2/25.
@@ -62,5 +66,23 @@ public class RouteServicelmpl implements RouteSerivce{
             return new MSG(1, "行程已结束");
         }else
             return new MSG(-1, "修改失败");
+    }
+
+    @Override
+    public MSG routeTime(){
+        String kind1 = "1天内行程";
+        String kind2 = "1-3天行程";
+        String kind3 = "3-7天行程";
+        String kind4 = "7天外行程";
+        List<TongjiDto> dtos =new ArrayList<>();
+        TongjiDto dto = new TongjiDto(kind1,routeMapper.counta());
+        TongjiDto dto2 = new TongjiDto(kind2,routeMapper.countb());
+        TongjiDto dto3 = new TongjiDto(kind3,routeMapper.countc());
+        TongjiDto dto4 = new TongjiDto(kind4,routeMapper.countd());
+        dtos.add(dto);
+        dtos.add(dto2);
+        dtos.add(dto3);
+        dtos.add(dto4);
+        return new MSG(1, "sucess",dtos);
     }
 }

@@ -73,5 +73,16 @@ public interface RouteMapper {
             +"</script>")
     List<Route> find(RouteDto dto);
 
-    //近一年
+    //近一年行程短于1天的
+    @Select("SELECT COUNT(RouteId) FROM routerecord WHERE State =2 AND (EndTime-StartTime)<1000000 ")
+    int counta();
+    //近一年行程1-3天的
+    @Select("SELECT COUNT(RouteId) FROM routerecord WHERE State =2 AND (EndTime-StartTime)>=1000000 AND (EndTime-StartTime)<3000000")
+    int countb();
+    //近一年行程3-7天的
+    @Select("SELECT COUNT(RouteId) FROM routerecord WHERE State =2 AND (EndTime-StartTime)>=3000000 AND (EndTime-StartTime)<7000000")
+    int countc();
+    //近一年行程长于7天的
+    @Select("SELECT COUNT(RouteId) FROM routerecord WHERE State =2 AND (EndTime-StartTime)>=7000000")
+    int countd();
 }

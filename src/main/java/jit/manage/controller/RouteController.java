@@ -4,6 +4,7 @@ import jit.manage.Dto.RouteDto;
 import jit.manage.pojo.Route;
 import jit.manage.service.RouteSerivce;
 import jit.manage.util.MSG;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,5 +42,10 @@ public class RouteController {
     @PostMapping("/state/{id}")
     public MSG state(@PathVariable("id")String id){
         return routeSerivce.state(id);
+    }
+
+    @PostMapping("/routetime")
+    public MSG routeTime(){
+        return routeSerivce.routeTime();
     }
 }

@@ -1,10 +1,10 @@
 $('#ech2').one('click',function(){
 	    var myCharts1 = echarts.init(document.getElementById('ech21'))     
-	    //var colors = [  '#8DB6CD','#D2691E', '#5F9EA0', '#A52A2A','#CDB7B5' ];
+	    var colors = [  '#8DB6CD','#D2691E', '#5F9EA0', '#A52A2A','#CDB7B5' ];
 	    myCharts1.setOption({
-	    	//color:colors,
+	    	color:colors,
 	    	title: {
-		        text: '事故类型统计',
+		        text: '运输时间统计',
 		        subtext: '近一年',
 		        left: 'center'
 	    	},
@@ -29,7 +29,7 @@ $('#ech2').one('click',function(){
     		},
 	    	series : [
 	            {
-	                name:'近一年事故类型统计',
+	                name:'运输时间统计',
 	                type:'pie',
 	                clockwise:'true',
 	                startAngle:'0',
@@ -49,7 +49,7 @@ $('#ech2').one('click',function(){
 	    $.ajax({
 	    	type:"post",
 	    	dataType: 'json',
-	    	url: '/event/kind',
+	    	url: '/route/routetime',
 	    	async:true,
 	    	success:function(result){
 	    		console.log(result);

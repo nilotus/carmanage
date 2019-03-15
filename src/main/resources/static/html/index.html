@@ -31,6 +31,8 @@
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a href="javascript:;" onclick="menuFunc(16)">基本资料</a></dd>
+                    <dd><a href="javascript:;" onclick="menuFunc(17)">修改密码</a></dd>
+                    
                 </dl>
             </li>
             <li class="layui-nav-item"><a href="javascript:;">退出登录</a></li>
@@ -53,8 +55,8 @@
                     <a href="javascript:;">车辆运输管理</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" onclick="menuFunc(4)">车辆运输录入</a></dd>
-                        <dd><a href="javascript:;" id="ech2" onclick="menuFunc(5)">运输信息统计</a></dd>
                         <dd><a href="javascript:;" onclick="menuFunc(6)">停靠信息录入</a></dd>
+                        <dd><a href="javascript:;" id="ech2" onclick="menuFunc(5)">运输信息统计</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
@@ -106,7 +108,7 @@
 	        <form class="layui-form" action="">
 	            <!-- 内容主体区域 -->
 	            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-	                <legend>信息录入</legend>
+	                <legend>车辆信息录入</legend>
 	            </fieldset>
 	            <!--信息录入部分-->
 	            <div class="layui-form">
@@ -266,7 +268,7 @@
     		<form class="layui-form" action="">
 	            <!-- 内容主体区域 -->
 	            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-	                <legend>信息录入</legend>
+	                <legend>车辆状态变动</legend>
 	            </fieldset>
 	            <!--信息录入部分-->
 	            <div class="layui-form">
@@ -383,7 +385,7 @@
     	</div>
     	<div id="content3" style="display: none;">
     		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-	                <legend>信息录入</legend>
+	                <legend>车辆信息统计</legend>
 	        </fieldset>
 	        <div id="pic1" style="float: left;"></div>
 	        <div id="pic4" style="float: left;"></div>
@@ -527,13 +529,13 @@
     	</div>
     	<div id="content5" style="display: none;">
     		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-	                <legend>信息统计</legend>
+	                <legend>运输信息统计</legend>
 	        </fieldset>
 	        <div id="ech21" style="float: left;"></div>
     	</div>
     	<div id="content6" style="display: none;">
     		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-	                <legend>停靠信息</legend>
+	                <legend>停靠信息录入</legend>
 	        </fieldset>
 	        <table class="layui-table" id="station" lay-filter="station"></table>
 	        
@@ -542,7 +544,7 @@
     		<form class="layui-form" action="">
 	            <!-- 内容主体区域 -->
 	            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-	                <legend>信息录入</legend>
+	                <legend>车辆违章信息录入</legend>
 	            </fieldset>
 	            <!--信息录入部分-->
 	            <div class="layui-form">
@@ -661,7 +663,7 @@
     		<form class="layui-form" action="">
 	            <!-- 内容主体区域 -->
 	            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-	                <legend>信息录入</legend>
+	                <legend>车辆事故信息录入</legend>
 	            </fieldset>
 	            <!--信息录入部分-->
 	            <div class="layui-form">
@@ -780,7 +782,7 @@
     		<form class="layui-form" action="">
 	            <!-- 内容主体区域 -->
 	            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-	                <legend>信息录入</legend>
+	                <legend>车辆保养信息录入</legend>
 	            </fieldset>
 	            <!--信息录入部分-->
 	            <div class="layui-form">
@@ -899,7 +901,7 @@
     		<form class="layui-form" action="">
 	            <!-- 内容主体区域 -->
 	            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-	                <legend>信息录入</legend>
+	                <legend>车辆维修信息录入</legend>
 	            </fieldset>
 	            <!--信息录入部分-->
 	            <div class="layui-form">
@@ -1016,7 +1018,7 @@
     	</div>
     	<div id="content11" style="display: none;">
     		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-	                <legend>信息统计</legend>
+	                <legend>车辆事件统计</legend>
 	        </fieldset>
 	        <div id="ech31" style="float: left;"></div>
     	</div>
@@ -1024,7 +1026,7 @@
     		<form class="layui-form" action="">
 	            <!-- 内容主体区域 -->
 	            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-	                <legend>信息录入</legend>
+	                <legend>驾驶员信息录入</legend>
 	            </fieldset>
 	            <!--信息录入部分-->
 	            <div class="layui-form">
@@ -1124,19 +1126,19 @@
     	</div>
     	<div id="content13" style="display: none;">
     		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-	                <legend>信息统计</legend>
+	                <legend>驾驶员信息统计</legend>
 	        </fieldset>
 	        <div id="ech41" style="float: left;"></div>
 	        <div id="ech42" style="float: left;"></div>
     	</div>
     	<div id="content14" style="display: none;">
     		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-	                <legend>信息录入15</legend>
+	                <legend>路径规划</legend>
 	        </fieldset>
     	</div>
     	<div id="content15" style="display: none;">
     		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-	                <legend>信息录入16</legend>
+	                <legend>路况信息</legend>
 	        </fieldset>
     	</div>
     	<div id="content16" style="display: none;">
@@ -1160,7 +1162,16 @@
 		      <button type="button" class="layui-btn">编辑</button>
     	</div>
     </div>
-
+		<div id="content17" style="display: none;">
+    		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>修改密码</legend>
+	        </fieldset>
+    	</div>
+    	<div id="content18" style="display: none;">
+    		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	                <legend>用户管理</legend>
+	        </fieldset>
+    	</div>
     <div class="layui-footer">
         <!-- 底部固定区域 -->
         @2019 金陵科技学院 王艳花 毕业设计

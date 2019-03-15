@@ -159,6 +159,36 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                 , {field: 'date', title: '日期', width: '15%', align:'center'}
             ]]
         });
+        var tableUsers = table.render({
+            elem: '#user',
+            height: 312,
+            url: '/user/selectAll', //数据接口
+            method: 'post',
+            page: true, //开启分页
+            limit: 10,
+            cols: [[ //表头
+                {field: 'userId', title: '手机号', width: '25%', sort: true, align:'center'}
+                , {field: 'userName', title: '名字', width: '25%', align:'center'}
+                , {field: 'userUid', title: '身份', width: '25%', sort: true, align:'center'}
+                ,{fixed: 'right', title:'操作', toolbar: '#barDemo2', width:'25%'}
+            ]]
+        });
+        //监听行工具事件
+		  table.on('tool(user)', function(obj){
+		    var data = obj.data;
+		    //console.log(obj)
+		    if(obj.event === 'del'){
+		    	layer.confirm('确定要删除用户么？', {
+                btn: ['确定','取消'], //按钮
+	            }, function(){
+	                deleteUser(data.userId);
+	            });	      
+		    } else if(obj.event === 'watch'){
+		    	getRoute(data.routeId);
+		    }else if(obj.event === 'edit'){
+		    	getRoute(data.routeId);
+		    }
+		  });
         var tableIns5 = table.render({
             elem: '#demo2',
             height: 312,

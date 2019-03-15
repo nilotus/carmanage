@@ -29,7 +29,7 @@ $('#ech3').one('click',function(){
     		},
 	    	series : [
 	            {
-	                name:'近一年事故类型统计',
+	                name:'近一年事件类型统计',
 	                type:'pie',
 	                clockwise:'true',
 	                startAngle:'0',
