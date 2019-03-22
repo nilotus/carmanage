@@ -5,6 +5,7 @@ import jit.manage.service.UserService;
 import jit.manage.util.MSG;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
@@ -46,5 +47,10 @@ public class UserController {
     @PostMapping("/selectAll")
     public String users(int page,int limit){
         return userService.users(page,limit);
+    }
+
+    @PostMapping("/upload")
+    public MSG upload(@RequestParam("id") String id,@RequestParam("file") MultipartFile image) throws IOException {
+        return userService.upload(id,image);
     }
 }

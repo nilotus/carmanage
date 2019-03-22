@@ -2,6 +2,7 @@ package jit.manage.mapper;
 
 import jit.manage.pojo.User;
 import org.apache.ibatis.annotations.*;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -36,4 +37,7 @@ public interface UserMapper {
 
     @Select("SELECT count(UserId) from yonghu WHERE UserUid = '0'")
     int countAll();
+
+    @Update("update yonghu set Image = ${path} where UserId=#{id}")
+    boolean upload(@Param("path")String path,@Param("id")String id);
 }

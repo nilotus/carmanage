@@ -1198,12 +1198,21 @@
   //执行实例
   var uploadInst = upload.render({
     elem: '#test1' //绑定元素
-    ,url: '/upload/' //上传接口
+    ,url: '/user/upload' //上传接口
+  ,before:function(obj){
+  		//layer.load();
+  		this.data={'id':user_id};
+    	obj.preview(function(index,file,result){
+    		$('#yltx').attr('src',result);
+    	});
+    }
     ,done: function(res){
       //上传完毕回调
+      return layer.msg(res.msg);    
     }
     ,error: function(){
       //请求异常回调
+      layer.msg("状态异常")
     }
   });
 });

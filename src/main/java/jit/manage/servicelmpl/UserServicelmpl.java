@@ -3,10 +3,17 @@ package jit.manage.servicelmpl;
 import jit.manage.mapper.UserMapper;
 import jit.manage.pojo.User;
 import jit.manage.service.UserService;
+import jit.manage.util.FtpClientUtil;
 import jit.manage.util.MSG;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
  * Created by sunlotus on 2019/2/21.
@@ -65,5 +72,24 @@ public class UserServicelmpl implements UserService {
         MSG msg = new MSG(0,"",count,userMapper.selectAll(page,limit));
         JSONObject object = JSONObject.fromObject(msg);
         return object.toString();
+    }
+
+    @Override
+    public MSG upload(String id,MultipartFile image) throws IOException {
+        if (null !=image){
+            String path = "C:\\JDKPro2\\images\\";
+            String name = id + ".jpg";
+            String imagepath="http://120.78.168.194/images/"+name;
+            String localfilename=path+name;
+            File file = new File(localfilename);
+            image.transferTo(file);
+            String remotefilename= "pro/images/"+name;
+            FtpClientUtil clientUtil =new FtpClientUtil();
+            clientUtil.upload(remotefilename,localfilename);
+            String path2 = "'"+"\""+imagepath+"\""+"'";
+            userMapper.upload(path2,id);
+            return new MSG(1,"上传成功");
+        }
+        return new MSG(0,"上传文件为空");
     }
 }
