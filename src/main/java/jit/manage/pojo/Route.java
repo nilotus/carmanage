@@ -13,13 +13,13 @@ public class Route {
     String endTime;
     String destination;
     String driverIN;
-    int state;
+    String state;
     int cost;
 
     public Route() {
     }
 
-    public Route(String routeId, String carNumber, String startTime, String startPlace, String endTime, String destination, String driverIN, int state, int cost) {
+    public Route(String routeId, String carNumber, String startTime, String startPlace, String endTime, String destination, String driverIN, String state, int cost) {
         RouteId = routeId;
         this.carNumber = carNumber;
         this.startTime = startTime;
@@ -31,7 +31,7 @@ public class Route {
         this.cost = cost;
     }
 
-    public Route(String carNumber, String startTime, String startPlace, String endTime, String destination, String driverIN, int state, int cost) {
+    public Route(String carNumber, String startTime, String startPlace, String endTime, String destination, String driverIN, String state, int cost) {
         this.carNumber = carNumber;
         this.startTime = startTime;
         this.startPlace = startPlace;
@@ -98,11 +98,11 @@ public class Route {
         this.driverIN = driverIN;
     }
 
-    public int getState() {
+    public String getState() {
         return state;
     }
 
-    public void setState(int state) {
+    public void setState(String state) {
         this.state = state;
     }
 

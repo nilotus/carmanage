@@ -159,9 +159,10 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                 , {field: 'date', title: '日期', width: '15%', align:'center'}
             ]]
         });
+        //查询所有用户，渲染表格user
         var tableUsers = table.render({
             elem: '#user',
-            height: 312,
+            height: 480,
             url: '/user/selectAll', //数据接口
             method: 'post',
             page: true, //开启分页
@@ -173,7 +174,7 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                 ,{fixed: 'right', title:'操作', toolbar: '#barDemo2', width:'25%'}
             ]]
         });
-        //监听行工具事件
+        //监听行user工具事件
 		  table.on('tool(user)', function(obj){
 		    var data = obj.data;
 		    //console.log(obj)
@@ -182,6 +183,12 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                 btn: ['确定','取消'], //按钮
 	            }, function(){
 	                deleteUser(data.userId);
+	                tableUsers.reload({
+	                	url: '/user/selectAll', //数据接口
+			            method: 'post',
+			            page: true, //开启分页
+			            limit: 10
+	                });
 	            });	      
 		    } else if(obj.event === 'watch'){
 		    	getRoute(data.routeId);
@@ -189,6 +196,7 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 		    	getRoute(data.routeId);
 		    }
 		  });
+        //渲染表格car2，车辆状态修改中的
         var tableIns5 = table.render({
             elem: '#demo2',
             height: 312,
@@ -238,6 +246,12 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                     console.log(data);
                     if (data.code == 1) {
                         layer.msg(data.msg);
+                        tableIns.reload({
+                        	url: '/car/selectAll', //数据接口
+				            method: 'post',
+				            page: true, //开启分页
+				            limit: 10
+                        });
                     } else {
                         layer.msg(data.msg);
                     }
@@ -315,9 +329,10 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 	            , {field: 'cost', title: '花销', width: '10%', align:'center'}
 	        ]]
 	    });
+	    //渲染表格station
 	    var tableStation = table.render({
 	        elem: '#station',
-	        height: 312,
+	        height: 480,
 	        url: '/route/select1', //数据接口
 	        method: 'post',
 	        page: true, //开启分页
@@ -331,8 +346,8 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 	            ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
 	        ]]
 	    });
-	    //监听行工具事件
-		  table.on('tool(station)', function(obj){
+	    //监听行工具事件station
+		table.on('tool(station)', function(obj){
 		    var data = obj.data;
 		    //console.log(obj)
 		    if(obj.event === 'del'){
@@ -340,6 +355,12 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                 btn: ['确定','取消'], //按钮
 	            }, function(){
 	                deleteRoute(data.routeId);
+	                tableStation.reload({
+	                	url: '/route/select1', //数据接口
+				        method: 'post',
+				        page: true, //开启分页
+				        limit: 10,
+	                });
 	            });	      
 		    } else if(obj.event === 'edit'){
 		    	getRoute(data.routeId);
@@ -372,6 +393,12 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                     console.log(data);
                     if (data.code == 1) {
                         layer.msg(data.msg);
+                        tableIns2.reload({
+                        	url: '/route/selectAll', //数据接口
+					        method: 'post',
+					        page: true, //开启分页
+					        limit: 10
+                        });
                     } else {
                         layer.msg(data.msg);
                     }
@@ -427,6 +454,7 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 	            , {field: 'eventInfo', title: '事件信息', width: '20%', align:'center'}
 	        ]]
 	    });
+	    //渲染表格 event2
 	    var tableIns6 = table.render({
 	        elem: '#event2',
 	        height: 312,
@@ -444,6 +472,7 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 	            , {field: 'eventInfo', title: '事件信息', width: '20%', align:'center'}
 	        ]]
 	    });
+	    //渲染表格 event3
 	    var tableIns7 = table.render({
 	        elem: '#event3',
 	        height: 312,
@@ -461,6 +490,7 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 	            , {field: 'eventInfo', title: '事件信息', width: '20%', align:'center'}
 	        ]]
 	    });
+	    //渲染表格 event4
 	    var tableIns8 = table.render({
 	        elem: '#event4',
 	        height: 312,
@@ -504,6 +534,12 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                     console.log(data);
                     if (data.code == 1) {
                         layer.msg(data.msg);
+                        tableIns3.reload({
+                        	url: '/event/selectAll', //数据接口
+					        method: 'post',
+					        page: true, //开启分页
+					        limit: 10
+                        });
                     } else {
                         layer.msg(data.msg);
                     }
@@ -540,6 +576,12 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                     console.log(data);
                     if (data.code == 1) {
                         layer.msg(data.msg);
+                        tableIns6.reload({
+                        	url: '/event/selectAll', //数据接口
+					        method: 'post',
+					        page: true, //开启分页
+					        limit: 10
+                        });
                     } else {
                         layer.msg(data.msg);
                     }
@@ -576,6 +618,12 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                     console.log(data);
                     if (data.code == 1) {
                         layer.msg(data.msg);
+                        tableIns7.reload({
+                        	url: '/event/selectAll', //数据接口
+					        method: 'post',
+					        page: true, //开启分页
+					        limit: 10
+                        })
                     } else {
                         layer.msg(data.msg);
                     }
@@ -612,6 +660,12 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                     console.log(data);
                     if (data.code == 1) {
                         layer.msg(data.msg);
+                        tableIns8.reload({
+                        	url: '/event/selectAll', //数据接口
+					        method: 'post',
+					        page: true, //开启分页
+					        limit: 10
+                        });
                     } else {
                         layer.msg(data.msg);
                     }
@@ -648,6 +702,12 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                     console.log(data);
                     if (data.code == 1) {
                         layer.msg(data.msg);
+                        tableIns5.reload({
+                        	url: '/car/selectAll', //数据接口
+				            method: 'post',
+				            page: true, //开启分页
+				            limit: 10
+                        });
                     } else {
                         layer.msg(data.msg);
                     }
@@ -801,6 +861,12 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                     console.log(data);
                     if (data.code == 1) {
                         layer.msg(data.msg);
+                        tableIns4.reload({
+                        	url: '/driver/selectAll', //数据接口
+					        method: 'post',
+					        page: true, //开启分页
+					        limit: 10,
+                        });
                     } else {
                         layer.msg(data.msg);
                     }

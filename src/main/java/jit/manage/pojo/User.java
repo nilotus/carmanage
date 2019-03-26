@@ -7,17 +7,11 @@ public class User {
     private String userId;
     private String userName;
     private String userPW;
-    private int userUid;
+    private String userUid;
     private String image;
 
-    public User(String userId, String userName, String userPW, int userUid) {
-        this.userId = userId;
-        this.userName = userName;
-        this.userPW = userPW;
-        this.userUid = userUid;
-    }
 
-    public User(String userId, String userName, String userPW, int userUid, String image) {
+    public User(String userId, String userName, String userPW, String userUid, String image) {
         this.userId = userId;
         this.userName = userName;
         this.userPW = userPW;
@@ -53,12 +47,12 @@ public class User {
         this.userPW = userPW;
     }
 
-    public int getUserUid() {
+    public String getUserUid() {
         return userUid;
     }
 
-    public void setUserUid(int userUid) {
-        userUid = userUid;
+    public void setUserUid(String userUid) {
+        this.userUid = userUid;
     }
 
     public String getImage() {

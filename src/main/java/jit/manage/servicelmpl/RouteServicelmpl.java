@@ -32,7 +32,18 @@ public class RouteServicelmpl implements RouteSerivce{
     public String selectAll(int page,int limit){
         int count = routeMapper.count();
         page = (page-1)*limit;
-        MSG msg = new MSG(0,"",count,routeMapper.selectAll(page,limit));
+        List<Route> routes = routeMapper.selectAll(page, limit);
+        for (Route route:routes){
+            if (route.getState().equals("0"))
+                route.setState("未开始");
+            if (route.getState().equals("1"))
+                route.setState("运行中");
+            if (route.getState().equals("2"))
+                route.setState("已结束");
+            if (route.getState().equals("3"))
+                route.setState("已取消");
+        }
+        MSG msg = new MSG(0,"",count,routes);
         JSONObject object = JSONObject.fromObject(msg);
         return object.toString();
     }
@@ -45,7 +56,18 @@ public class RouteServicelmpl implements RouteSerivce{
         page = (page-1)*limit;
         dto.setPage(page);
         dto.setLimit(limit);
-        MSG msg = new MSG(0,"",count,routeMapper.find(dto));
+        List<Route> routes = routeMapper.find(dto);
+        for (Route route:routes){
+            if (route.getState().equals("0"))
+                route.setState("未开始");
+            if (route.getState().equals("1"))
+                route.setState("运行中");
+            if (route.getState().equals("2"))
+                route.setState("已结束");
+            if (route.getState().equals("3"))
+                route.setState("已取消");
+        }
+        MSG msg = new MSG(0,"",count,routes);
         System.out.println(dto.toString());
         JSONObject object = JSONObject.fromObject(msg);
         return object.toString();
