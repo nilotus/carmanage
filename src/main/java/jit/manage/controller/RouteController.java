@@ -1,5 +1,6 @@
 package jit.manage.controller;
 
+import jit.manage.Dto.PageDto;
 import jit.manage.Dto.RouteDto;
 import jit.manage.pojo.Route;
 import jit.manage.service.RouteSerivce;
@@ -20,6 +21,11 @@ public class RouteController {
     @PostMapping("/selectAll")
     public String selectAll(@RequestParam int page, @RequestParam int limit){
         return routeSerivce.selectAll(page,limit);
+    }
+
+    @PostMapping("/selectAll2")
+    public String selectAll2(@RequestBody PageDto dto){
+        return routeSerivce.selectAll(dto.getPage(),dto.getLimit());
     }
 
     @PostMapping("/insert")

@@ -1,5 +1,5 @@
 var routeid;
-	function getRoute(id){
+function getRoute(id){
 		routeid = id;
 		$.ajax({
 		type:"post",
@@ -44,17 +44,7 @@ function deleteRoute(id){
 	});
 }
 
-function deleteUser(id){
-	$.ajax({
-		type:"post",
-		url:"/user/delete/"+id,
-		async:true,
-		dataType: 'json',
-		success:function(data){
-			layer.msg(data.msg);
-		}
-	});
-}
+
 
 function deletediv(o){
 	var $parent = $(o).parent().parent();

@@ -1,5 +1,7 @@
 package jit.manage.servicelmpl;
 
+import jit.manage.Dto.PsDto;
+import jit.manage.Dto.UserDto;
 import jit.manage.mapper.UserMapper;
 import jit.manage.pojo.User;
 import jit.manage.service.UserService;
@@ -14,6 +16,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by sunlotus on 2019/2/21.
@@ -69,7 +73,16 @@ public class UserServicelmpl implements UserService {
     public String users(int page,int limit){
         page = (page-1)*limit;
         int count = userMapper.countAll();
-        MSG msg = new MSG(0,"",count,userMapper.selectAll(page,limit));
+        List<User> users = userMapper.selectAll(page, limit);
+        List<User> users1 = new ArrayList<>();
+        for (User user:users){
+            if (user.getUserUid().equals("1")) {
+                user.setUserUid("管理员");
+            }else
+                user.setUserUid("普通用户");
+            users1.add(user);
+        }
+        MSG msg = new MSG(0,"",count,users1);
         JSONObject object = JSONObject.fromObject(msg);
         return object.toString();
     }
@@ -92,4 +105,43 @@ public class UserServicelmpl implements UserService {
         }
         return new MSG(0,"上传文件为空");
     }
+
+    @Override
+    public MSG updateps(PsDto dto){
+        User user = userMapper.findbyid(dto.getUserid());
+        if (!user.getUserPW().equals(dto.getOps()))
+            return new MSG(-1,"旧密码不正确");
+        else {
+            if (userMapper.updateps(dto.getNps(),dto.getUserid()))
+                return new MSG(1,"修改密码成功");
+            else
+                return new MSG(-1,"修改密码失败");
+        }
+    }
+
+    @Override
+    public MSG updateuid(String id){
+        User user = userMapper.findbyid(id);
+        if (user.getUserUid().equals("1")) {
+            if (userMapper.updateuid("0",id))
+                return new MSG(1,"身份信息已更新");
+            else
+                return new MSG(-1,"身份修改失败");
+        }
+        else {
+            if (userMapper.updateuid("1",id))
+                return new MSG(1,"身份信息已更新");
+            else
+                return new MSG(-1,"身份修改失败");
+        }
+
+    }
+    @Override
+    public MSG update(UserDto dto){
+        if (userMapper.update(dto.getUserid(),dto.getName(),dto.getPhone()))
+            return new MSG(1,"更新成功");
+        else
+            return new MSG(-1,"修改失败");
+    }
+
 }

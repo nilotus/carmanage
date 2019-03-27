@@ -1,5 +1,7 @@
 package jit.manage.controller;
 
+import jit.manage.Dto.PsDto;
+import jit.manage.Dto.UserDto;
 import jit.manage.pojo.User;
 import jit.manage.service.UserService;
 import jit.manage.util.MSG;
@@ -52,5 +54,21 @@ public class UserController {
     @PostMapping("/upload")
     public MSG upload(@RequestParam("id") String id,@RequestParam("file") MultipartFile image) throws IOException {
         return userService.upload(id,image);
+    }
+
+    @PostMapping("/updateps")
+    public MSG updateps(@RequestBody PsDto dto){
+        System.out.println("-----------------"+dto.toString());
+        return userService.updateps(dto);
+    }
+
+    @PostMapping("/updateuid/{id}")
+    public MSG updateuid(@PathVariable("id") String id){
+        return userService.updateuid(id);
+    }
+
+    @PostMapping("/update")
+    public MSG update(@RequestBody UserDto dto){
+        return userService.update(dto);
     }
 }

@@ -26,18 +26,24 @@ public interface UserMapper {
     @Delete("DELETE FROM yonghu WHERE UserId = #{userId}")
     boolean delete(@Param("userId") String userId);
 
-    @Update("UPDATE yongu set UserId=#{userId},UserName=#{userName},UserPW=#{userPW},UserUid=#{userUid} WHERE UserId = #{userId}")
-    boolean update(User user);
+    @Update("UPDATE yonghu set UserId=#{phone},UserName=#{userName} WHERE UserId = #{userId}")
+    boolean update(@Param("userId") String userid,@Param("userName") String userName,@Param("phone")String phone);
 
-    @Select("select * from yonghu where UserName = #{userId}")
-    User select(@Param("userId") String userId);
+//    @Select("select * from yonghu where UserName = #{userId}")
+//    User select(@Param("userId") String userId);
 
-    @Select("SELECT * from yonghu WHERE UserUid = '0' limit #{limit} offset #{page}")
+    @Select("SELECT * from yonghu limit #{limit} offset #{page}")
     List<User> selectAll(@Param("page") int page,@Param("limit") int limit);
 
-    @Select("SELECT count(UserId) from yonghu WHERE UserUid = '0'")
+    @Select("SELECT count(UserId) from yonghu")
     int countAll();
 
     @Update("update yonghu set Image = ${path} where UserId=#{id}")
     boolean upload(@Param("path")String path,@Param("id")String id);
+
+    @Update("UPDATE yonghu set UserPW=#{nps} WHERE UserId = #{userId}")
+    boolean updateps(@Param("nps")String nps,@Param("userId") String userId);
+
+    @Update("UPDATE yonghu set UserUid=#{uid} WHERE UserId = #{userId}")
+    boolean updateuid(@Param("uid")String uid,@Param("userId") String userId);
 }

@@ -1,6 +1,7 @@
 package jit.manage.controller;
 
 import jit.manage.Dto.CarDto;
+import jit.manage.Dto.PageDto;
 import jit.manage.pojo.Car;
 import jit.manage.service.CarSerivce;
 import jit.manage.util.MSG;
@@ -21,6 +22,11 @@ public class CarController {
     @PostMapping("/selectAll")
     public String selectAll(@RequestParam int page, @RequestParam int limit){
         return carSerivce.selectAll(page,limit);
+    }
+
+    @PostMapping("/selectAll2")
+    public String selectAll2(@RequestBody PageDto dto){
+        return carSerivce.selectAll(dto.getPage(),dto.getLimit());
     }
 
     @PostMapping("/insert")

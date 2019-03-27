@@ -134,9 +134,15 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
             theme: 'molv'
             ,type: 'datetime'
         });
+        //添加停靠站
         form.on('submit(demo1)', function(data){
-  		addstation(routeid,data.field.place,data.field.time);
-  		return false;
+  			addstation(routeid,data.field.place,data.field.time);
+  			return false;
+    	})
+        //编辑用户信息
+        form.on('submit(demo3)', function(data){
+  			editinfo(data.field.name2,data.field.phone2);
+  			return false;
     	})
         //渲染表格 car
         var tableIns = table.render({
@@ -169,9 +175,9 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
             limit: 10,
             cols: [[ //表头
                 {field: 'userId', title: '手机号', width: '25%', sort: true, align:'center'}
-                , {field: 'userName', title: '名字', width: '25%', align:'center'}
-                , {field: 'userUid', title: '身份', width: '25%', sort: true, align:'center'}
-                ,{fixed: 'right', title:'操作', toolbar: '#barDemo2', width:'25%'}
+                , {field: 'userName', title: '名字', width: '20%', align:'center'}
+                , {field: 'userUid', title: '身份', width: '20%', sort: true, align:'center'}
+                ,{fixed: 'right', title:'操作', toolbar: '#barDemo2', width:'35%', align:'center'}
             ]]
         });
         //监听行user工具事件
@@ -187,13 +193,25 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 	                	url: '/user/selectAll', //数据接口
 			            method: 'post',
 			            page: true, //开启分页
-			            limit: 10
+			            limit: 10,
+				        where:{}
 	                });
 	            });	      
 		    } else if(obj.event === 'watch'){
-		    	getRoute(data.routeId);
+		    	check(data.userId);
 		    }else if(obj.event === 'edit'){
-		    	getRoute(data.routeId);
+		    	layer.confirm('确定要切换用户身份么', {
+                btn: ['确定','取消'], //按钮
+	            }, function(){
+	                edituid(data.userId);
+	                tableUsers.reload({
+	                	url: '/user/selectAll', //数据接口
+			            method: 'post',
+			            page: true, //开启分页
+			            limit: 10,
+				        where:{}
+	                });
+	            });	 
 		    }
 		  });
         //渲染表格car2，车辆状态修改中的
@@ -247,10 +265,12 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                     if (data.code == 1) {
                         layer.msg(data.msg);
                         tableIns.reload({
-                        	url: '/car/selectAll', //数据接口
+                        	url: '/car/selectAll2', //数据接口
+                        	contentType: 'application/json',
 				            method: 'post',
 				            page: true, //开启分页
-				            limit: 10
+				            limit: 10,
+				            where:{}
                         });
                     } else {
                         layer.msg(data.msg);
@@ -332,18 +352,18 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 	    //渲染表格station
 	    var tableStation = table.render({
 	        elem: '#station',
-	        height: 480,
+	        height: 350,
 	        url: '/route/select1', //数据接口
 	        method: 'post',
 	        page: true, //开启分页
 	        limit: 10,
 	        cols: [[ //表头
 	            {field: 'routeId', title: 'routeID', width: '10%', sort: true, align:'center'}
-	            , {field: 'carNumber', title: '车牌号', width: '20%', sort: true, align:'center'}
+	            , {field: 'carNumber', title: '车牌号', width: '10%', sort: true, align:'center'}
 	            , {field: 'driverIN', title: '驾驶员编号', width: '20%', align:'center'}
-	            , {field: 'startTime', title: '出发时间', width: '25%', align:'center'}
-	            , {field: 'startPlace', title: '出发地点', width: '25%', align:'center'}
-	            ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
+	            , {field: 'startTime', title: '出发时间', width: '20%', align:'center'}
+	            , {field: 'startPlace', title: '出发地点', width: '20%', align:'center'}
+	            ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:'20%', align:'center'}
 	        ]]
 	    });
 	    //监听行工具事件station
@@ -360,6 +380,7 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 				        method: 'post',
 				        page: true, //开启分页
 				        limit: 10,
+				        where:{}
 	                });
 	            });	      
 		    } else if(obj.event === 'edit'){
@@ -394,10 +415,12 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                     if (data.code == 1) {
                         layer.msg(data.msg);
                         tableIns2.reload({
-                        	url: '/route/selectAll', //数据接口
+                        	url: '/route/selectAll2', //数据接口
+                        	contentType: 'application/json',
 					        method: 'post',
 					        page: true, //开启分页
-					        limit: 10
+					        limit: 10,
+				            where:{}
                         });
                     } else {
                         layer.msg(data.msg);
@@ -535,10 +558,12 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                     if (data.code == 1) {
                         layer.msg(data.msg);
                         tableIns3.reload({
-                        	url: '/event/selectAll', //数据接口
+                        	url: '/event/selectAll2', //数据接口
+                        	contentType: 'application/json',
 					        method: 'post',
 					        page: true, //开启分页
-					        limit: 10
+					        limit: 10,
+				            where:{}
                         });
                     } else {
                         layer.msg(data.msg);
@@ -577,10 +602,12 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                     if (data.code == 1) {
                         layer.msg(data.msg);
                         tableIns6.reload({
-                        	url: '/event/selectAll', //数据接口
+                        	url: '/event/selectAll2', //数据接口
+                        	contentType: 'application/json',
 					        method: 'post',
 					        page: true, //开启分页
-					        limit: 10
+					        limit: 10,
+				            where:{}
                         });
                     } else {
                         layer.msg(data.msg);
@@ -619,10 +646,12 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                     if (data.code == 1) {
                         layer.msg(data.msg);
                         tableIns7.reload({
-                        	url: '/event/selectAll', //数据接口
+                        	url: '/event/selectAll2', //数据接口
+                        	contentType: 'application/json',
 					        method: 'post',
 					        page: true, //开启分页
-					        limit: 10
+					        limit: 10,
+				            where:{}
                         })
                     } else {
                         layer.msg(data.msg);
@@ -661,10 +690,12 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                     if (data.code == 1) {
                         layer.msg(data.msg);
                         tableIns8.reload({
-                        	url: '/event/selectAll', //数据接口
+                        	url: '/event/selectAll2', //数据接口
+                        	contentType: 'application/json',
 					        method: 'post',
 					        page: true, //开启分页
-					        limit: 10
+					        limit: 10,
+				            where:{}
                         });
                     } else {
                         layer.msg(data.msg);
@@ -689,33 +720,57 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
             	"eventInfo": data1.field.einfo
             }
             var ndata = JSON.stringify(adata);
-            $.ajax({
-                type: 'post',
-                url: '/event/insert',
-                async: true,
-                dataType: 'json',
+            if ( data1.field.eNumber.length>0 && data1.field.ckind.length>0) {
+	            //更新车辆状态
+	            $.ajax({
+	            	type:"post",
+	            	url:"/car/update",
+	            	async:true,
+	            	dataType: 'json',
+					data:{
+						number: data1.field.eNumber,
+						state: data1.field.ckind
+					},
+					success:function(data){
+						layer.msg(data.msg);
+					},
+	                error: function () {
+	                    alert("网络异常");
+	                }
+	            });
+            }
+            if (data1.field.eNumber.length>0 && data1.field.eventime.length >0 && data1.field.eplace.length>0 && data1.field.ekind.length>0 && data1.field.eIN.length>0 ){
+            	//添加事件
+	            $.ajax({
+	                type: 'post',
+	                url: '/event/insert',
+	                async: true,
+	                dataType: 'json',
+	                contentType: 'application/json',
+	                data: ndata,
+	                //data: "{\"carNumber\":\"" + data1.field.number + "\",\"carKind\":\"" + data1.field.kind + "\",\"carSeat\":\"" + data1.field.seat + "\",\"carLoad\":\"" + data1.field.heavy + "\",\"carFactory\":\"" + data1.field.factory + "\",\"carColor\":\"" + data1.field.color + "\",\"carState\":\"" + data1.field.state + "\",\"carOwner\":\"" + data1.field.name + "\",\"carON\":\"" + data1.field.phone + "\",\"date\":\"" + data1.field.nt + "\"}",
+	                //验证用户名是否可用
+	                success: function (data) {
+	                    console.log(data);
+	                    if (data.code == 1) {
+	                        layer.msg(data.msg);
+	                    } else {
+	                        layer.msg(data.msg);
+	                    }
+	                },
+	                error: function () {
+	                    alert("网络异常");
+	                }
+	            });
+            }
+            tableIns5.reload({
+                url: '/car/selectAll2', //数据接口
                 contentType: 'application/json',
-                data: ndata,
-                //data: "{\"carNumber\":\"" + data1.field.number + "\",\"carKind\":\"" + data1.field.kind + "\",\"carSeat\":\"" + data1.field.seat + "\",\"carLoad\":\"" + data1.field.heavy + "\",\"carFactory\":\"" + data1.field.factory + "\",\"carColor\":\"" + data1.field.color + "\",\"carState\":\"" + data1.field.state + "\",\"carOwner\":\"" + data1.field.name + "\",\"carON\":\"" + data1.field.phone + "\",\"date\":\"" + data1.field.nt + "\"}",
-                //验证用户名是否可用
-                success: function (data) {
-                    console.log(data);
-                    if (data.code == 1) {
-                        layer.msg(data.msg);
-                        tableIns5.reload({
-                        	url: '/car/selectAll', //数据接口
-				            method: 'post',
-				            page: true, //开启分页
-				            limit: 10
-                        });
-                    } else {
-                        layer.msg(data.msg);
-                    }
-                },
-                error: function () {
-                    alert("已存在");
-                }
-            })
+				method: 'post',
+				page: true, //开启分页
+				limit: 10,
+				where:{}
+            });
             //防止页面跳转
             return false;
         });
@@ -862,10 +917,12 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                     if (data.code == 1) {
                         layer.msg(data.msg);
                         tableIns4.reload({
-                        	url: '/driver/selectAll', //数据接口
+                        	url: '/driver/selectAll2', //数据接口
+                        	contentType: 'application/json',
 					        method: 'post',
 					        page: true, //开启分页
 					        limit: 10,
+				            where:{}
                         });
                     } else {
                         layer.msg(data.msg);
@@ -898,5 +955,54 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
         		}
         	});
         	return false;
+        });
+        //提交表单--修改密码
+        form.on('submit(updateps)',function(data3){
+        	var adata = {
+        		"userid":user_id,
+        		"ops":data3.field.ops,
+        		"nps": data3.field.nps
+          };
+          var ndata = JSON.stringify(adata);
+        	$.ajax({
+        		type:"post",
+        		url:"/user/updateps",
+        		async:true,
+        		contentType: 'application/json',
+        		data:ndata,
+				success: function(data){
+				    layer.msg(data.msg+"，请重新登录");
+				    setTimeout(function(){
+				    	window.location.href = 'login.html';
+				    },1000);
+				},
+				error: function(){
+					alert("failed!");
+				}
+        	});
+        	return false;
+        });
+        // 为密码添加正则验证
+        $('#nps').blur(function() {
+                var reg = /^[\w]{6,12}$/;
+                if(!($('#nps').val().match(reg))){
+                    $('#npwr').removeAttr('hidden');
+                    $('#npri').attr('hidden','hidden');
+                    layer.msg('请输入合法密码');
+                }else {
+                    $('#npri').removeAttr('hidden');
+                    $('#npwr').attr('hidden','hidden');
+                }
+        });
+         //验证两次密码是否一致
+        $('#nps2').blur(function() {
+                if($('#nps2').val() != $('#nps').val()){
+                    $('#npwr2').removeAttr('hidden');
+                    $('#npri2').attr('hidden','hidden');
+                    layer.msg('两次输入密码不一致!');
+                }else {
+                    $('#npri2').removeAttr('hidden');
+                    $('#npwr2').attr('hidden','hidden');
+                };
         });
 });

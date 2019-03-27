@@ -12,7 +12,6 @@ function menuFunc(x){
 }
 
 function logout(){
-	$.cookie('the_cookie', null); 
 	window.location.href = 'login.html';
 }
 

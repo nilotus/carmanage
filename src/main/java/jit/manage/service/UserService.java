@@ -1,5 +1,7 @@
 package jit.manage.service;
 
+import jit.manage.Dto.PsDto;
+import jit.manage.Dto.UserDto;
 import jit.manage.pojo.User;
 import jit.manage.util.MSG;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,4 +25,10 @@ public interface UserService {
     String users(int page,int limit);
 
     MSG upload(String id,MultipartFile image) throws IOException;
+
+    MSG updateps(PsDto dto);
+
+    MSG updateuid(String id);
+
+    MSG update(UserDto dto);
 }

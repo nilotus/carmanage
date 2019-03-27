@@ -1,4 +1,4 @@
-function getUrlParam(name) {
+	function getUrlParam(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
         var r = window.location.search.substr(1).match(reg); //匹配目标参数
         if (r != null) return unescape(r[2]);
@@ -32,3 +32,81 @@ function getUrlParam(name) {
     		$('#xx').append(str3);
     	}
     });
+    
+function edit(){
+	layer.open({
+			type: 1,
+			title:"编辑信息",
+			skin: 'layui-layer-rim', //加上边框
+			area: ['350px', '360px'], //宽高
+			content:$('#editinfo').html()//调到新增页面
+			});
+}
+
+function editinfo(name,phone){	
+	var data = {
+				"userid":user_id,
+		    "name":name,
+		    "phone":phone,
+			};
+			ndata = JSON.stringify(data);
+	$.ajax({
+		type:"post",
+		url:"/user/update",
+		async:true,
+		dataType: 'json',
+		data:ndata,
+		contentType: 'application/json',
+		success: function(data){
+			layer.msg(data.msg);
+			user_id = phone;
+		},
+		error: function(){
+			alert("failed!");
+		}
+		
+	});
+}
+function check(id){
+	$.ajax({
+    	type:"post",
+    	url:"/user/userInfo/" + id,
+    	async:true,
+    	dataType: 'json',
+    	success:function(data){
+    		layer.open({
+				type: 1,
+				title:"查看图片",
+				skin: 'layui-layer-rim', //加上边框
+				area: ['350px', '360px'], //宽高
+				content:"<img src="+data.data.image+"/ width='300px',height='150px'"
+			});
+    		
+    	}
+    });
+	
+}
+
+function edituid(id){
+	$.ajax({
+		type:"post",
+		url:"/user/updateuid/"+id,
+		async:true,
+		dataType: 'json',
+		success:function(data){
+			layer.msg(data.msg);
+		}
+	});
+}
+
+function deleteUser(id){
+	$.ajax({
+		type:"post",
+		url:"/user/delete/"+id,
+		async:true,
+		dataType: 'json',
+		success:function(data){
+			layer.msg(data.msg);
+		}
+	});
+}
