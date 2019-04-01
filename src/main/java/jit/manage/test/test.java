@@ -1,25 +1,30 @@
 package jit.manage.test;
 
+import jit.manage.mapper.MapMapper;
 import jit.manage.util.FtpClientUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.util.Arrays;
 
 
 /**
  * Created by sunlotus on 2019/3/20.
  */
 public class test {
-    public static void main(String[] args) throws IOException {
-        String remotefilename= "pro/images/cat.jpg";
-        String localfilename="C:\\JDKPro\\pictures\\cat2.jpg";
-        FtpClientUtil clientUtil =new FtpClientUtil();
-        clientUtil.upload(remotefilename,localfilename);
+    @Autowired
+    private MapMapper mapMapper;
 
+    public static void main(String[] args) {
 
-
+        LocalDateTime localDateTime = LocalDateTime.of(2019,4,1,9,0);
+        LocalDateTime localDateTime1 = LocalDateTime.of(2019,5,1,9,20,8);
+        if (localDateTime.isBefore(localDateTime1))
+            System.out.println("yes");
     }
 
 
