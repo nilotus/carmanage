@@ -2,9 +2,11 @@ package jit.manage.controller;
 
 
 import jit.manage.service.MapService;
+import jit.manage.util.MSG;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -17,7 +19,9 @@ public class MapController {
     private MapService mapService;
 
     @PostMapping("/getmap")
-    public void getmap(){
-        mapService.getmap();
+    public MSG getmap(@RequestParam("begin")int begin, @RequestParam("end")int end){
+        System.out.println("----------------------------"+begin);
+        System.out.println("----------------------------"+end);
+       return  mapService.getmap(begin, end);
     }
 }

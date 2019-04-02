@@ -10,5 +10,5 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface MapMapper {
     @Select("select distance from map where sp = #{sp} and ep = #{ep}")
-    long getdistance(@Param("sp")String sp,@Param("ep")String ep);
+     int getdistance(@Param("sp")String sp,@Param("ep")String ep);
 }

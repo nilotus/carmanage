@@ -6,9 +6,9 @@ package jit.manage.pojo;
 public class Map {
     String sp;
     String ep;
-    long distance;
+    int distance;
 
-    public Map(String sp, String ep, long distance) {
+    public Map(String sp, String ep, int distance) {
         this.sp = sp;
         this.ep = ep;
         this.distance = distance;
@@ -34,11 +34,11 @@ public class Map {
         this.ep = ep;
     }
 
-    public long getDistance() {
+    public int getDistance() {
         return distance;
     }
 
-    public void setDistance(long distance) {
+    public void setDistance(int distance) {
         this.distance = distance;
     }
 

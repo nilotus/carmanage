@@ -144,6 +144,11 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
   			editinfo(data.field.name2,data.field.phone2);
   			return false;
     	})
+        //最短路径
+        form.on('submit(zdlj)',function(data){
+        	zdlj(data.field.qd,data.field.zd);
+        	return false;
+        })
         //渲染表格 car
         var tableIns = table.render({
             elem: '#demo',
