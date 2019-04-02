@@ -1010,4 +1010,17 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
                     $('#npwr2').attr('hidden','hidden');
                 };
         });
+       
+        form.on('submit(lk)', function (data1){
+					$('#map').html("");
+				var url = "http://api.map.baidu.com/traffic/v1/road?"
+					+"road_name="+data1.field.road
+					+"&city="+data1.field.city
+					+"&ak=ZVumxavkKR4s9NfCgAddP6fx82Lpha6C"
+					+"&callback=showLocation";
+				jQuery.getScript(url);
+				return false;
+			});
+			
+			
 });

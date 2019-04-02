@@ -45,3 +45,7 @@ function zdlj(begin,end){
         	});
         	
 }
+ function showLocation(data) {
+            	layer.msg(data.description);
+            
+        }
