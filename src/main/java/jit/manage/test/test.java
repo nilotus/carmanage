@@ -8,8 +8,10 @@ import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Date;
 
 
 /**
@@ -20,11 +22,9 @@ public class test {
     private MapMapper mapMapper;
 
     public static void main(String[] args) {
-
-        LocalDateTime localDateTime = LocalDateTime.of(2019,4,1,9,0);
-        LocalDateTime localDateTime1 = LocalDateTime.of(2019,5,1,9,20,8);
-        if (localDateTime.isBefore(localDateTime1))
-            System.out.println("yes");
+        String place = "江苏省南京市鼓楼区";
+        String city = place.substring(0,place.indexOf("市")+1);
+        System.out.println(city);
     }
 
 

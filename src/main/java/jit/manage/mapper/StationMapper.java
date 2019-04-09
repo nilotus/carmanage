@@ -20,9 +20,11 @@ public interface StationMapper {
     @Select("select * from station")
     List<Station> selectAll();
 
-    @Select("SELECT r.RouteId,r.CarNumber,r.DriverIN,d.`Name`,r.StartPlace,r.StartTime,s.Place,s.Time from routerecord r,driver d,station s WHERE d.LN = r.DriverIN AND r.RouteId=s.RouteId AND r.RouteId = #{id} ORDER BY s.Time")
+    @Select("SELECT r.RouteId,r.CarNumber,r.DriverIN,d.`Name`,r.StartPlace,r.StartTime,s.Place,s.Time,r.Destination,r.EndTime  from routerecord r,driver d,station s WHERE d.LN = r.DriverIN AND r.RouteId=s.RouteId AND r.RouteId = #{id} ORDER BY s.Time")
     List<StationDto> route(String id);
 
+    @Select("SELECT State from routerecord WHERE RouteId=#{id}")
+    int state(String id);
     @Select("SELECT RouteId from routerecord WHERE State = 1")
     String[] select1();
 

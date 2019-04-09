@@ -45,6 +45,11 @@ public class RouteController {
         return routeSerivce.select1(page,limit);
     }
 
+    @PostMapping("/select2")
+    public String select2(@RequestParam int page, @RequestParam int limit){
+        return routeSerivce.select2(page, limit);
+    }
+
     @PostMapping("/state/{id}")
     public MSG state(@PathVariable("id")String id){
         return routeSerivce.state(id);
@@ -53,5 +58,10 @@ public class RouteController {
     @PostMapping("/routetime")
     public MSG routeTime(){
         return routeSerivce.routeTime();
+    }
+
+    @PostMapping("/cost")
+    public MSG cost(){
+        return routeSerivce.cost();
     }
 }

@@ -12,8 +12,10 @@ public class StationDto {
     private String StartTime;
     private String Place;
     private String Time;
+    private String Destination;
+    private String EndTime;
 
-    public StationDto(String carNumber, String driverIN, String name, String startPlace, String startTime, String place, String time) {
+    public StationDto(String carNumber, String driverIN, String name, String startPlace, String startTime, String place, String time, String destination, String endTime) {
         CarNumber = carNumber;
         DriverIN = driverIN;
         Name = name;
@@ -21,9 +23,19 @@ public class StationDto {
         StartTime = startTime;
         Place = place;
         Time = time;
+        Destination = destination;
+        EndTime = endTime;
     }
 
     public StationDto() {
+    }
+
+    public String getCarNumber() {
+        return CarNumber;
+    }
+
+    public void setCarNumber(String carNumber) {
+        CarNumber = carNumber;
     }
 
     public String getDriverIN() {
@@ -74,12 +86,20 @@ public class StationDto {
         Time = time;
     }
 
-    public String getCarNumber() {
-        return CarNumber;
+    public String getDestination() {
+        return Destination;
     }
 
-    public void setCarNumber(String carNumber) {
-        CarNumber = carNumber;
+    public void setDestination(String destination) {
+        Destination = destination;
+    }
+
+    public String getEndTime() {
+        return EndTime;
+    }
+
+    public void setEndTime(String endTime) {
+        EndTime = endTime;
     }
 
     @Override
@@ -92,6 +112,8 @@ public class StationDto {
                 ", StartTime='" + StartTime + '\'' +
                 ", Place='" + Place + '\'' +
                 ", Time='" + Time + '\'' +
+                ", Destination='" + Destination + '\'' +
+                ", EndTime='" + EndTime + '\'' +
                 '}';
     }
 }

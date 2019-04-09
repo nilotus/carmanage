@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Mapper
 public interface EventMapper {
-    @Insert("INSERT INTO eventrecord (CarNumber,EventTime,EventPlace,EventKind,DriverIN,EventReason,EventInfo) VALUES(#{carNumber},#{eventTime},#{eventPlace},#{eventKind},#{driverIN},#{eventReason},#{eventInfo})")
+    @Insert("INSERT INTO eventrecord (CarNumber,EventTime,Place,EventPlace,EventKind,DriverIN,EventReason,EventInfo) VALUES(#{carNumber},#{eventTime},#{place},#{eventPlace},#{eventKind},#{driverIN},#{eventReason},#{eventInfo})")
     boolean add (Event event);
 
     @Select("select * from eventrecord limit #{limit} offset #{page}")
@@ -56,4 +56,7 @@ public interface EventMapper {
     //近一年发生的事件占比
     @Select("select EventKind kind,count(EventKind) count from eventrecord where YEAR(EventTime)=YEAR(NOW()) GROUP BY EventKind")
     List<TongjiDto> kind();
+
+    @Select("SELECT count(EventId) count,Place kind from eventrecord Group BY Place ORDER BY count DESC limit 7")
+    List<TongjiDto> place();
 }

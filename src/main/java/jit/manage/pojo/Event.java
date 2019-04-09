@@ -8,11 +8,23 @@ import java.sql.Timestamp;
 public class Event {
     String carNumber;
     String eventTime;
+    String place;
     String eventPlace;
     String eventKind;
     String driverIN;
     String eventReason;
     String eventInfo;
+
+    public Event(String carNumber, String eventTime, String place, String eventPlace, String eventKind, String driverIN, String eventReason, String eventInfo) {
+        this.carNumber = carNumber;
+        this.eventTime = eventTime;
+        this.place = place;
+        this.eventPlace = eventPlace;
+        this.eventKind = eventKind;
+        this.driverIN = driverIN;
+        this.eventReason = eventReason;
+        this.eventInfo = eventInfo;
+    }
 
     public Event(String carNumber, String eventTime, String eventPlace, String eventKind, String driverIN, String eventReason, String eventInfo) {
         this.carNumber = carNumber;
@@ -84,11 +96,20 @@ public class Event {
         this.eventInfo = eventInfo;
     }
 
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
     @Override
     public String toString() {
         return "Event{" +
                 "carNumber='" + carNumber + '\'' +
-                ", eventTime=" + eventTime +
+                ", eventTime='" + eventTime + '\'' +
+                ", place='" + place + '\'' +
                 ", eventPlace='" + eventPlace + '\'' +
                 ", eventKind='" + eventKind + '\'' +
                 ", driverIN='" + driverIN + '\'' +

@@ -42,4 +42,9 @@ public class EventController {
     public MSG kind(){
         return eventSerivce.kind();
     }
+
+    @PostMapping("/place")
+    public MSG place(){
+        return eventSerivce.place();
+    }
 }

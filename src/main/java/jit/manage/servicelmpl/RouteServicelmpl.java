@@ -10,7 +10,10 @@ import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -83,8 +86,29 @@ public class RouteServicelmpl implements RouteSerivce{
     }
 
     @Override
+    public String select2(int page,int limit){
+        int count = routeMapper.count23();
+        page = (page-1)*limit;
+        List<Route> routes = routeMapper.select2(page, limit);
+        List<Route> routes1 = new ArrayList<>();
+        for (Route route:routes){
+            if (route.getState().equals("2"))
+                route.setState("已完成");
+            if (route.getState().equals("3"))
+                route.setState("已取消");
+            routes1.add(route);
+        }
+        MSG msg = new MSG(0,"",count,routes1);
+        JSONObject object = JSONObject.fromObject(msg);
+        return object.toString();
+    }
+
+    @Override
     public MSG state(String id){
-        if (routeMapper.state(id)){
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time = sdf.format(d);
+        if (routeMapper.state(id,time)){
             return new MSG(1, "行程已结束");
         }else
             return new MSG(-1, "修改失败");
@@ -106,5 +130,18 @@ public class RouteServicelmpl implements RouteSerivce{
         dtos.add(dto3);
         dtos.add(dto4);
         return new MSG(1, "sucess",dtos);
+    }
+
+    @Override
+    public MSG cost(){
+        int[] costs = new int[7];
+        costs[0] = routeMapper.counta1();
+        costs[1] = routeMapper.countb1();
+        costs[2] = routeMapper.countc1();
+        costs[3] = routeMapper.countd1();
+        costs[4] = routeMapper.counte1();
+        costs[5] = routeMapper.countf1();
+        costs[6] = routeMapper.countg1();
+        return new MSG(1,"sucess",costs);
     }
 }

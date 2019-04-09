@@ -12,6 +12,8 @@ public interface RouteSerivce {
     String selectAll(int page,int limit);
     String select(RouteDto dto);
     String select1(int page,int limit);
+    String select2(int page,int limit);
     MSG state(String id);
     MSG routeTime();
+    MSG cost();
 }

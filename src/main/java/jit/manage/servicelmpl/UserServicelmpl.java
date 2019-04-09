@@ -6,6 +6,7 @@ import jit.manage.mapper.UserMapper;
 import jit.manage.pojo.User;
 import jit.manage.service.UserService;
 import jit.manage.util.FtpClientUtil;
+import jit.manage.util.MD5Util;
 import jit.manage.util.MSG;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ public class UserServicelmpl implements UserService {
     @Override
     public MSG addUser(User user) {
         user.setImage("\"http://120.78.168.194/images/cs1.jpg\"");
+        user.setUserPW(MD5Util.string2MD5(user.getUserPW()));
         System.out.println(user.toString());
         if (userMapper.addUser(user))
             return new MSG(1, "增加用户成功");
@@ -41,7 +43,7 @@ public class UserServicelmpl implements UserService {
     public MSG login(String userId, String userPW) {
         String pw = userMapper.login(userId);
         //System.out.println(userMapper.identify(userId));
-        if (pw.equals(userPW)) {
+        if (pw.equals(MD5Util.string2MD5(userPW))) {
             return new MSG(1, "登录成功",userMapper.identify(userId));
         } else
             return new MSG(-1, "用户名或密码错误");
@@ -108,6 +110,8 @@ public class UserServicelmpl implements UserService {
 
     @Override
     public MSG updateps(PsDto dto){
+        dto.setOps(MD5Util.string2MD5(dto.getOps()));
+        dto.setNps(MD5Util.string2MD5(dto.getNps()));
         User user = userMapper.findbyid(dto.getUserid());
         if (!user.getUserPW().equals(dto.getOps()))
             return new MSG(-1,"旧密码不正确");

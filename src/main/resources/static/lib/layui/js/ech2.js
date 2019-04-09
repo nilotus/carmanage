@@ -1,5 +1,6 @@
 $('#ech2').one('click',function(){
-	    var myCharts1 = echarts.init(document.getElementById('ech21'))     
+	    var myCharts1 = echarts.init(document.getElementById('ech21'))  
+	    var myCharts2 = echarts.init(document.getElementById('ech22'));
 	    var colors = [  '#8DB6CD','#D2691E', '#5F9EA0', '#A52A2A','#CDB7B5' ];
 	    myCharts1.setOption({
 	    	color:colors,
@@ -10,7 +11,7 @@ $('#ech2').one('click',function(){
 	    	},
 	    	tooltip : {
 	            trigger: 'item',
-	            formatter: "{a} <br/>{b} : {d}%"
+	            formatter: "{a} <br/>{b} : {c} ({d}%)"
 	        },
 	        visualMap: {
 	            show: false,
@@ -39,13 +40,38 @@ $('#ech2').one('click',function(){
 	            }
 	        ]
 	    });
-	    
-        
+	    option = {
+		    	title: {
+			        text: '运输消费统计',
+			        subtext: '近一年',
+			        left: 'center'
+		    	},
+		    	tooltip : {
+		            trigger: 'axis',
+		            formatter: "{a} <br/>【{b}】 : {c}"
+		        },
+			    xAxis: {
+			    	name:"消费区间",
+			        type: 'category',
+			        data: ['0-200', '200-400', '400-600', '600-800', '800-1000', '1000-1200', '大于1200']
+			    },
+			    yAxis: {
+			    	name:"运输次数",
+			        type: 'value'
+			    },
+			    series: [{
+			    	name:'运输次数',
+			        data: [],
+			        type: 'line',
+			        smooth: true
+			    }]
+			};
+        myCharts2.setOption(option);
 	    myCharts1.showLoading();
-	   
+	    myCharts2.showLoading();
 	    var arr =[];
 		var names =[];
-		
+		var cost = [];
 	    $.ajax({
 	    	type:"post",
 	    	dataType: 'json',
@@ -79,5 +105,29 @@ $('#ech2').one('click',function(){
 	    	}
 	    	
 	    });
-	    
+	    $.ajax({
+	    	type:"post",
+	    	dataType: 'json',
+	    	url: '/route/cost',
+	    	async:true,
+	    	success:function(result){
+	    		console.log(result);
+	    		for (var i=0;i<result.data.length;i++){
+	    			cost.push(result.data[i]);
+	    		}	    		
+	    		myCharts2.hideLoading();
+	    		myCharts2.setOption({
+	    			
+	    			series:{
+	    				data:cost
+	    				//data:counts	    				
+	    			}
+	    		});
+	    		
+	    	},
+	    	error:function(){
+	    		alert("failed");
+	    	}
+	    	
+	    });
   })

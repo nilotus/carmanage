@@ -3,9 +3,9 @@ $('#ech1').one('click',function(){
 	    var myCharts2 = echarts.init(document.getElementById('pic2'));
 	    var myCharts4 = echarts.init(document.getElementById('pic4'));
 	    var myCharts3 = echarts.init(document.getElementById('pic3'));
-	    //var colors = [  '#8DB6CD','#D2691E', '#5F9EA0', '#A52A2A','#CDB7B5' ];
+	    var colors = [  '#CD2626','#D2691E', '#8DB6CD', '#9BCD9B','#CDB7B5' ];
 	    myCharts1.setOption({
-	    	//color:colors,
+	    	color:colors,
 	    	title: {
 		        text: '车辆类型统计',
 		        subtext: '近一年',
@@ -13,7 +13,7 @@ $('#ech1').one('click',function(){
 	    	},
 	    	tooltip : {
 	            trigger: 'item',
-	            formatter: "{a} <br/>{b} : {d}%"
+	            formatter: "{a} <br/>{b} : {c} ({d}%)"
 	        },
 	        visualMap: {
 	            show: false,
@@ -43,7 +43,7 @@ $('#ech1').one('click',function(){
 	        ]
 	    });
 	    myCharts2.setOption({
-	    	//color:colors,
+	    	color:colors,
 	    	title: {
 		        text: '车辆状态统计',
 		        subtext: '近一年',
@@ -51,7 +51,7 @@ $('#ech1').one('click',function(){
 	    	},
 	    	tooltip : {
 	            trigger: 'item',
-	            formatter: "{a} <br/>{b} : {d}%"
+	            formatter: "{a} <br/>{b} : {c} ({d}%)"
 	        },
 	        visualMap: {
 	            show: false,
@@ -81,6 +81,7 @@ $('#ech1').one('click',function(){
 	        ]
 	    });
 	    var option2 = {
+	    	color:colors,
             title: {
                 text: '近7年车辆状态统计'
             },
@@ -152,6 +153,7 @@ $('#ech1').one('click',function(){
             ]
         };
         var option = {
+        	color:colors,
             title: {
                 text: '近7年车辆类型统计'
             },

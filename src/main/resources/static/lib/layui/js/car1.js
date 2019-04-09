@@ -136,7 +136,7 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
         });
         //添加停靠站
         form.on('submit(demo1)', function(data){
-  			addstation(routeid,data.field.place,data.field.time);
+  			addstation(routeid,data.field.place,data.field.time,data.field.cost);
   			return false;
     	})
         //编辑用户信息
@@ -354,6 +354,34 @@ layui.use(['element', 'laydate', 'form', 'table', 'jquery'], function () {
 	            , {field: 'cost', title: '花销', width: '10%', align:'center'}
 	        ]]
 	    });
+	    //渲染表格routerecord
+	    var tablerecord = table.render({
+	        elem: '#routerecord',
+	        height: 350,
+	        url: '/route/select2', //数据接口
+	        method: 'post',
+	        page: true, //开启分页
+	        limit: 10,
+	        cols: [[ //表头
+	            {field: 'routeId', title: 'routeID', width: '10%', sort: true, align:'center'}
+	            , {field: 'carNumber', title: '车牌号', width: '10%', sort: true, align:'center'}
+	            , {field: 'driverIN', title: '驾驶员编号', width: '15%', align:'center'}
+	            , {field: 'startTime', title: '出发时间', width: '15%', align:'center'}
+	            , {field: 'startPlace', title: '出发地点', width: '15%', align:'center'}
+	            , {field: 'endTime', title: '结束时间', width: '15%', align:'center'}
+	            , {field: 'destination', title: '目的地', width: '10%', align:'center'}
+	            , {field: 'state', title: '运输状态', width: '10%', align:'center'}
+	            ,{fixed: 'right', title:'操作', toolbar: '#barRecord', width:'12%', align:'center'}
+	        ]]
+	    });
+	    //监听行工具事件routerecord
+		table.on('tool(routerecord)', function(obj){
+		    var data = obj.data;
+		    //console.log(obj)
+		    if(obj.event === 'select'){
+		    	getRoute2(data.routeId);      
+		    } 
+		  });
 	    //渲染表格station
 	    var tableStation = table.render({
 	        elem: '#station',

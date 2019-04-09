@@ -1,6 +1,7 @@
 package jit.manage.controller;
 
 import jit.manage.Dto.PageDto;
+import jit.manage.Dto.StaDto;
 import jit.manage.pojo.Station;
 import jit.manage.service.StationSerivce;
 import jit.manage.util.MSG;
@@ -21,7 +22,8 @@ public class SataionController {
     }
 
     @PostMapping("/insert")
-    public MSG insert(@RequestBody Station station){
+    public MSG insert(@RequestBody StaDto station){
+        System.out.println(station.toString());
         return stationSerivce.insert(station);
     }
 

@@ -20,6 +20,10 @@ public class EventServicelmpl implements EventSerivce{
 
     @Override
     public MSG insert(Event event){
+        String place = event.getEventPlace();
+        place = place.substring(0,place.indexOf("市")+1);
+        event.setPlace(place);
+        System.out.println(event);
         if (eventMapper.add(event)){
             return new MSG(1, "增加成功");
         }else
@@ -50,5 +54,10 @@ public class EventServicelmpl implements EventSerivce{
     @Override
     public MSG kind(){
         return new MSG(1,"sucess",eventMapper.kind());
+    }
+
+    @Override
+    public MSG place(){
+        return new MSG(1,"sucess",eventMapper.place());
     }
 }

@@ -3,19 +3,61 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
+		<link rel="stylesheet"  href="../lib/layui/css/layui.css"/>
 	</head>
 	<body>
-		
-			
-			
-			
+		<button class="layui-btn" onclick="look()">查看</button>
+		<div id="editst" >
+			<form class="layui-form" action="">
+				  <div class="layui-form-item">
+				    <div class="layui-inline">
+				      <label class="layui-form-label">停靠点</label>
+				      <div class="layui-input-inline">
+				        <input type="text" name="place" lay-verify="required" autocomplete="off" class="layui-input">
+				      </div>
+				    </div>
+				    <div class="layui-inline">
+				      <label class="layui-form-label">停靠时间</label>
+				      <div class="layui-input-inline">
+				        <input type="text" name="time" id="date" lay-verify="required" placeholder="yyyy-MM-dd hh-mm--ss" autocomplete="off" class="layui-input">
+				      </div>
+				    </div>
+				    <div class="layui-inline">
+				      <label class="layui-form-label">目前花费</label>
+				      <div class="layui-input-inline">
+				        <input type="text" name="cost" lay-verify="required" autocomplete="off" class="layui-input">
+				      </div>
+				    </div>
+				</div>
+				<div class="layui-form-item">
+			    <div class="layui-input-block">
+			      <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+			      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+			    </div>
+			  </div>
+  		</form>
 		</div>
 		
+			
+			
+		
+		
 	</body>
+	<script src="../lib/layui/js/jquery-3.3.1.min.js"></script>
+	<script src="../lib/layui/layui.js"></script>
 	<script>
-		var str = "<div style='text-align: center;'>"
-		+"<p>你好，感谢您的使用</p>"
-		+"<p>反馈信息请发送至邮箱1634983132@qq.com</p>"
-		+"<p>感谢您的反馈，祝您生活愉快！</p>";
+		layui.use([ 'laydate', 'form'], function () {
+			var form = layui.form;
+				
+		})
+		function look(){
+			layer.open({
+				type: 1,
+				title:"运输路线",
+				skin: 'layui-layer-rim', //加上边框
+				area: ['360px', '420px'], //宽高
+				content:"<br /><br /><br /><br /><p style='text-align: center;'>无路线信息</p>"//调到新增页面
+			});
+		}
 	</script>
 </html>

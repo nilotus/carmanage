@@ -1,5 +1,6 @@
 package jit.manage.servicelmpl;
 
+import jit.manage.Dto.StaDto;
 import jit.manage.mapper.RouteMapper;
 import jit.manage.mapper.StationMapper;
 import jit.manage.pojo.Route;
@@ -19,14 +20,24 @@ public class StationServicelmpl implements StationSerivce{
     @Autowired
     private RouteMapper routeMapper;
     @Override
-    public MSG insert(Station station){
+    public MSG insert(StaDto station){
         Route route = routeMapper.selectbyId(station.getRouteld());
+        System.out.println(route.toString());
+        if (route.getState().equals("0")){
+            routeMapper.state1(route.getRouteId());
+        }
         if (route.getDestination().equals(station.getPlace())) {
             System.out.println("目的地");
             routeMapper.state2(station.getRouteld(), station.getTime());
             return new MSG(1, "到达目的地，行程已结束");
-        }else{  if (stationMapper.insert(station))
-                return new MSG(1, "增加成功");
+        }else{
+            Station station1 = new Station(station.getRouteld(),station.getPlace(),station.getTime());
+            if (stationMapper.insert(station1)){
+                if (routeMapper.cost(station.getRouteld(),station.getCost()))
+                    return new MSG(1, "增加成功");
+                return new MSG(-1, "增加失败");
+            }
+
             else
                 return new MSG(-1, "增加失败");
         }
@@ -39,7 +50,7 @@ public class StationServicelmpl implements StationSerivce{
 
     @Override
     public MSG route(String id){
-        return new MSG(1,"查询路线",stationMapper.route(id));
+        return new MSG(1,"查询路线",stationMapper.state(id),stationMapper.route(id));
     }
 
     @Override

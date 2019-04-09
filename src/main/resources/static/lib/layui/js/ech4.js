@@ -1,9 +1,9 @@
 $('#ech4').one('click',function(){
 	    var myCharts1 = echarts.init(document.getElementById('ech41'));
 	    var myCharts2 = echarts.init(document.getElementById('ech42'));	    
-	    //var colors = [  '#8DB6CD','#D2691E', '#5F9EA0', '#A52A2A','#CDB7B5' ];
+	    var colors = [  '#8DB6CD','#D2691E', '#5F9EA0', '#A52A2A','#CDB7B5' ];
 	    myCharts1.setOption({
-	    	//color:colors,
+	    	color:colors,
 	    	title: {
 		        text: '司机性别统计',
 		        subtext: '近一年',
@@ -11,7 +11,7 @@ $('#ech4').one('click',function(){
 	    	},
 	    	tooltip : {
 	            trigger: 'item',
-	            formatter: "{a} <br/>{b} : {d}%"
+	            formatter: "{a} <br/>{b} : {c} ({d}%)"
 	        },
 	        visualMap: {
 	            show: false,
@@ -49,7 +49,7 @@ $('#ech4').one('click',function(){
 	    	},
 	    	tooltip : {
 	            trigger: 'item',
-	            formatter: "{a} <br/>{b} : {d}%"
+	            formatter: "{a} <br/>{b} : {c} ({d}%)"
 	        },
 	        visualMap: {
 	            show: false,

@@ -12,4 +12,5 @@ public interface EventSerivce {
     String selectAll(int page,int limit);
     String select(EventDto dto);
     MSG kind();
+    MSG place();
 }

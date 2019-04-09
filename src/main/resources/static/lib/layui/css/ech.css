@@ -41,11 +41,23 @@
 			margin: 20px auto;
 			margin-left: 5%;
 		}
+		#ech32{
+			width:700px;
+			height:430px;
+			margin: 20px auto;
+			margin-left: 6%;
+		}
 		#ech21{
 			width:400px;
 			height:400px;
 			margin: 20px auto;
 			margin-left: 5%;
+		}
+		#ech22{
+			width:700px;
+			height:430px;
+			margin: 20px auto;
+			margin-left: 6%;
 		}
 		body, html,#container {  
 	    width: 100%;  
